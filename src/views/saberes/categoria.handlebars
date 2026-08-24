@@ -1,0 +1,757 @@
+<section class="tela-saberes tela-saberes-categoria">
+  <header class="moradores-cabecalho">
+    <a href="/saberes" class="btn-voltar" aria-label="Voltar para categorias" data-saberes-voltar>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+    </a>
+    <h1 class="moradores-titulo">{{categoria.nome}}</h1>
+  </header>
+
+  {{#ifCond categoria.slug '==' 'parteira'}}
+
+  <div class="parteira-wrapper" role="main" aria-label="Conteúdo da parteira Francisca da Chagas Araújo">
+
+    <article class="parteira-perfil" aria-labelledby="parteiraNomeTitulo">
+      <div class="parteira-perfil-foto" role="img" aria-label="Foto de {{categoria.parteira.nomeCompleto}}, parteira da comunidade de {{categoria.parteira.comunidade}}">
+        <picture>
+          <source srcset="{{categoria.parteira.imagem}}" type="image/png">
+          <img src="{{categoria.parteira.imagem}}" alt="Retrato de {{categoria.parteira.nomeCompleto}}, parteira tradicional da comunidade de {{categoria.parteira.comunidade}}" loading="eager" decoding="async" onerror="this.parentElement.parentElement.classList.add('img-fallback-parteira')">
+        </picture>
+      </div>
+      <div class="parteira-perfil-info">
+        <h2 id="parteiraNomeTitulo" class="parteira-perfil-nome">{{categoria.parteira.nomeCompleto}}</h2>
+        <ul class="parteira-perfil-lista" aria-label="Dados pessoais e profissionais">
+          <li class="parteira-perfil-item">
+            <span class="parteira-perfil-label" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </span>
+            <span class="parteira-perfil-texto">{{categoria.parteira.idade}} anos</span>
+          </li>
+          <li class="parteira-perfil-item">
+            <span class="parteira-perfil-label" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path><circle cx="12" cy="9" r="2.5"></circle></svg>
+            </span>
+            <span class="parteira-perfil-texto">Natural de {{categoria.parteira.naturalidade}}</span>
+          </li>
+          <li class="parteira-perfil-item">
+            <span class="parteira-perfil-label" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </span>
+            <span class="parteira-perfil-texto">Comunidade {{categoria.parteira.comunidade}}</span>
+          </li>
+          <li class="parteira-perfil-item">
+            <span class="parteira-perfil-label" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </span>
+            <span class="parteira-perfil-texto">{{categoria.parteira.anosAtuacao}} anos como parteira</span>
+          </li>
+        </ul>
+        <div class="parteira-funcoes" aria-label="Funções e atividades desempenhadas">
+          {{#each categoria.parteira.funcoes}}
+          <span class="parteira-funcao-chip" role="listitem">{{this}}</span>
+          {{/each}}
+        </div>
+      </div>
+    </article>
+
+    <nav class="parteira-abas" role="tablist" aria-label="Seções da página da parteira">
+      <button type="button" class="parteira-aba parteira-aba--ativa" role="tab" aria-selected="true" aria-controls="parteiraPainelHistoria" id="parteiraAbaHistoria" data-aba="historia">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+        <span>História</span>
+      </button>
+      <button type="button" class="parteira-aba" role="tab" aria-selected="false" aria-controls="parteiraPainelOficio" id="parteiraAbaOficio" data-aba="oficio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4"></path><path d="M12 18v4"></path><path d="M4.93 4.93l2.83 2.83"></path><path d="M16.24 16.24l2.83 2.83"></path><path d="M2 12h4"></path><path d="M18 12h4"></path><path d="M4.93 19.07l2.83-2.83"></path><path d="M16.24 7.76l2.83-2.83"></path><circle cx="12" cy="12" r="4"></circle></svg>
+        <span>Ofício</span>
+      </button>
+    </nav>
+
+    <div class="parteira-paineis">
+
+      <section class="parteira-painel parteira-painel--ativo parteira-historia" id="parteiraPainelHistoria" role="tabpanel" aria-labelledby="parteiraAbaHistoria" aria-hidden="false">
+        <header class="parteira-secao-cabecalho">
+          <div class="parteira-secao-icone parteira-secao-icone--historia" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"></path></svg>
+          </div>
+          <div>
+            <h3 class="parteira-secao-titulo">Sua História</h3>
+            <p class="parteira-secao-subtitulo">Trajetória de vida e memórias</p>
+          </div>
+        </header>
+
+        <div class="parteira-biografia" role="region" aria-label="Relato biográfico com rolagem interna" tabindex="0">
+          {{#each categoria.parteira.biografiaSecciones}}
+          <div class="parteira-biografia-secao" id="bio-secao-{{this.id}}">
+            <h4 class="parteira-biografia-secao-titulo">
+              <span class="parteira-biografia-secao-marcador" aria-hidden="true"></span>
+              {{this.titulo}}
+            </h4>
+            <div class="parteira-biografia-secao-corpo">
+              {{#each this.paragrafos}}
+              <p>{{this}}</p>
+              {{/each}}
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </section>
+
+      <section class="parteira-painel parteira-oficio" id="parteiraPainelOficio" role="tabpanel" aria-labelledby="parteiraAbaOficio" aria-hidden="true">
+        <header class="parteira-secao-cabecalho parteira-secao-cabecalho--laranja">
+          <div class="parteira-secao-icone parteira-secao-icone--oficio" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          </div>
+          <div>
+            <h3 class="parteira-secao-titulo">O Ofício da Parteira</h3>
+            <p class="parteira-oficio-dica">Deslize para o lado para ver cada etapa</p>
+          </div>
+        </header>
+
+        <div class="parteira-passos-carrossel" id="parteiraPassosCarrossel" aria-roledescription="carousel">
+          <button type="button" class="parteira-passos-btn parteira-passos-btn--anterior" id="parteiraPassosAnterior" aria-label="Passo anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+
+          <div class="parteira-passos-viewport" id="parteiraPassosViewport">
+            <ol class="parteira-passos-trilho" id="parteiraPassosTrilho" role="list" aria-label="Passo a passo do ofício tradicional da parteira">
+              {{#each categoria.parteira.passoAPasso}}
+              <li class="parteira-passos-slide" data-slide="{{this.numero}}" role="group" aria-roledescription="slide" aria-label="Passo {{this.numero}} de {{../categoria.parteira.passoAPasso.length}}: {{this.titulo}}">
+                <div class="parteira-passos-numero-cabecalho" aria-hidden="true">
+                  <span class="parteira-passos-numero">{{this.numero}}</span>
+                  <div class="parteira-passos-progresso">
+                    <span class="parteira-passos-progresso-linha"></span>
+                    <span class="parteira-passos-progresso-total">{{../categoria.parteira.passoAPasso.length}}</span>
+                  </div>
+                </div>
+                <article class="parteira-passos-card" role="article" aria-labelledby="passo{{this.numero}}Titulo">
+                  <header class="parteira-passos-card-cabecalho">
+                    <h4 id="passo{{this.numero}}Titulo" class="parteira-passos-card-titulo">{{this.titulo}}</h4>
+                    {{#if this.subtitulo}}
+                    <p class="parteira-passos-card-subtitulo">{{this.subtitulo}}</p>
+                    {{/if}}
+                  </header>
+                  <p class="parteira-passos-card-descricao">{{this.descricao}}</p>
+                  <div class="parteira-passos-card-objetivo" role="note">
+                    <div class="parteira-passos-objetivo-cabecalho" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                      <span>Objetivo</span>
+                    </div>
+                    <p class="parteira-passos-objetivo-texto">{{this.objetivo}}</p>
+                  </div>
+                </article>
+              </li>
+              {{/each}}
+            </ol>
+          </div>
+
+          <button type="button" class="parteira-passos-btn parteira-passos-btn--proximo" id="parteiraPassosProximo" aria-label="Próximo passo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+
+        <div class="parteira-passos-dots" id="parteiraPassosDots" role="tablist" aria-label="Passos do ofício">
+          {{#each categoria.parteira.passoAPasso}}
+          <button type="button" class="parteira-passos-dot{{#ifCond this.numero '==' 1}} parteira-passos-dot-ativo{{/ifCond}}" data-dot="{{this.numero}}" role="tab" aria-selected="{{#ifCond this.numero '==' 1}}true{{else}}false{{/ifCond}}" aria-label="Ir para passo {{this.numero}}"></button>
+          {{/each}}
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  {{else}}
+
+  <div class="saberes-categoria-descricao">
+    <p>{{categoria.descricao}}</p>
+  </div>
+
+  {{#ifCond categoria.temDados '==' true}}
+    {{#ifCond categoria.itens.length '>' 0}}
+      <main class="saberes-itens saberes-itens-grid">
+        {{#each categoria.itens}}
+        <button class="saberes-item{{#ifCond this.tipo '==' 'video'}} saberes-item--video{{/ifCond}}" type="button" data-saberes-item data-tipo="{{this.tipo}}" data-fallback="{{#ifCond ../categoria.slug '==' 'comidas-tipicas'}}comida{{else}}{{#ifCond this.tipo '==' 'video'}}video{{else}}planta{{/ifCond}}{{/ifCond}}" data-item-id="{{this.id}}" data-item-nome="{{this.nome}}" data-item-imagem="{{this.imagem}}" data-item-imagens="{{#each this.imagens}}{{this}}{{#unless @last}},{{/unless}}{{/each}}" data-item-video="{{this.video}}" data-item-texto="{{this.texto}}" aria-label="Abrir {{this.nome}}">
+          <div class="saberes-item-imagem">
+            {{#ifCond this.tipo '==' 'video'}}
+            <video src="{{this.video}}" muted playsinline autoplay loop preload="metadata" aria-label="{{this.nome}}" onerror="this.parentElement.classList.add('img-fallback')"></video>
+            {{else}}
+            <img src="{{this.imagem}}" alt="{{this.nome}}" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
+            {{/ifCond}}
+          </div>
+          <div class="saberes-item-nome"><span>{{this.nome}}</span></div>
+        </button>
+        {{/each}}
+      </main>
+    {{/ifCond}}
+  {{else}}
+    <div class="saberes-sem-dados">
+      <div class="saberes-sem-dados-icone" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+      </div>
+      <p class="saberes-sem-dados-titulo">Em breve</p>
+      <p class="saberes-sem-dados-texto">Os saberes desta categoria estão sendo organizados e serão adicionados em breve.</p>
+    </div>
+  {{/ifCond}}
+
+  {{/ifCond}}
+</section>
+
+<div id="saberesModal" class="saberes-modal" role="dialog" aria-modal="true" aria-labelledby="saberesModalTitulo" aria-hidden="true">
+  <div class="saberes-modal-overlay" data-saberes-modal-fechar></div>
+  <div class="saberes-modal-painel" role="document">
+    <button type="button" class="saberes-modal-fechar" aria-label="Fechar janela" data-saberes-modal-fechar>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <div class="saberes-modal-cabecalho">
+      <div class="saberes-modal-slider" id="saberesModalSlider" aria-hidden="false">
+        <button type="button" class="saberes-slider-btn saberes-slider-btn--prev" data-slider-prev aria-label="Foto anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <div class="saberes-slider-viewport" id="saberesSliderViewport">
+          <div class="saberes-slider-track" id="saberesSliderTrack"></div>
+        </div>
+        <button type="button" class="saberes-slider-btn saberes-slider-btn--next" data-slider-next aria-label="Próxima foto">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+        <div class="saberes-slider-dots" id="saberesSliderDots" role="tablist" aria-label="Fotos"></div>
+      </div>
+      <h2 id="saberesModalTitulo" class="saberes-modal-titulo"></h2>
+    </div>
+    <div class="saberes-modal-corpo" id="saberesModalCorpo"></div>
+  </div>
+</div>
+
+<script id="saberesCategoriaDados" type="application/json">{{{json categoria}}}</script>
+
+<script>
+(function () {
+  'use strict';
+  try {
+    var dados = document.getElementById('saberesCategoriaDados');
+    if (!dados) return;
+    var categoria = JSON.parse(dados.textContent);
+    if (!categoria || categoria.slug !== 'parteira') return;
+
+    var ABA_ATIVA = 'historia';
+    var abas = document.querySelectorAll('.parteira-aba');
+    var paineis = document.querySelectorAll('.parteira-painel');
+
+    function ativarAba(nome) {
+      ABA_ATIVA = nome;
+      abas.forEach(function (aba) {
+        var ehAtiva = aba.getAttribute('data-aba') === nome;
+        aba.classList.toggle('parteira-aba--ativa', ehAtiva);
+        aba.setAttribute('aria-selected', ehAtiva ? 'true' : 'false');
+      });
+      paineis.forEach(function (painel) {
+        var painelNome = painel.id === 'parteiraPainelHistoria' ? 'historia' : 'oficio';
+        var ehAtivo = painelNome === nome;
+        painel.classList.toggle('parteira-painel--ativo', ehAtivo);
+        painel.setAttribute('aria-hidden', ehAtivo ? 'false' : 'true');
+      });
+    }
+
+    abas.forEach(function (aba) {
+      aba.addEventListener('click', function () {
+        var nome = aba.getAttribute('data-aba');
+        if (nome && nome !== ABA_ATIVA) {
+          ativarAba(nome);
+          if (nome === 'oficio') {
+            setTimeout(function () {
+              window.dispatchEvent(new Event('resize'));
+            }, 50);
+          }
+        }
+      });
+    });
+
+    var biografia = document.querySelector('.parteira-biografia');
+    if (biografia) {
+      var keys = { 33: true, 34: true, 35: true, 36: true, 38: true, 40: true };
+      document.addEventListener('keydown', function (e) {
+        if (keys[e.keyCode] && document.activeElement && document.activeElement !== biografia && !biografia.contains(document.activeElement)) {
+        }
+      }, true);
+    }
+
+    var carrossel = document.getElementById('parteiraPassosCarrossel');
+    if (!carrossel) return;
+    var trilho = document.getElementById('parteiraPassosTrilho');
+    var viewport = document.getElementById('parteiraPassosViewport');
+    var dotsWrapper = document.getElementById('parteiraPassosDots');
+    var btnAnterior = document.getElementById('parteiraPassosAnterior');
+    var btnProximo = document.getElementById('parteiraPassosProximo');
+    if (!trilho || !viewport || !dotsWrapper || !btnAnterior || !btnProximo) return;
+
+    var slides = trilho.querySelectorAll('.parteira-passos-slide');
+    var dots = dotsWrapper.querySelectorAll('.parteira-passos-dot');
+    var TOTAL = slides.length;
+    var ATUAL = 0;
+
+    var startX = 0;
+    var startY = 0;
+    var deltaX = 0;
+    var deltaY = 0;
+    var touchStartHora = 0;
+    var isTouching = false;
+    var isHorizontal = null;
+    var cardScrollEl = null;
+
+    function getScrollContainer(el) {
+      while (el && el !== carrossel) {
+        if (el.classList && el.classList.contains('parteira-passos-card')) {
+          var s = window.getComputedStyle(el).overflowY;
+          if (s === 'auto' || s === 'scroll') return el;
+        }
+        el = el.parentElement;
+      }
+      return null;
+    }
+
+    function atualizarTrilho(deslize) {
+      if (typeof deslize !== 'number') deslize = 0;
+      var x = -1 * ATUAL * 100;
+      if (deslize !== 0) {
+        var porcent = (deslize / viewport.offsetWidth) * 100;
+        x += porcent;
+      }
+      trilho.style.transform = 'translate3d(' + x + '%, 0, 0)';
+    }
+
+    function atualizarDots() {
+      dots.forEach(function (d, i) {
+        if (i === ATUAL) {
+          d.classList.add('parteira-passos-dot-ativo');
+          d.setAttribute('aria-selected', 'true');
+        } else {
+          d.classList.remove('parteira-passos-dot-ativo');
+          d.setAttribute('aria-selected', 'false');
+        }
+      });
+    }
+
+    function atualizarBotoes() {
+      btnAnterior.disabled = (ATUAL === 0);
+      btnAnterior.style.opacity = (ATUAL === 0) ? '0.35' : '1';
+      btnProximo.disabled = (ATUAL === TOTAL - 1);
+      btnProximo.style.opacity = (ATUAL === TOTAL - 1) ? '0.35' : '1';
+    }
+
+    function irParaSlide(idx, animar) {
+      if (TOTAL === 0) return;
+      if (idx < 0) idx = 0;
+      if (idx > TOTAL - 1) idx = TOTAL - 1;
+      ATUAL = idx;
+      if (animar === false) {
+        trilho.style.transition = 'none';
+      } else {
+        trilho.style.transition = '';
+      }
+      atualizarTrilho(0);
+      atualizarDots();
+      atualizarBotoes();
+      if (animar === false) {
+        void trilho.offsetWidth;
+        trilho.style.transition = '';
+      }
+      var slideAtivo = slides[ATUAL];
+      if (slideAtivo && typeof slideAtivo.setAttribute === 'function') {
+        slides.forEach(function (s) { s.setAttribute('aria-hidden', 'true'); });
+        slideAtivo.setAttribute('aria-hidden', 'false');
+      }
+    }
+
+    function proximo() { irParaSlide(ATUAL + 1, true); }
+    function anterior() { irParaSlide(ATUAL - 1, true); }
+
+    btnAnterior.addEventListener('click', anterior);
+    btnProximo.addEventListener('click', proximo);
+
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        var idx = parseInt(dot.getAttribute('data-dot'), 10) - 1;
+        if (!isNaN(idx)) irParaSlide(idx, true);
+      });
+    });
+
+    function onTouchStart(e) {
+      var t = e.touches && e.touches[0];
+      if (!t) return;
+      startX = t.clientX;
+      startY = t.clientY;
+      deltaX = 0;
+      deltaY = 0;
+      touchStartHora = Date.now();
+      isTouching = true;
+      isHorizontal = null;
+      cardScrollEl = getScrollContainer(e.target);
+      trilho.style.transition = 'none';
+    }
+
+    function onTouchMove(e) {
+      if (!isTouching) return;
+      var t = e.touches && e.touches[0];
+      if (!t) return;
+      deltaX = t.clientX - startX;
+      deltaY = t.clientY - startY;
+
+      if (isHorizontal === null) {
+        if (Math.abs(deltaX) > 6 || Math.abs(deltaY) > 6) {
+          isHorizontal = Math.abs(deltaX) > Math.abs(deltaY);
+        }
+      }
+      if (!isHorizontal) return;
+
+      var bloquear = false;
+      if (cardScrollEl) {
+        if (deltaY < 0) {
+          var top = cardScrollEl.scrollTop;
+          if (top < cardScrollEl.scrollHeight - cardScrollEl.clientHeight - 1) bloquear = true;
+        } else if (deltaY > 0) {
+          if (cardScrollEl.scrollTop > 1) bloquear = true;
+        }
+      }
+      if (bloquear) { isHorizontal = false; return; }
+
+      if (e.cancelable) e.preventDefault();
+      atualizarTrilho(deltaX);
+    }
+
+    function onTouchEnd() {
+      if (!isTouching) return;
+      isTouching = false;
+      trilho.style.transition = '';
+      var duracao = Date.now() - touchStartHora;
+      var limiarDist = viewport.offsetWidth * 0.2;
+      var limiarRapido = 52;
+      var distancia = Math.abs(deltaX);
+      if (isHorizontal && (distancia >= limiarDist || (distancia >= limiarRapido && duracao <= 280))) {
+        if (deltaX < 0) proximo(); else anterior();
+      } else {
+        irParaSlide(ATUAL, true);
+      }
+      cardScrollEl = null;
+    }
+
+    viewport.addEventListener('touchstart', onTouchStart, { passive: true });
+    viewport.addEventListener('touchmove', onTouchMove, { passive: false });
+    viewport.addEventListener('touchend', onTouchEnd, { passive: true });
+    viewport.addEventListener('touchcancel', onTouchEnd, { passive: true });
+
+    var isPointerDown = false;
+    viewport.addEventListener('pointerdown', function (e) {
+      if (e.button !== undefined && e.button !== 0) return;
+      if (e.pointerType === 'touch') return;
+      startX = e.clientX;
+      deltaX = 0;
+      touchStartHora = Date.now();
+      isPointerDown = true;
+      trilho.style.transition = 'none';
+      try { viewport.setPointerCapture(e.pointerId); } catch (_) {}
+    });
+    viewport.addEventListener('pointermove', function (e) {
+      if (!isPointerDown) return;
+      deltaX = e.clientX - startX;
+      atualizarTrilho(deltaX);
+    });
+    function onPointerUp() {
+      if (!isPointerDown) return;
+      isPointerDown = false;
+      trilho.style.transition = '';
+      var dur = Date.now() - touchStartHora;
+      var ld = viewport.offsetWidth * 0.2;
+      var d = Math.abs(deltaX);
+      if (d >= ld || (d >= 60 && dur <= 320)) {
+        if (deltaX < 0) proximo(); else anterior();
+      } else {
+        irParaSlide(ATUAL, true);
+      }
+    }
+    viewport.addEventListener('pointerup', onPointerUp);
+    viewport.addEventListener('pointercancel', onPointerUp);
+    viewport.addEventListener('pointerleave', onPointerUp);
+
+    var wheelAccum = 0;
+    var wheelTimer = null;
+    viewport.addEventListener('wheel', function (e) {
+      var h = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : 0;
+      if (h === 0) return;
+      if (e.cancelable) e.preventDefault();
+      wheelAccum += h;
+      if (wheelTimer) clearTimeout(wheelTimer);
+      wheelTimer = setTimeout(function () {
+        if (Math.abs(wheelAccum) > 40) {
+          if (wheelAccum > 0) proximo(); else anterior();
+        }
+        wheelAccum = 0;
+      }, 120);
+    }, { passive: false });
+
+    function onResize() { atualizarTrilho(0); }
+    window.addEventListener('resize', onResize);
+
+    document.addEventListener('keydown', function (e) {
+      if (ABA_ATIVA !== 'oficio') return;
+      if (carrossel.offsetParent === null) return;
+      if (e.key === 'ArrowLeft') { anterior(); }
+      else if (e.key === 'ArrowRight') { proximo(); }
+    });
+
+    irParaSlide(0, false);
+  } catch (e) {}
+})();
+
+(function () {
+  'use strict';
+  try {
+    var dados = document.getElementById('saberesCategoriaDados');
+    if (!dados) return;
+    var categoria = JSON.parse(dados.textContent);
+    if (!categoria || categoria.slug === 'parteira') return;
+
+    var modal = document.getElementById('saberesModal');
+    var overlay = modal.querySelector('[data-saberes-modal-fechar]');
+    var fecharBtn = modal.querySelector('.saberes-modal-fechar');
+    var tituloEl = document.getElementById('saberesModalTitulo');
+    var corpoEl = document.getElementById('saberesModalCorpo');
+    var slider = document.getElementById('saberesModalSlider');
+    var videoContainer = null;
+    var sliderTrack = document.getElementById('saberesSliderTrack');
+    var sliderViewport = document.getElementById('saberesSliderViewport');
+    var sliderDots = document.getElementById('saberesSliderDots');
+    var btnPrev = modal.querySelector('[data-slider-prev]');
+    var btnNext = modal.querySelector('[data-slider-next]');
+
+    var ATUAL = 0;
+    var TOTAL = 0;
+    var ultimoFoco = null;
+
+    function escaparHtml(str) {
+      if (str == null) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function quebrarParagrafos(texto) {
+      if (!texto) return '';
+      var partes = String(texto).split(/\r?\n{2,}|\r?\n/);
+      var html = '';
+      for (var i = 0; i < partes.length; i++) {
+        var p = partes[i].trim();
+        if (p) html += '<p>' + escaparHtml(p) + '</p>';
+      }
+      return html || '<p>' + escaparHtml(String(texto)) + '</p>';
+    }
+
+    function listarImagens(item) {
+      var lista = [];
+      if (item.imagens && item.imagens.length) {
+        for (var i = 0; i < item.imagens.length; i++) {
+          if (item.imagens[i]) lista.push(item.imagens[i]);
+        }
+      }
+      if (!lista.length && item.imagem) lista.push(item.imagem);
+      return lista;
+    }
+
+    function abrirSlider(imagens) {
+      slider.style.display = '';
+      slider.setAttribute('aria-hidden', 'false');
+      if (videoContainer) videoContainer.style.display = 'none';
+      sliderTrack.innerHTML = '';
+      sliderDots.innerHTML = '';
+      TOTAL = imagens.length;
+      ATUAL = 0;
+
+      for (var i = 0; i < TOTAL; i++) {
+        var slide = document.createElement('div');
+        slide.className = 'saberes-slider-slide';
+        slide.setAttribute('role', 'tabpanel');
+        slide.setAttribute('aria-hidden', (i === 0) ? 'false' : 'true');
+        var wrap = document.createElement('div');
+        wrap.className = 'saberes-slider-imagem-wrap';
+        var img = document.createElement('img');
+        img.src = imagens[i];
+        img.alt = tituloEl.textContent ? tituloEl.textContent + ' - foto ' + (i + 1) : 'Foto ' + (i + 1);
+        img.loading = 'eager';
+        img.onerror = function () {
+          this.style.opacity = '0.5';
+        };
+        wrap.appendChild(img);
+        slide.appendChild(wrap);
+        sliderTrack.appendChild(slide);
+
+        var dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'saberes-slider-dot' + (i === 0 ? ' saberes-slider-dot--ativo' : '');
+        dot.setAttribute('role', 'tab');
+        dot.setAttribute('aria-label', 'Foto ' + (i + 1));
+        dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+        dot.setAttribute('data-dot-idx', i);
+        (function (idx) {
+          dot.addEventListener('click', function () { irPara(idx, true); });
+        })(i);
+        sliderDots.appendChild(dot);
+      }
+
+      btnPrev.style.display = (TOTAL > 1) ? '' : 'none';
+      btnNext.style.display = (TOTAL > 1) ? '' : 'none';
+      sliderDots.style.display = (TOTAL > 1) ? '' : 'none';
+
+      atualizarSlider(false);
+    }
+
+    function abrirVideo(videoSrc) {
+      slider.style.display = 'none';
+      slider.setAttribute('aria-hidden', 'true');
+      if (!videoContainer) {
+        videoContainer = document.createElement('div');
+        videoContainer.className = 'saberes-modal-video';
+      }
+      videoContainer.style.display = '';
+      videoContainer.innerHTML = '<video src="' + escaparHtml(videoSrc) + '" controls playsinline preload="metadata" aria-label="' + escaparHtml(tituloEl.textContent || 'Video') + '"></video>';
+      if (!videoContainer.parentElement) slider.parentElement.insertBefore(videoContainer, slider);
+    }
+
+    function atualizarSlider(animar) {
+      if (TOTAL === 0) return;
+      if (animar === false) sliderTrack.style.transition = 'none';
+      else sliderTrack.style.transition = 'transform 0.3s cubic-bezier(0.22, 1, 0.36, 1)';
+      sliderTrack.style.transform = 'translate3d(' + (-ATUAL * 100) + '%, 0, 0)';
+      var slides = sliderTrack.querySelectorAll('.saberes-slider-slide');
+      var dots = sliderDots.querySelectorAll('.saberes-slider-dot');
+      for (var i = 0; i < slides.length; i++) {
+        slides[i].setAttribute('aria-hidden', i === ATUAL ? 'false' : 'true');
+      }
+      for (var j = 0; j < dots.length; j++) {
+        var ehAtivo = j === ATUAL;
+        dots[j].classList.toggle('saberes-slider-dot--ativo', ehAtivo);
+        dots[j].setAttribute('aria-selected', ehAtivo ? 'true' : 'false');
+      }
+      btnPrev.disabled = (TOTAL <= 1) || (ATUAL === 0);
+      btnPrev.style.opacity = btnPrev.disabled ? '0.35' : '1';
+      btnNext.disabled = (TOTAL <= 1) || (ATUAL === TOTAL - 1);
+      btnNext.style.opacity = btnNext.disabled ? '0.35' : '1';
+      if (animar === false) { void sliderTrack.offsetWidth; sliderTrack.style.transition = ''; }
+    }
+
+    function irPara(idx, animar) {
+      if (TOTAL === 0) return;
+      if (idx < 0) idx = 0;
+      if (idx > TOTAL - 1) idx = TOTAL - 1;
+      ATUAL = idx;
+      atualizarSlider(animar !== false);
+    }
+
+    function abrirModal(item) {
+      ultimoFoco = document.activeElement;
+      tituloEl.textContent = item.nome || 'Item';
+      corpoEl.innerHTML = quebrarParagrafos(item.texto || '');
+
+      if (item.tipo === 'video' && item.video) {
+        abrirVideo(item.video);
+      } else {
+        abrirSlider(listarImagens(item));
+      }
+
+      modal.classList.add('saberes-modal-aberto');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function () { try { fecharBtn.focus(); } catch (e) {} }, 30);
+    }
+
+    function fecharModal() {
+      if (videoContainer) {
+        var v = videoContainer.querySelector('video');
+        if (v) { try { v.pause(); } catch (e) {} }
+      }
+      modal.classList.remove('saberes-modal-aberto');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (ultimoFoco && typeof ultimoFoco.focus === 'function') try { ultimoFoco.focus(); } catch (e) {}
+    }
+
+    btnPrev.addEventListener('click', function () { irPara(ATUAL - 1, true); });
+    btnNext.addEventListener('click', function () { irPara(ATUAL + 1, true); });
+    fecharBtn.addEventListener('click', fecharModal);
+    overlay.addEventListener('click', fecharModal);
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) fecharModal();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (!modal.classList.contains('saberes-modal-aberto')) return;
+      if (e.key === 'Escape') { e.preventDefault(); fecharModal(); }
+      else if (e.key === 'ArrowLeft' && slider.getAttribute('aria-hidden') === 'false') { irPara(ATUAL - 1, true); }
+      else if (e.key === 'ArrowRight' && slider.getAttribute('aria-hidden') === 'false') { irPara(ATUAL + 1, true); }
+    });
+
+    var startX = 0, deltaX = 0, isTouchingSlider = false;
+    sliderViewport.addEventListener('touchstart', function (e) {
+      if (TOTAL <= 1) return;
+      var t = e.touches && e.touches[0];
+      if (!t) return;
+      startX = t.clientX; deltaX = 0; isTouchingSlider = true;
+      sliderTrack.style.transition = 'none';
+    }, { passive: true });
+    sliderViewport.addEventListener('touchmove', function (e) {
+      if (!isTouchingSlider) return;
+      var t = e.touches && e.touches[0];
+      if (!t) return;
+      deltaX = t.clientX - startX;
+      var w = sliderViewport.offsetWidth || 1;
+      var porcent = (deltaX / w) * 100;
+      sliderTrack.style.transform = 'translate3d(' + (-ATUAL * 100 + porcent) + '%, 0, 0)';
+    }, { passive: true });
+    sliderViewport.addEventListener('touchend', function () {
+      if (!isTouchingSlider) return;
+      isTouchingSlider = false;
+      var w = sliderViewport.offsetWidth || 1;
+      if (Math.abs(deltaX) > w * 0.18) {
+        irPara(ATUAL + (deltaX < 0 ? 1 : -1), true);
+      } else {
+        atualizarSlider(true);
+      }
+      deltaX = 0;
+    });
+
+    var cards = document.querySelectorAll('[data-saberes-item]');
+    for (var k = 0; k < cards.length; k++) {
+      (function (btn) {
+        btn.addEventListener('click', function () {
+          var id = btn.getAttribute('data-item-id');
+          var itens = categoria.itens || [];
+          var item = null;
+          for (var m = 0; m < itens.length; m++) {
+            if (String(itens[m].id) === String(id)) { item = itens[m]; break; }
+          }
+          if (!item) {
+            item = {
+              tipo: btn.getAttribute('data-tipo'),
+              nome: btn.getAttribute('data-item-nome'),
+              imagem: btn.getAttribute('data-item-imagem'),
+              video: btn.getAttribute('data-item-video'),
+              texto: btn.getAttribute('data-item-texto')
+            };
+            var imgStr = btn.getAttribute('data-item-imagens');
+            if (imgStr) item.imagens = imgStr.split(',').filter(function (s) { return s.trim(); });
+          }
+          abrirModal(item);
+        });
+      })(cards[k]);
+    }
+  } catch (e) {}
+})();
+</script>

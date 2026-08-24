@@ -1,0 +1,57 @@
+<section class="tela-jogos tela-caca-palavras" data-total-niveis="{{totalNiveis}}" data-nivel-inicial="{{nivelInicial.numero}}"
+         data-nivel-palavras='{{#each nivelInicial.palavras}}{{#unless @first}},{{/unless}}{{this.palavra}}{{/each}}'>
+  <header class="moradores-cabecalho">
+    <a href="/jogos" class="btn-voltar" id="cPvoltar" aria-label="Voltar para jogos">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+    </a>
+    <div class="cp-cabecalho-info">
+      <h1 class="moradores-titulo">Caça-Palavras</h1>
+      <div class="cp-nivel-info">
+        <span class="cp-nivel-label">Nível <strong id="cpNivelAtual">{{nivelInicial.numero}}</strong> / {{totalNiveis}}</span>
+        <span class="cp-timer-label" id="cpTimerLabel">⏱ 05:00</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="cp-status">
+    <div class="cp-progresso">
+      <div class="cp-progresso-bar">
+        <div class="cp-progresso-fill" id="cpProgressoFill" style="width:0%"></div>
+      </div>
+      <span class="cp-progresso-texto">
+        <span id="cpEncontradas">0</span> / <span id="cpTotalPalavras">{{nivelInicial.palavras.length}}</span> palavras
+      </span>
+    </div>
+    <div class="cp-marcador" id="cpMarcador" role="status" aria-live="polite">Encontre as palavras no grid abaixo.</div>
+  </div>
+
+  <main class="cp-corpo">
+    <div class="cp-grid-wrap">
+      <div class="cp-grid" id="cpGrid" role="grid" aria-label="Grid do caça-palavras"></div>
+      <div class="cp-svg-overlay" id="cpSvgOverlay" aria-hidden="true">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" id="cpSvgRiscos"></svg>
+      </div>
+    </div>
+
+    <section class="cp-palavras-lista" aria-label="Lista de palavras do nível">
+      <h2 class="cp-palavras-titulo">Palavras</h2>
+      <ul class="cp-palavras-ul" id="cpPalavrasUl">
+        {{#each nivelInicial.palavras}}
+        <li class="cp-palavra-item" data-palavra="{{this.palavra}}" data-id="{{this.id}}">
+          <span class="cp-palavra-check" aria-hidden="true"></span>
+          <span class="cp-palavra-texto">{{this.palavra}}</span>
+        </li>
+        {{/each}}
+      </ul>
+      <div class="cp-acoes">
+        <button type="button" class="cp-botao cp-botao--secundario" id="cpBotaoReiniciar">Reiniciar nível</button>
+        <button type="button" class="cp-botao cp-botao--primario" id="cpBotaoProximo" disabled>Próximo nível</button>
+      </div>
+    </section>
+  </main>
+</section>
+
+<script src="/js/caca-palavras.js" defer></script>

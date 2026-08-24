@@ -1,0 +1,94 @@
+<section class="tela-saberes tela-saberes-categorias tela-saberes-lista">
+  <header class="moradores-cabecalho">
+    <a href="/dashboard" class="btn-voltar" aria-label="Voltar ao dashboard">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+    </a>
+    <h1 class="moradores-titulo">Saberes Tradicionais</h1>
+  </header>
+
+  <main class="saberes-lista">
+    {{#each categorias}}
+    <a href="/saberes/{{this.slug}}" class="saberes-categoria saberes-categoria-{{this.cor}}" data-categoria-slug="{{this.slug}}">
+      <div class="saberes-categoria-esquerda">
+        <span class="saberes-categoria-icone saberes-icone-{{this.icone}}" aria-hidden="true">
+          {{#ifCond this.icone '==' 'plantas'}}
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 56 V34" stroke="#5A7A2E" stroke-width="3" stroke-linecap="round"/>
+            <path d="M32 42 C20 42, 14 34, 14 26 C14 18, 22 14, 32 20 C42 14, 50 18, 50 26 C50 34, 44 42, 32 42 Z" fill="#7FA23E" opacity="0.9" stroke="#5A7A2E" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M22 38 C18 30, 16 24, 20 20" stroke="#6B8838" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+            <path d="M42 38 C46 30, 48 24, 44 20" stroke="#6B8838" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+          </svg>
+          {{/ifCond}}
+          {{#ifCond this.icone '==' 'comidas'}}
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="38" r="18" fill="#FFF1CC" stroke="#9A5A20" stroke-width="2.8"/>
+            <ellipse cx="32" cy="38" rx="14" ry="3.5" fill="#C9833B" opacity="0.35"/>
+            <path d="M18 18 L28 28" stroke="#7A4F21" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M46 18 L36 28" stroke="#7A4F21" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M14 14 L22 22 M18 14 L14 18" stroke="#7A4F21" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M50 14 L42 22 M46 14 L50 18" stroke="#7A4F21" stroke-width="2.8" stroke-linecap="round"/>
+          </svg>
+          {{/ifCond}}
+          {{#ifCond this.icone '==' 'agricultura'}}
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 54 L54 54" stroke="#9A5A20" stroke-width="3.2" stroke-linecap="round"/>
+            <path d="M20 54 V30" stroke="#6B8838" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M14 32 Q14 20, 20 18 Q26 20, 26 32" stroke="#7FA23E" stroke-width="2.5" fill="#89B03F" opacity="0.9" stroke-linejoin="round"/>
+            <path d="M32 54 V24" stroke="#6B8838" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M25 26 Q25 12, 32 10 Q39 12, 39 26" stroke="#7FA23E" stroke-width="2.5" fill="#89B03F" opacity="0.95" stroke-linejoin="round"/>
+            <path d="M44 54 V30" stroke="#6B8838" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M38 32 Q38 20, 44 18 Q50 20, 50 32" stroke="#7FA23E" stroke-width="2.5" fill="#89B03F" opacity="0.9" stroke-linejoin="round"/>
+          </svg>
+          {{/ifCond}}
+          {{#ifCond this.icone '==' 'parteira'}}
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 52 C14 40, 10 26, 18 18 C24 12, 30 16, 32 22 C34 16, 40 12, 46 18 C54 26, 50 40, 32 52 Z" fill="#E8843C" opacity="0.92" stroke="#9A5A20" stroke-width="2.6" stroke-linejoin="round"/>
+            <circle cx="24" cy="28" r="2" fill="#FFF8E6"/>
+            <path d="M20 40 L44 40" stroke="#FFF8E6" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+            <path d="M26 34 L30 38 M30 34 L26 38" stroke="#FFF8E6" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
+            <path d="M38 32 C40 30, 44 30, 44 34" stroke="#9A5A20" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.7"/>
+          </svg>
+          {{/ifCond}}
+          {{#ifCond this.icone '==' 'video'}}
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="32" cy="40" rx="18" ry="9" fill="#7A4A20" stroke="#5C3C18" stroke-width="2.8"/>
+            <path d="M14 40 L14 30 Q14 20, 22 18" stroke="#5C3C18" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+            <path d="M50 40 L50 30 Q50 20, 42 18" stroke="#5C3C18" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+            <ellipse cx="32" cy="40" rx="14" ry="2.5" fill="#FFF1CC" opacity="0.3"/>
+            <path d="M28 32 L36 32" stroke="#FFF1CC" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M26 40 L26 50 M32 40 L32 52 M38 40 L38 50" stroke="#B66524" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M32 52 C30 50, 28 48, 28 46 M32 52 C34 50, 36 48, 36 46" stroke="#B66524" stroke-width="2" stroke-linecap="round" fill="none"/>
+          </svg>
+          {{/ifCond}}
+        </span>
+        <span class="saberes-categoria-nome">{{this.nome}}</span>
+      </div>
+      <div class="saberes-categoria-direita">
+        <span class="saberes-categoria-thumb saberes-thumb-{{this.slug}}" aria-hidden="true">
+          {{#ifCond this.slug '==' 'parteira'}}
+          <img src="/img/parteira/parteira.png" alt="" loading="lazy" onerror="this.style.display='none'">
+          {{/ifCond}}
+          {{#ifCond this.slug '==' 'plantas-medicinais'}}
+          <img src="/img/plantasMedicianais/manjericão.jpeg" alt="" onerror="this.style.display='none'">
+          {{/ifCond}}
+          {{#ifCond this.slug '==' 'comidas-tipicas'}}
+          <img src="/img/comidasTipicas/Galinha caipira.jpeg" alt="" onerror="this.style.display='none'">
+          {{/ifCond}}
+          {{#ifCond this.slug '==' 'agricultura'}}
+          <img src="/img/agricultura/Milho (1).jpeg" alt="" onerror="this.style.display='none'">
+          {{/ifCond}}
+          {{#ifCond this.slug '==' 'manifestacao-cultural'}}
+          <video src="/img/manifestacaoCultural/Farra de caixa.mp4" muted playsinline autoplay loop preload="metadata" aria-hidden="true" onerror="this.style.display='none'"></video>
+          {{/ifCond}}
+        </span>
+        <svg viewBox="0 0 24 24" class="saberes-seta" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </div>
+    </a>
+    {{/each}}
+  </main>
+</section>

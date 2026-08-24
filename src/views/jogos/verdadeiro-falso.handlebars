@@ -1,0 +1,64 @@
+<section class="tela-jogos tela-verdadeiro-falso"
+  data-total-niveis="{{totalNiveis}}"
+  data-nivel-inicial="{{nivelInicial.numero}}"
+  data-nivel-perguntas="{{#each nivelInicial.questoes}}{{this.id}}:{{this.pergunta}}:{{#if this.gabarito}}1{{else}}0{{/if}}|{{/each}}"
+>
+  <header class="moradores-cabecalho cp-cabecalho">
+    <a href="/jogos" class="btn-voltar" id="vfVoltar" aria-label="Voltar a lista de jogos">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+    </a>
+    <h1 class="moradores-titulo">{{jogo.nome}}</h1>
+    <div class="cp-cabecalho-info">
+      <span class="cp-nivel-label vf-nivel-label" id="vfNivelInfo">Nível {{nivelInicial.numero}} / {{totalNiveis}}</span>
+      <span class="cp-timer-label vf-timer-label" id="vfTimer">⏱ 05:00</span>
+    </div>
+  </header>
+
+  <div class="cp-status vf-status" role="status" aria-live="polite">
+    <div class="cp-progresso vf-progresso">
+      <div class="cp-progresso-bar vf-progresso-bar" id="vfProgressoBar"></div>
+    </div>
+    <div class="cp-marcador vf-marcador" id="vfMarcador">
+      <span class="cp-marcador-texto" id="vfProgressoTexto">Nível {{nivelInicial.numero}} / {{totalNiveis}}</span>
+    </div>
+  </div>
+
+  <main class="vf-questoes-wrap">
+    <ul class="vf-questoes" id="vfQuestoes">
+      {{#each nivelInicial.questoes}}
+      <li class="vf-questao vf-questao--unica" data-questao-id="{{this.id}}" data-gabarito="{{#if this.gabarito}}1{{else}}0{{/if}}" role="group" aria-labelledby="vf-pergunta-{{this.id}}">
+        <div class="vf-pergunta-cabecalho">
+          <span class="vf-pergunta-numero">Pergunta {{../nivelInicial.numero}}</span>
+        </div>
+        <p class="vf-pergunta vf-pergunta--grande" id="vf-pergunta-{{this.id}}">{{this.pergunta}}</p>
+        <div class="vf-opcoes vf-opcoes--grandes">
+          <button type="button" class="vf-opcao vf-opcao--verdadeiro" data-resposta="1" aria-label="Verdadeiro">
+            <svg viewBox="0 0 24 24" class="vf-opcao-icone" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Verdadeiro</span>
+          </button>
+          <button type="button" class="vf-opcao vf-opcao--falso" data-resposta="0" aria-label="Falso">
+            <svg viewBox="0 0 24 24" class="vf-opcao-icone" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+            <span>Falso</span>
+          </button>
+        </div>
+        <div class="vf-questao-feedback" role="status" aria-live="polite"></div>
+      </li>
+      {{/each}}
+    </ul>
+  </main>
+
+  <div class="cp-acoes vf-acoes">
+    <button type="button" class="cp-botao cp-botao--secundario" id="vfBotaoReiniciar">Reiniciar nível</button>
+    <button type="button" class="cp-botao cp-botao--primario" id="vfBotaoProximo" disabled>Próxima pergunta</button>
+  </div>
+</section>
+
+<script defer src="/js/verdadeiro-falso.js"></script>

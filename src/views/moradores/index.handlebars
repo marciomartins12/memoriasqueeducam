@@ -1,0 +1,230 @@
+<section class="tela-moradores">
+  <header class="moradores-cabecalho">
+    <button class="btn-voltar" type="button" aria-label="Voltar" onclick="history.back()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+        stroke-linejoin="round" aria-hidden="true">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+    </button>
+    <h1 class="moradores-titulo">Mapa da Memória</h1>
+  </header>
+
+  <div class="moradores-mapa" aria-label="Mapa das comunidades Santa Rita e São Felipe">
+    <img class="moradores-mapa-bg" src="/img/mapa.png" alt="Mapa das comunidades quilombolas Santa Rita e São Felipe" aria-hidden="true">
+
+    <!-- PINS dos moradores (4): ESTRUTURA NOVA como na foto REF
+         Ordem vertical de CIMA para BAIXO:
+         (A) CAIXA TEXTO branca arredondada (acima de tudo, sombra)
+         (B) TRIÂNGULO INVERTIDO ▼ (sai da caixa aponta para FOTO)
+         (C) FOTO CIRCULAR (dupla borda, PONTO EXATO no mapa)
+    -->
+    <!-- Posições alinhadas com a imagem de referência:
+         SÃO FELIPE: Laurenicio centro-sup, Dona Chica mais direita (distante ~50px)
+         SANTA RITA: Ronaldo mais esquerda/baixo, Marialva mais centro e um pouco acima
+    -->
+    <button class="morador-pin" type="button" data-morador-id="1" style="top:16%; left:41%;" aria-label="Abrir história de Laurenice de Jesus Sá, São Felipe">
+      <span class="morador-pin-etiqueta">
+        <span class="morador-pin-nome">Laurenicio</span>
+        <span class="morador-pin-local">São Felipe</span>
+      </span>
+      <span class="morador-pin-foto">
+        <img src="/img/memoriasDosMoradores/morador1.jpeg" alt="Foto de Laurenice de Jesus Sá" loading="eager">
+      </span>
+    </button>
+
+    <button class="morador-pin" type="button" data-morador-id="3" style="top:18%; left:72%;" aria-label="Abrir história de Dona Francisca, São Felipe">
+      <span class="morador-pin-etiqueta">
+        <span class="morador-pin-nome">Dona Chica</span>
+        <span class="morador-pin-local">São Felipe</span>
+      </span>
+      <span class="morador-pin-foto">
+        <img src="/img/memoriasDosMoradores/morador3.jpeg" alt="Foto de Dona Francisca" loading="eager">
+      </span>
+    </button>
+
+    <button class="morador-pin" type="button" data-morador-id="2" style="top:66%; left:60%;" aria-label="Abrir história de Marinalva de Jesus Nunes, Santa Rita">
+      <span class="morador-pin-etiqueta">
+        <span class="morador-pin-nome">Marialva</span>
+        <span class="morador-pin-local">Santa Rita</span>
+      </span>
+      <span class="morador-pin-foto">
+        <img src="/img/memoriasDosMoradores/morador2.jpeg" alt="Foto de Marinalva de Jesus Nunes" loading="eager">
+      </span>
+    </button>
+
+    <button class="morador-pin" type="button" data-morador-id="4" style="top:76%; left:25%;" aria-label="Abrir história de Ronaldo César Pereira, Santa Rita">
+      <span class="morador-pin-etiqueta">
+        <span class="morador-pin-nome">Ronaldo</span>
+        <span class="morador-pin-local">Santa Rita</span>
+      </span>
+      <span class="morador-pin-foto">
+        <img src="/img/memoriasDosMoradores/morador4.jpeg" alt="Foto de Ronaldo César Pereira" loading="eager">
+      </span>
+    </button>
+  </div>
+</section>
+
+<div id="moradorModal" class="morador-modal saberes-modal" role="dialog" aria-modal="true" aria-labelledby="moradorModalTitulo" aria-hidden="true">
+  <div class="saberes-modal-overlay" data-morador-modal-fechar></div>
+  <div class="morador-modal-painel saberes-modal-painel" role="document">
+    <button type="button" class="saberes-modal-fechar morador-modal-fechar" aria-label="Fechar janela" data-morador-modal-fechar>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <header class="morador-modal-perfil">
+      <div class="morador-modal-foto">
+        <img id="moradorModalFoto" src="" alt="">
+      </div>
+      <div class="morador-modal-info">
+        <ul class="comunidade-info" aria-label="Dados do morador">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span id="moradorModalTitulo" class="morador-modal-nome"></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span id="moradorModalIdade" class="morador-modal-idade"></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span id="moradorModalLocalidade" class="morador-modal-localidade"></span>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <div class="morador-modal-corpo saberes-modal-corpo" id="moradorModalCorpo" aria-label="Relato do morador"></div>
+  </div>
+</div>
+
+<script id="moradoresDados" type="application/json">[
+  {
+    "id": 1,
+    "nome": "Laurenice de Jesus Sá",
+    "apelido": "Dona Laura",
+    "idade": "53 anos",
+    "localidade": "São Felipe",
+    "foto": "/img/memoriasDosMoradores/morador1.jpeg",
+    "relato": "Laurenice de Jesus Sá, conhecida como Dona Laura, tem 53 anos e nasceu em Curralzinho, município de Pinheiro, no Maranhão. Ainda criança, mudou-se para a comunidade de São Felipe, onde vive há aproximadamente 38 anos. Sua trajetória de vida está profundamente ligada à história da comunidade, às tradições culturais e religiosas e aos saberes que aprendeu com seus familiares e com os moradores mais antigos.\n\nQuando chegou a São Felipe, Dona Laura encontrou uma comunidade bastante diferente da atual. Segundo suas lembranças, o local era cercado por mato e havia poucas condições de acesso. Não existiam estradas adequadas e, para chegar a Presidente Sarney ou a outros lugares, os moradores precisavam percorrer caminhos estreitos, muitas vezes a pé. Para ela, São Felipe era uma comunidade muito isolada.\n\nEntre as lembranças mais marcantes de sua infância estão o início dos estudos e sua participação nas manifestações religiosas e culturais. Dona Laura conta que não conseguiu concluir os estudos devido a problemas de saúde que enfrentava desde criança, mas guarda com carinho a lembrança de participar dos desfiles de 7 de setembro e dos festejos religiosos, nos quais costumava carregar a bandeira e ajudar nas atividades relacionadas aos santos.\n\nA história de Dona Laura também está relacionada às tradições religiosas e culturais de matriz africana. Seu terreiro possui cerca de 32 anos e representa uma parte fundamental de sua vida. Para ela, o espaço é também um lugar de união, diálogo e ensinamento. Durante as celebrações, procura ensinar que ninguém deve se considerar superior aos outros.\n\nDona Laura também possui conhecimentos relacionados às plantas medicinais. Em sua entrevista, cita diversas plantas que conhece e utiliza em práticas tradicionais, como arruda, erva-cidreira, boldo, aroeira, quina, folha de lima e outras. Ela procura transmitir esses conhecimentos aos mais jovens.\n\nDona Laura considera positiva a criação de um sistema web para registrar a história da comunidade e suas memórias. Para ela, essa criação pode fazer com que sua história e a história de São Felipe permaneçam registradas, permitindo que outras pessoas conheçam essas experiências mesmo no futuro."
+  },
+  {
+    "id": 2,
+    "nome": "Marinalva de Jesus Nunes",
+    "apelido": "",
+    "idade": "59 anos",
+    "localidade": "Santa Rita",
+    "foto": "/img/memoriasDosMoradores/morador2.jpeg",
+    "relato": "Marinalva de Jesus Nunes, de 59 anos. Sua história de vida está profundamente ligada ao lugar onde nasceu e cresceu, às experiências de trabalho na roça e na quebra do coco, às tradições culturais e religiosas e aos conhecimentos tradicionais que aprendeu com sua mãe e com os moradores mais velhos da comunidade.\n\nQuando era criança, Santa Rita era formada por poucas casas e muitos espaços de mato. Ao comparar o passado com o presente, ela percebe que o povoado cresceu bastante, tanto em número de casas quanto de famílias. Entre suas lembranças mais marcantes está o período em que a comunidade ainda não possuía energia elétrica e não havia estradas como existem atualmente.\n\nNa infância e juventude, a vida das famílias estava diretamente relacionada ao trabalho no campo e ao aproveitamento dos recursos disponíveis na região. As mulheres costumavam ir para o mato quebrar coco, enquanto os homens trabalhavam na roça. A quebra do coco é um dos saberes tradicionais que Marinalva aprendeu com os mais velhos. Ela observa que atualmente essa prática vem diminuindo, pois muitos jovens já não demonstram interesse em aprender.\n\nAs tradições culturais também ocupam um espaço importante em suas memórias. Marinalva recorda a realização de festas tradicionais e, principalmente, os festejos da igreja. Ela também demonstra carinho pela brincadeira de bumba-boi e pelo tambor de crioula.\n\nMarinalva preserva conhecimentos relacionados às plantas medicinais. Ela conhece diversas plantas utilizadas tradicionalmente para preparar chás e outros remédios caseiros, entre elas abranda, hortelã-pimenta, boldo, folha de algodão, anador, quina, gengibre, mastruz, Santa Quitéria e casca de siriguela. Esses conhecimentos foram aprendidos principalmente com sua mãe.\n\nMarinalva considera importante registrar essas memórias por meio de um sistema web. Acredita que informações sobre a história da comunidade, as plantas medicinais e outros saberes podem ser importantes para os estudantes. Sua principal mensagem para as novas gerações é que aprendam, estudem, conheçam suas raízes e contribuam para que a comunidade permaneça unida e suas tradições continuem vivas."
+  },
+  {
+    "id": 3,
+    "nome": "Dona Francisca",
+    "apelido": "Chica",
+    "idade": "63 anos",
+    "localidade": "São Felipe",
+    "foto": "/img/memoriasDosMoradores/morador3.jpeg",
+    "relato": "Me chamo Francisca, mas todo mundo me chama de Chica. Filha de Dona Faustina, neta de Escolástica. A linhagem da família passa por mim e pelos meus bisnetos, que já estão por aqui correndo solto no terreiro. A casa onde moro é a mesma de quando eu era menina, só reformamos a telha, pusemos piso novo. A madeira velha ainda é a mesma.\n\nCozinho todos os dias para a família: baião de dois, carne de sol com jerimum, pamonha de festa. Aprendi a fazer tudo com a minha mãe, que aprendeu com a avó de olho fechado. Quando tem festa no povoado, todo mundo vem me procurar para fazer o doce de leite e a manteiga de garrafa.\n\nEu costumo sentar na porta ao entardecer e contar as histórias pros pequenos: sobre o velho Jacinto, sobre a aparição do santo de madeira, sobre a fazenda do Felipe Pereira. A memória é o nosso maior tesouro, porque se a gente esquecer, ninguém mais vai lembrar por nós.\n\nSão Felipe é tradição, é bênção, é orgulho. Cada porta de madeira, cada pé de manga no quintal, cada reza de noite tem história de quem passou por aqui antes de nós. Preservar essa memória é o jeito que a gente encontra de dizer que esses avós, esses pais, esses vizinhos não morreram de verdade — continuam vivos nas coisas que a gente faz, no gosto da comida, no som da voz contando história de novo e de novo pros pequenos dormirem de sonho bom."
+  },
+  {
+    "id": 4,
+    "nome": "Ronaldo César Pereira",
+    "apelido": "",
+    "idade": "37 anos",
+    "localidade": "Santa Rita",
+    "foto": "/img/memoriasDosMoradores/morador4.jpeg",
+    "relato": "Ronaldo César Pereira tem 37 anos e nasceu e foi criado na comunidade de Santa Rita, onde vive até os dias atuais. Ao falar sobre sua infância, lembra de um período muito ligado à família, às brincadeiras e à vida comunitária. Apesar das dificuldades, principalmente pela distância da escola, considera que sua infância foi muito boa e cheia de aprendizados.\n\nAo recordar a história de Santa Rita, Ronaldo destaca que ainda existem muitos aspectos que não foram completamente descobertos. Segundo as histórias transmitidas pelos moradores mais velhos, o quilombo maior era conhecido como Corredor, de onde teriam surgido Santa Rita, Cocal, Bebe Fumo e outras localidades. Uma das questões que continuam despertando sua curiosidade é a origem do próprio nome Santa Rita.\n\nEntre as memórias dos moradores mais velhos, ele lembra de Dona Maria do Vale (sua madrinha), que contava histórias sobre as antigas parteiras da comunidade, entre elas Mãe Catita, considerada uma das principais figuras de sua família. Também recorda a existência da Ilha dos Pretos ou Mato dos Pretos, local onde, segundo as histórias, escravizados fugidos costumavam se abrigar.\n\nA roça sempre esteve presente na vida de Ronaldo. Desde criança, ele trabalhava ao lado do pai, da mãe e da avó, e continua trabalhando até hoje. Na comunidade são cultivados diversos produtos, entre eles arroz, milho, feijão, batata, cará, abóbora e vinagreira. A maior parte dos moradores ainda trabalha com a chamada roça no toco.\n\nSanta Rita também possui uma forte tradição cultural. Ronaldo menciona o tambor de crioula, o toque de caixa, o toque do Divino e o bumba-boi como manifestações que fazem parte da história da comunidade. Também existem conhecimentos relacionados às plantas medicinais e aos remédios caseiros.\n\nRonaldo acredita que registrar essas histórias pode ajudar outras pessoas no futuro a conhecer e aprender com a experiência de Santa Rita. Para ele, participar das festas, tradições e atividades da comunidade significa tudo. Afirma que não trocaria seu lugar por outro e que, se pudesse viver novamente sua vida, escolheria nascer e morar novamente em Santa Rita, junto das mesmas pessoas."
+  }
+]</script>
+
+<script>
+(function () {
+  'use strict';
+  try {
+    var scriptDados = document.getElementById('moradoresDados');
+    var moradores = scriptDados ? JSON.parse(scriptDados.textContent) : [];
+    if (!moradores || !moradores.length) return;
+
+    var modal = document.getElementById('moradorModal');
+    var overlay = modal.querySelector('[data-morador-modal-fechar]');
+    var fecharBtn = modal.querySelector('.morador-modal-fechar');
+    var fotoEl = document.getElementById('moradorModalFoto');
+    var tituloEl = document.getElementById('moradorModalTitulo');
+    var idadeEl = document.getElementById('moradorModalIdade');
+    var localEl = document.getElementById('moradorModalLocalidade');
+    var corpoEl = document.getElementById('moradorModalCorpo');
+    var ultimoFoco = null;
+
+    function escaparHtml(str) {
+      if (str == null) return '';
+      return String(str)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    function quebrarParagrafos(texto) {
+      if (!texto) return '';
+      var partes = String(texto).split(/\r?\n{2,}|\r?\n/);
+      var html = '';
+      for (var i = 0; i < partes.length; i++) {
+        var p = partes[i].trim();
+        if (p) html += '<p>' + escaparHtml(p) + '</p>';
+      }
+      return html || '<p>' + escaparHtml(String(texto)) + '</p>';
+    }
+
+    function abrirModal(m) {
+      ultimoFoco = document.activeElement;
+      fotoEl.src = m.foto || '';
+      fotoEl.alt = 'Foto de ' + (m.nome || 'Morador');
+      tituloEl.textContent = m.nome + (m.apelido ? ' (' + m.apelido + ')' : '');
+      idadeEl.textContent = m.idade || '';
+      localEl.textContent = m.localidade || '';
+      corpoEl.innerHTML = quebrarParagrafos(m.relato || '');
+      modal.classList.add('saberes-modal-aberto');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function () { try { fecharBtn.focus(); } catch (e) {} }, 30);
+    }
+
+    function fecharModal() {
+      modal.classList.remove('saberes-modal-aberto');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (ultimoFoco && typeof ultimoFoco.focus === 'function') try { ultimoFoco.focus(); } catch (e) {}
+    }
+
+    fecharBtn.addEventListener('click', fecharModal);
+    overlay.addEventListener('click', fecharModal);
+    modal.addEventListener('click', function (e) { if (e.target === modal) fecharModal(); });
+    document.addEventListener('keydown', function (e) {
+      if (!modal.classList.contains('saberes-modal-aberto')) return;
+      if (e.key === 'Escape') { e.preventDefault(); fecharModal(); }
+    });
+
+    var pins = document.querySelectorAll('[data-morador-id]');
+    for (var i = 0; i < pins.length; i++) {
+      (function (btn) {
+        btn.addEventListener('click', function () {
+          var id = parseInt(btn.getAttribute('data-morador-id'), 10);
+          var m = null;
+          for (var j = 0; j < moradores.length; j++) {
+            if (Number(moradores[j].id) === id) { m = moradores[j]; break; }
+          }
+          if (m) abrirModal(m);
+        });
+      })(pins[i]);
+    }
+  } catch (e) {}
+})();
+</script>

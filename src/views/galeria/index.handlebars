@@ -1,0 +1,93 @@
+<section class="tela-galeria">
+  <header class="galeria-cabecalho">
+    <a href="/dashboard" class="btn-voltar" aria-label="Voltar para menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+        stroke-linejoin="round" aria-hidden="true">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+    </a>
+    <h1 class="galeria-titulo">Galeria</h1>
+  </header>
+
+  <div class="galeria-abas">
+    <button type="button" class="galeria-aba galeria-aba-ativa" data-galeria-tipo="fotos">
+      Fotos
+    </button>
+    <button type="button" class="galeria-aba galeria-aba-inativa" data-galeria-tipo="videos" disabled>
+      Vídeos
+    </button>
+    <button type="button" class="galeria-aba galeria-aba-inativa galeria-aba-filtro" data-galeria-abrir-filtro
+      aria-expanded="false" aria-controls="galeriaFiltros">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"
+        stroke-linejoin="round" aria-hidden="true">
+        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+      </svg>
+      Filtro
+    </button>
+  </div>
+
+  <div class="galeria-filtros" id="galeriaFiltros" hidden>
+    <button type="button" class="galeria-filtro galeria-filtro-ativo" data-galeria-filtro="todos">
+      Todos
+    </button>
+    <button type="button" class="galeria-filtro" data-galeria-filtro="saoFelipe">
+      São Felipe
+    </button>
+    <button type="button" class="galeria-filtro" data-galeria-filtro="santaRita">
+      Santa Rita
+    </button>
+  </div>
+
+  <main class="galeria-grid" id="galeriaGrid">
+    {{#each fotos}}
+    <button type="button" class="galeria-item" data-galeria-item data-comunidade="{{this.comunidade}}"
+      data-src="{{this.src}}" aria-label="Abrir foto {{this.nome}}">
+      <span class="galeria-item-moldura">
+        <img src="{{this.src}}" alt="Foto {{this.comunidadeNome}}" loading="lazy">
+      </span>
+    </button>
+    {{/each}}
+  </main>
+</section>
+
+<div id="galeriaLightbox" class="galeria-lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="galeria-lightbox-overlay" data-galeria-lightbox-fechar></div>
+  <div class="galeria-lightbox-painel" role="document">
+    <button type="button" class="galeria-lightbox-fechar" aria-label="Fechar foto" data-galeria-lightbox-fechar>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+        stroke-linejoin="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <button type="button" class="galeria-nav galeria-nav-prev" aria-label="Foto anterior" data-galeria-nav="-1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"
+        stroke-linejoin="round" aria-hidden="true">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+
+    <button type="button" class="galeria-nav galeria-nav-next" aria-label="Próxima foto" data-galeria-nav="1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"
+        stroke-linejoin="round" aria-hidden="true">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+
+    <div class="galeria-lightbox-corpo">
+      <figure class="galeria-lightbox-figura">
+        <div class="galeria-stage" data-galeria-stage>
+          <img id="galeriaLightboxImg" src="" alt="" class="galeria-lightbox-imagem">
+        </div>
+        <figcaption class="galeria-lightbox-legenda">
+          <span id="galeriaLightboxComunidade"></span>
+          <span class="galeria-lightbox-contador" id="galeriaLightboxContador"></span>
+        </figcaption>
+      </figure>
+
+      <div class="galeria-thumbs" id="galeriaThumbs" aria-label="Miniaturas da galeria"></div>
+    </div>
+  </div>
+</div>
