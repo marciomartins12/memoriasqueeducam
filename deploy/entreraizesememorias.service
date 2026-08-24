@@ -1,0 +1,22 @@
+[Unit]
+Description=Aplicativo Node.js - Memorias que Educam / Entre Raizes e Memorias
+Documentation=https://www.entreraizesememorias.com.br
+After=network.target mysql.service mysqld.service mariadb.service
+Wants=mysql.service
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/entreraizesememorias
+Environment=NODE_ENV=production
+EnvironmentFile=/var/www/entreraizesememorias/.env
+ExecStart=/usr/bin/node /var/www/entreraizesememorias/server.js
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=entreraizesememorias
+
+[Install]
+WantedBy=multi-user.target

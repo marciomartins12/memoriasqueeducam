@@ -98,15 +98,21 @@ a {
 
 .tela-inicial {
   width: 100%;
-  max-width: 100%;
-  min-height: 100vh;
-  min-height: 100dvh;
+  max-width: 480px;
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100vh;
+  max-height: 100dvh;
+  min-height: 0;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: var(--cor-fundo);
   padding: 0;
+  position: relative;
+  overflow: hidden;
 }
 
 .cabecalho {
