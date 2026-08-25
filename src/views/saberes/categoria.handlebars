@@ -58,46 +58,18 @@
 
     <nav class="parteira-abas" role="tablist" aria-label="Seções da página da parteira">
       <button type="button" class="parteira-aba parteira-aba--ativa" role="tab" aria-selected="true" aria-controls="parteiraPainelHistoria" id="parteiraAbaHistoria" data-aba="historia">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-        <span>História</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        <span>Ofício</span>
       </button>
       <button type="button" class="parteira-aba" role="tab" aria-selected="false" aria-controls="parteiraPainelOficio" id="parteiraAbaOficio" data-aba="oficio">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4"></path><path d="M12 18v4"></path><path d="M4.93 4.93l2.83 2.83"></path><path d="M16.24 16.24l2.83 2.83"></path><path d="M2 12h4"></path><path d="M18 12h4"></path><path d="M4.93 19.07l2.83-2.83"></path><path d="M16.24 7.76l2.83-2.83"></path><circle cx="12" cy="12" r="4"></circle></svg>
-        <span>Ofício</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+        <span>História</span>
       </button>
     </nav>
 
     <div class="parteira-paineis">
 
       <section class="parteira-painel parteira-painel--ativo parteira-historia" id="parteiraPainelHistoria" role="tabpanel" aria-labelledby="parteiraAbaHistoria" aria-hidden="false">
-        <header class="parteira-secao-cabecalho">
-          <div class="parteira-secao-icone parteira-secao-icone--historia" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"></path></svg>
-          </div>
-          <div>
-            <h3 class="parteira-secao-titulo">Sua História</h3>
-            <p class="parteira-secao-subtitulo">Trajetória de vida e memórias</p>
-          </div>
-        </header>
-
-        <div class="parteira-biografia" role="region" aria-label="Relato biográfico com rolagem interna" tabindex="0">
-          {{#each categoria.parteira.biografiaSecciones}}
-          <div class="parteira-biografia-secao" id="bio-secao-{{this.id}}">
-            <h4 class="parteira-biografia-secao-titulo">
-              <span class="parteira-biografia-secao-marcador" aria-hidden="true"></span>
-              {{this.titulo}}
-            </h4>
-            <div class="parteira-biografia-secao-corpo">
-              {{#each this.paragrafos}}
-              <p>{{this}}</p>
-              {{/each}}
-            </div>
-          </div>
-          {{/each}}
-        </div>
-      </section>
-
-      <section class="parteira-painel parteira-oficio" id="parteiraPainelOficio" role="tabpanel" aria-labelledby="parteiraAbaOficio" aria-hidden="true">
         <header class="parteira-secao-cabecalho parteira-secao-cabecalho--laranja">
           <div class="parteira-secao-icone parteira-secao-icone--oficio" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
@@ -153,6 +125,34 @@
         <div class="parteira-passos-dots" id="parteiraPassosDots" role="tablist" aria-label="Passos do ofício">
           {{#each categoria.parteira.passoAPasso}}
           <button type="button" class="parteira-passos-dot{{#ifCond this.numero '==' 1}} parteira-passos-dot-ativo{{/ifCond}}" data-dot="{{this.numero}}" role="tab" aria-selected="{{#ifCond this.numero '==' 1}}true{{else}}false{{/ifCond}}" aria-label="Ir para passo {{this.numero}}"></button>
+          {{/each}}
+        </div>
+      </section>
+
+      <section class="parteira-painel parteira-oficio" id="parteiraPainelOficio" role="tabpanel" aria-labelledby="parteiraAbaOficio" aria-hidden="true">
+        <header class="parteira-secao-cabecalho">
+          <div class="parteira-secao-icone parteira-secao-icone--historia" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"></path></svg>
+          </div>
+          <div>
+            <h3 class="parteira-secao-titulo">Sua História</h3>
+            <p class="parteira-secao-subtitulo">Trajetória de vida e memórias</p>
+          </div>
+        </header>
+
+        <div class="parteira-biografia" role="region" aria-label="Relato biográfico com rolagem interna" tabindex="0">
+          {{#each categoria.parteira.biografiaSecciones}}
+          <div class="parteira-biografia-secao" id="bio-secao-{{this.id}}">
+            <h4 class="parteira-biografia-secao-titulo">
+              <span class="parteira-biografia-secao-marcador" aria-hidden="true"></span>
+              {{this.titulo}}
+            </h4>
+            <div class="parteira-biografia-secao-corpo">
+              {{#each this.paragrafos}}
+              <p>{{this}}</p>
+              {{/each}}
+            </div>
+          </div>
           {{/each}}
         </div>
       </section>

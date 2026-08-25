@@ -178,14 +178,10 @@ const saberesData = {
       itens: [
         {
           id: 1,
-          slug: 'arroz-de-cuxapilao',
-          nome: 'Arroz de cuxápilão',
-          imagem: '/img/comidasTipicas/Arroz de cuxápilão.jpeg',
-          imagens: [
-            '/img/comidasTipicas/Arroz de cuxápilão.jpeg',
-            '/img/comidasTipicas/Arroz de cuxápilão2.jpeg'
-          ],
-          texto: 'O Arroz de cuxápilão é um prato tradicional das comunidades quilombolas, preparado com arroz branco soltinho e o cuxápilão — um tipo de camarão seco de pequeno porte muito apreciado na culinária regional nordestina. O preparo começa com o refogado do cuxápilão em azeite de dendê ou óleo com alho, cebola e tomate, liberando um aroma marcante e sabor intenso. Depois o arroz é adicionado junto com água quente e cozido até ficar úmido e bem temperado. É um prato que representa a ligação das comunidades com os rios e a pesca artesanal, sendo servido em festas, reuniões familiares e ocasiões especiais.'
+          slug: 'arroz-de-pilao',
+          nome: 'Arroz de Pilão',
+          imagem: '/img/comidasTipicas/Arroz de pilao.jpeg',
+          texto: 'O Arroz de Pilão é um prato tradicional e muito apreciado nas comunidades quilombolas, preparado com arroz branco soltinho e ingredientes regionais que dão sabor e aroma característicos. Seu nome está ligado ao modo antigo de preparo, quando o arroz era pilado manualmente no pilão de madeira, um utensílio de madeira comum nas casas das famílias mais antigas. O preparo começa refogando alho, cebola, tomate e pimenta de cheiro em óleo ou azeite de dendê, formando um refogado perfumado. Depois de dourado, junta-se o arroz lavado, que é envolvido bem no tempero e coberto com água quente. O arroz cozinha lentamente em fogo baixo, absorvendo todos os sabores até ficar soltinho, macio e cheio de sabor. Quando servido, costuma acompanhar carnes de caça, peixes assados, pirão, farofa e saladas de legumes da horta. É um prato de festa, partilhado em mesas grandes nas reuniões familiares, nas datas comemorativas e nas ocasiões de visita na comunidade.'
         },
         {
           id: 2,
@@ -214,9 +210,6 @@ const saberesData = {
           slug: 'tambaqui-assado',
           nome: 'Tambaqui assado',
           imagem: '/img/comidasTipicas/Tambaqui assado.jpeg',
-          imagens: [
-            '/img/comidasTipicas/Tambaqui assado.jpeg'
-          ],
           texto: 'O Tambaqui assado é um prato nobre e muito apreciado nas comunidades ribeirinhas e quilombolas. O tambaqui, peixe de água doce encontrado nos rios da Amazônia e rios vizinhos, possui uma carne gorda, macia e de sabor acentuado. O preparo tradicional começa com a limpeza do peixe, que é aberto ao meio e recheado com rodelas de limão, alho, cebola, tomate, pimentão e cheiro-verde picado. Temperado com sal e pimenta, é embrulhado em folha de bananeira e levado ao forno de barro ou assado na brasa. A folha de bananeira mantém a umidade e infunde o peixe com aromas especiais. O resultado é um peixe suculento, com a pele crocante e a carne macia, acompanhado de arroz, farofa e vinagrete.'
         },
         {
@@ -224,9 +217,6 @@ const saberesData = {
           slug: 'nambu',
           nome: 'Nambu',
           imagem: '/img/comidasTipicas/Nambu.jpeg',
-          imagens: [
-            '/img/comidasTipicas/Nambu.jpeg'
-          ],
           texto: 'O Nambu, também conhecido como inhambu ou codorna-do-mato, é uma ave silvestre pequena de carne muito saborosa e apreciada na culinária tradicional quilombola. A preparação começa com a limpeza cuidadosa da ave, que é temperada com alho, sal, pimenta, cebola ralada e suco de limão, deixando pegar o tempero por algumas horas. Depois, pode ser assado inteiro na brasa, em forno de barro ou refogado em panela com pouco óleo até dourar por completo. O sabor delicado da carne de nambu combina-se perfeitamente com os temperos simples e regionais. É servido com farofa de mandioca, arroz branco e pimenta de cheiro, sendo um prato que remete à caça artesanal e ao conhecimento tradicional das matas.'
         },
         {
@@ -234,10 +224,21 @@ const saberesData = {
           slug: 'carne-de-porco',
           nome: 'Carne de porco',
           imagem: '/img/comidasTipicas/Carne de porco.jpeg',
-          imagens: [
-            '/img/comidasTipicas/Carne de porco.jpeg'
-          ],
           texto: 'A Carne de porco preparada pelas comunidades quilombolas é um prato tradicional muito presente nas mesas familiares, especialmente em festas e celebrações. Os cortes mais utilizados são costela, pernil, paleta e lombo, provenientes de suínos criados soltos nas roças e quintais, com alimentação natural, o que confere à carne um sabor mais marcante e textura especial. O preparo começa com o corte da carne em pedaços, temperada com alho socado, cebola ralada, sal grosso, pimenta-do-reino, cominho, suco de limão e cheiro-verde picado, deixando pegar o tempero por horas. Depois, pode ser assada em forno de barro, na brasa de lenha ou refogada lentamente em panela de ferro até dourar por fora e ficar macia por dentro. É servida tradicionalmente com arroz branco, angu de fubá, farofa de mandioca e vinagrete, sendo um prato que representa a fartura e a confraternização nas comunidades quilombolas.'
+        },
+        {
+          id: 7,
+          slug: 'chibe',
+          nome: 'Chibé',
+          imagem: '/img/comidasTipicas/Chibé.jpeg',
+          texto: 'O Chibé é uma iguaria tradicional da culinária nortista e quilombola do Maranhão, muito apreciada por seu sabor refrescante e por ser um alimento de conforto nos dias quentes. Preparado à base de farinha de mandioca (ou goma seca) dissolvida em água gelada, com adição de suco de limão, sal e, em muitas receitas, pedacinhos de queijo coalho ou leite de coco. Sua origem remete a um modo rápido e prático de alimentar as famílias durante os dias de lida na roça, do trabalho nas margens dos rios ou de atividades de pesca. O chibé é consumido em tigelas de barro, tomado em goles, acompanhado muitas vezes de peixe salgado, carne de sol, camarão seco ou apenas com limão e pimenta. Nas comunidades quilombolas, sua receita é passada de geração em geração, mantendo viva a memória dos hábitos alimentares simples mas saborosos construídos ao longo dos anos.'
+        },
+        {
+          id: 8,
+          slug: 'jussara',
+          nome: 'Jussara',
+          imagem: '/img/comidasTipicas/jussara.jpeg',
+          texto: 'O fruto da Juçara (ou Jussara) é uma palmeira nativa da Mata Atlântica e da região amazônica, também muito presente nas comunidades ribeirinhas e quilombolas do Maranhão. Muitas vezes chamada de "açaí do Norte" pelo sabor semelhante, seu fruto roxo e brilhante é colhido manualmente das palmeiras, depois despolpado e batido no liquidificador ou pilado com água, formando um creme grosso e energético. A Jussara é consumida principalmente no café da manhã ou no lanche da tarde, misturada com farinha ou tapioca, adoçada com açúcar ou mel de cana, ou servida pura como suco cremoso. Além de seu sabor característico, o fruto é conhecido por ser rico em ferro, antocianinas e vitaminas, um alimento tradicional que liga as comunidades à floresta e aos ciclos da natureza. Nas festas comunitárias, a juçara é sempre lembrada como um presente da terra que une as pessoas na mesa e mantém viva a tradição alimentar quilombola.'
         }
       ]
     },
