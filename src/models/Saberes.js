@@ -262,9 +262,9 @@ const saberesData = {
           id: 2,
           slug: 'milho',
           nome: 'Milho',
-          imagem: '/img/agricultura/milho.png',
+          imagem:  '/img/agricultura/Milho (2).jpeg',
           imagens: [
-            '/img/agricultura/milho.png',
+           
             '/img/agricultura/Milho (2).jpeg'
           ],
           texto: 'O milho é um dos cultivos mais importantes das roças quilombolas, presente em todo o ciclo do ano e com múltiplos usos na alimentação e na cultura da comunidade. Plantado normalmente em covas, intercalado com feijão e abóbora no sistema tradicional de policultivo, o milho cresce forte com o auxílio das chuvas e do conhecimento dos moradores sobre o solo e as estações. Os espaçamentos entre as plantas e a época de plantio seguem o calendário agrícola tradicional, baseado na observação da lua e dos sinais da natureza. Depois de colhido, o milho verde é consumido cozido, assado na brasa ou na forma de pamonha, canjica e bolo. O milho seco é armazenado em paióis de madeira, pilado manualmente e transformado em fubá para angu, bolos, cuscuz e beiju. Além de alimento, o milho tem significado cultural, estando presente nas festas de São João, nas rodas de conversa e nas trocas entre vizinhos.'
@@ -370,6 +370,16 @@ const saberesData = {
           video: '/img/manifestacaoCultural/Festa do Divino.mp4',
           imagens: ['/img/manifestacaoCultural/Festa do Divino.mp4'],
           texto: 'A Festa do Divino é uma tradição religiosa e cultural muito arraigada nas comunidades quilombolas, celebrada em honra ao Divino Espírito Santo. A festa começa com a escolha do mordomo e da mordoma, responsáveis por organizar e custear os festejos, e inclui novenas, cantos de ladainha, missas, procissões e a tradicional distribuição de doces, bolos e quitutes típicos. Há também os folguedos, com danças, tambores e a participação de grupos cantantes que percorrem as casas do povoado levando a bandeira do Divino. A festa representa fé, confraternização e transmissão de valores de geração em geração, unindo a comunidade em torno de suas crenças e de sua identidade quilombola. A coroa do Divino e a bandeira são símbolos centrais que percorrem as ruas, acompanhadas de muita alegria e devoção.'
+        },
+        {
+          id: 3,
+          slug: 'tambor-de-crioula',
+          nome: 'Tambor de Crioula',
+          tipo: 'video',
+          imagem: '/img/manifestacaoCultural/TAMBOR DE CRIOULA.mp4',
+          video: '/img/manifestacaoCultural/TAMBOR DE CRIOULA.mp4',
+          imagens: ['/img/manifestacaoCultural/TAMBOR DE CRIOULA.mp4'],
+          texto: 'O Tambor de Crioula é uma das manifestações culturais mais importantes e simbolicamente fortes das comunidades quilombolas do Maranhão, reconhecido como Patrimônio Cultural Imaterial do Brasil. A prática é marcada pela presença de tambores grandes e médios (comumente chamados de candongueiros, piões e crivos) tocados com as mãos, ao som de cantos de rodas, palmas e passos de dança característicos. As rodas de tambor de crioula reúnem mulheres e homens, geralmente vestidos com roupas de chita coloridas, em uma dança circular de respiração forte, movimentos de quadril e passos marcados ao ritmo dos tambores. As letras cantadas remetem à memória africana, à devoção aos santos de umbanda e católicos, à natureza e ao cotidiano da comunidade quilombola — muitas cantigas são improvisadas no calor do momento. O tambor de crioula também faz parte das festas de São João, de santos padroeiros e de celebrações comunitárias, sendo guardado pelas famílias mais antigas como uma herança de ancestralidade, resistência e alegria.'
         }
       ]
     }

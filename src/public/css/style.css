@@ -6282,6 +6282,16 @@ body.saberes-lock {
   justify-content: center;
   color: #B66524;
   flex: 0 0 auto;
+  overflow: hidden;
+  padding: 0;
+}
+
+.sobre-aluno-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
 }
 
 .sobre-aluno-avatar svg {
@@ -6401,6 +6411,16 @@ body.saberes-lock {
   color: var(--card-verde);
   flex: 0 0 auto;
   box-shadow: 0 3px 9px rgba(100, 145, 60, 0.14);
+  overflow: hidden;
+  padding: 0;
+}
+
+.sobre-professor-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 22px;
 }
 
 .sobre-professor-foto svg {
@@ -6584,6 +6604,13 @@ body.saberes-lock {
     border-width: 0.4vw;
   }
 
+  .sobre-aluno-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
   .sobre-aluno-avatar svg {
     width: 6.9vw;
     height: 6.9vw;
@@ -6636,6 +6663,14 @@ body.saberes-lock {
     height: 16.5vw;
     border-radius: 5.9vw;
     border-width: 0.4vw;
+  }
+
+  .sobre-professor-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 5.9vw;
   }
 
   .sobre-professor-foto svg {
