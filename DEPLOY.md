@@ -130,8 +130,8 @@ Primeiro faça commit do projeto para um repositório privado no GitHub. Depois 
 
 ```bash
 # Cria pasta do site e dá permissão
-mkdir -p /var/www/entreraizesememorias
-cd /var/www/entreraizesememorias
+mkdir -p /var/www/memoriasqueeducam
+cd /var/www/memoriasqueeducam
 
 # Clone o repositório (TROQUE pelo seu link)
 git clone https://github.com/SEU_USUARIO/memoriasQueEducam.git .
@@ -155,7 +155,7 @@ scp deploy.zip root@IP_DA_VPS:/tmp/
 
 Depois **na VPS SSH**:
 ```bash
-cd /var/www && mkdir -p entreraizesememorias && cd entreraizesememorias
+cd /var/www && mkdir -p memoriasqueeducam && cd memoriasqueeducam
 unzip -q /tmp/deploy.zip -d .
 rm /tmp/deploy.zip
 npm ci --omit=dev --no-audit --no-fund
@@ -166,7 +166,7 @@ npm ci --omit=dev --no-audit --no-fund
 ## 🔐 7. Criar arquivo .env de produção
 
 ```bash
-cd /var/www/entreraizesememorias
+cd /var/www/memoriasqueeducam
 
 # Copia template
 cp .env.example .env
@@ -195,10 +195,10 @@ Salve e saia do nano: **Ctrl+O → Enter → Ctrl+X**.
 ## 🚀 8. Testar o app primeiro (antes de colocar como serviço)
 
 ```bash
-cd /var/www/entreraizesememorias
+cd /var/www/memoriasqueeducam
 
 # Dá permissão de leitura para www-data
-chown -R www-data:www-data /var/www/entreraizesememorias
+chown -R www-data:www-data /var/www/memoriasqueeducam
 
 # Teste rápido (segura 30s, deve mostrar: "Servidor rodando em http://localhost:3000")
 timeout 30 node server.js
@@ -212,42 +212,69 @@ Use **Ctrl+C** duas vezes para cancelar.
 
 ---
 
-## ⚙️ 9. Registrar como serviço SYSTEMD (roda 24h, inicia no boot, reinicia se cair)
+## ⚙️ 9. Registrar com PM2 (Gerenciador de Processos Node.js - 24h, inicia no boot, reinicia se cair)
+
+> 🟢 **PM2** = escolha mais popular do mundo para apps Node em produção. Mais simples,
+> interface visual `pm2 monit`, logs fáceis, restart automático, salva estado,
+> e cria script de boot para systemd automaticamente com **1 comando**.
 
 ```bash
-# Copia arquivo do deploy (já criamos junto no projeto em /deploy/)
-cp /var/www/entreraizesememorias/deploy/entreraizesememorias.service /etc/systemd/system/
+# === 9.1 Instalar PM2 GLOBALMENTE (disponível como comando no sistema) ===
+npm install -g pm2@latest --no-audit --no-fund
 
-# Recarrega systemd para ler o serviço novo
-systemctl daemon-reload
+# Confirma instalação: mostra versão
+pm2 -v
 
-# Habilita (inicia junto com a VPS quando ligar)
-systemctl enable entreraizesememorias
+# Cria pasta de logs PM2
+mkdir -p /var/log/pm2
 
-# INICIA o serviço! 🟢
-systemctl start entreraizesememorias
+# === 9.2 INICIAR a aplicação com PM2 (usando arquivo ecosystem.config.js) ===
+cd /var/www/memoriasqueeducam
+pm2 start deploy/ecosystem.config.js --env production
 
-# Verifica se está rodando:
-systemctl status entreraizesememorias --no-pager
+# DEVE aparecer na tela:
+# ┌────┬────────────────────┬──────────┬──────┬──────────┬──────────┬──────────┐
+# │ id │ name               │ mode     │ ↺    │ status   │ cpu      │ memory   │
+# ├────┼────────────────────┼──────────┼──────┼──────────┼──────────┼──────────┤
+# │ 0  │ memoriasqueeducam  │ fork     │ 0    │ online   │ 0%       │ 40mb     │
+# └────┴────────────────────┴──────────┴──────┴──────────┴──────────┴──────────┘
+# → A coluna STATUS deve estar "online" ✅
+
+# === 9.3 SALVAR os processos atuais para restaurar no boot ===
+pm2 save
+
+# === 9.4 CRIAR SCRIPT DE BOOT AUTOMÁTICO (quando VPS ligar, PM2 inicia o app) ===
+pm2 startup systemd -u root --hp /root
 ```
 
-Deve mostrar **`Active: active (running)` em verde** ✅.
+> ⚠️ **IMPORTANTE**: Ao rodar o `pm2 startup ...` acima, o PM2 VAI MOSTRAR um comando na
+> tela começando com `sudo env PATH=... systemctl enable pm2-root`. **VOCÊ PRECISA COPIAR
+> E COLAR ESSE COMANDO E EXECUTÁ-LO!** Senão o app não inicia automaticamente no boot.
 
-Para ver logs do app a qualquer momento:
+---
+
+**📋 Comandos úteis PM2 (você vai usar muito):**
+
+| O que você quer fazer | Comando |
+|---|---|
+| Ver status + CPU/MEMÓRIA (lista todos apps) | `pm2 status` |
+| **Dashboard VISUAL** (colorido, tempo real!) | `pm2 monit` |
+| Logs em TEMPO REAL (Node console.log todos) | `pm2 logs memoriasqueeducam` |
+| Últimos 100 logs | `pm2 logs memoriasqueeducam --lines 100 --nostream` |
+| **Reiniciar app** (depois de editar código!) | `pm2 restart memoriasqueeducam` |
+| Parar app (temporariamente) | `pm2 stop memoriasqueeducam` |
+| Parar e remover da lista PM2 | `pm2 delete memoriasqueeducam` |
+| Limpar logs antigos | `pm2 flush` |
+| (Após `restart` ou mudar config) Salvar estado | `pm2 save` |
+
+---
+
+**💡 Dica teste RÁPIDO do app (antes do Nginx):**
 ```bash
-# últimos 50 logs
-journalctl -u entreraizesememorias -n 50 --no-pager
-
-# logs em tempo real (Ctrl+C para sair)
-journalctl -u entreraizesememorias -f
+# Deve retornar HTTP/1.1 200 OK diretamente do Node porta 3000
+curl -I http://127.0.0.1:3000/
 ```
-
-Comandos úteis do serviço:
-```bash
-systemctl restart entreraizesememorias   # reinicia app (quando atualizar código)
-systemctl stop entreraizesememorias      # para
-systemctl status entreraizesememorias    # status
-```
+Se voltar **200 OK**, PM2 + App Node estão 100% funcionando! Agora só falta o Nginx (proxy reverso + SSL). 🎉
 
 ---
 
@@ -255,10 +282,10 @@ systemctl status entreraizesememorias    # status
 
 ### 10.1 Copiar configuração do Nginx
 ```bash
-cp /var/www/entreraizesememorias/deploy/nginx.conf /etc/nginx/sites-available/entreraizesememorias
+cp /var/www/memoriasqueeducam/deploy/nginx.conf /etc/nginx/sites-available/memoriasqueeducam
 
 # Cria link simbólico para ativar o site
-ln -sf /etc/nginx/sites-available/entreraizesememorias /etc/nginx/sites-enabled/
+ln -sf /etc/nginx/sites-available/memoriasqueeducam /etc/nginx/sites-enabled/
 
 # Apaga site default para não conflitar
 rm -f /etc/nginx/sites-enabled/default
@@ -330,13 +357,18 @@ curl -I https://www.entreraizesememorias.com.br/
 
 Depois que você editar o código local, faça:
 ```bash
-cd /var/www/entreraizesememorias
+cd /var/www/memoriasqueeducam
 
 # Se usar GITHUB:
 git pull
 npm ci --omit=dev --no-audit --no-fund
-chown -R www-data:www-data /var/www/entreraizesememorias
-systemctl restart entreraizesememorias
+chown -R www-data:www-data /var/www/memoriasqueeducam
+
+# Reinicia o processo Node pelo PM2 ✅
+pm2 restart memoriasqueeducam
+
+# (Sempre que reiniciar ou adicionar processos é bom salvar o estado)
+pm2 save
 ```
 
 Pronto! Site atualizado em ~10 segundos.
@@ -345,12 +377,20 @@ Pronto! Site atualizado em ~10 segundos.
 
 ## 🆘 Problemas comuns + como ver logs
 
-### Tela inicial não carrega / erro 502 Bad Gateway:
-Significa que o app Node não está rodando. Verifique:
+### Tela inicial não carrega / erro 502 Bad Gateway (Nginx):
+Significa que o app Node NÃO está rodando no PM2. Verifique com **3 comandos do PM2**:
 ```bash
-systemctl status entreraizesememorias --no-pager
-journalctl -u entreraizesememorias -n 100 --no-pager
+# 1. Ver lista de apps + STATUS (procure a linha "online" / "errored")
+pm2 status
+
+# 2. Ver LOGS do seu app em tempo real (Ctrl+C para sair)
+# → aqui VOCÊ VÊ exatamente o erro do Node.js! Erro MySQL, erro porta, etc.
+pm2 logs memoriasqueeducam --lines 100 --nostream
+
+# 3. (Opcional) Dashboard visual em cores:
+pm2 monit
 ```
+Se estiver parado → `pm2 start deploy/ecosystem.config.js --env production` + `pm2 save`
 
 ### Páginas mostram "erro de banco":
 ```bash
@@ -359,7 +399,7 @@ mysql -u app_memorias -p aplicativo
 # → se entrar OK, o problema é outro; senão reset senha no passo 5
 ```
 
-### Nginx não carrega:
+### Nginx não carrega / erro de sintaxe nginx.conf:
 ```bash
 nginx -t
 systemctl status nginx --no-pager
@@ -372,6 +412,6 @@ systemctl status nginx --no-pager
 | Arquivo | O que faz |
 |---|---|
 | `.env.example` | Template de variáveis ambiente (copiar → `.env` na VPS) |
-| `deploy/entreraizesememorias.service` | Serviço systemd para rodar app Node em background |
+| `deploy/ecosystem.config.js` | **Configuração PM2** (nome app, logs, memória, restart) |
 | `deploy/nginx.conf` | Configuração do Nginx (proxy reverso porta 3000 → porta 80/443) |
 | Este arquivo `DEPLOY.md` | Este guia passo a passo 📘 |
