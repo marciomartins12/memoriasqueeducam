@@ -13,7 +13,7 @@
   var TITULOS = {
     surgiu: 'Como surgiu',
     localizacao: 'Localização',
-    fotos: 'Fotos da comunidade'
+    fotos: 'Acervo Virtual da Comunidade'
   };
 
   var CONTEUDOS = {
@@ -33,7 +33,7 @@
       fotos: [
         'Acervo visual da comunidade São Felipe: as fotos da comunidade reúnem registros dos espaços coletivos, como a sede, a escola, os terreiros e as áreas de convivência; das paisagens do entorno, com roças, palmeiras e cursos dágua; e das atividades tradicionais e momentos de festa e celebração.',
         'Esses registros são fundamentais para preservar a memória coletiva, mostrando como diferentes gerações construíram e transformaram o território ao longo dos anos, como também para reconhecer e valorizar os costumes, os festejos e as práticas que definem a identidade quilombola de São Felipe.',
-        'A seção Fotos da comunidade reúne também fotografias de atividades cotidiano dos moradores, das casas e das manifestações culturais e religiosas, representam a riqueza cultural do patrimônio imaterial e material preservada comunidade.'
+        'O Acervo Virtual da Comunidade reúne também fotografias de atividades cotidiano dos moradores, das casas e das manifestações culturais e religiosas, representam a riqueza cultural do patrimônio imaterial e material preservada comunidade.'
       ]
     },
     'santa-rita': {
@@ -52,7 +52,7 @@
       fotos: [
         'Acervo visual da comunidade Santa Rita: as fotografias da comunidade registram os espaços de convivência e os equipamentos comunitários construídos ao longo dos anos, entre eles a sede comunitária, a escola inaugurada em 2020, a igreja, o poço artesiano, o forno de farinha.',
         'As imagens também documentam as práticas tradicionais ligadas à agricultura, à pesca, à quebra do coco e à produção de farinha, bem como as manifestações culturais e religiosas que compõem a identidade de Santa Rita, entre elas o tambor de mina, o tambor de crioula, os terreiros e o bumba meu boi.',
-        'A seção Fotos da comunidade constitui um importante recurso para a memória coletiva ao longo do tempo e preservação da história preservando o modo de vida da população, das famílias, das paisagens e das tradições quilombola.'
+        'O Acervo Virtual da Comunidade constitui um importante recurso para a memória coletiva ao longo do tempo e preservação da história preservando o modo de vida da população, das famílias, das paisagens e das tradições quilombola.'
       ]
     }
   };

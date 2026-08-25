@@ -977,10 +977,15 @@ a {
   font-weight: 400;
   color: var(--cor-texto-escuro);
   font-size: 14.5px;
-  line-height: 1.65;
+  line-height: 1.7;
   text-align: justify;
   margin-bottom: 14px;
   hyphens: auto;
+  text-indent: 2em;
+}
+
+.modal-info-corpo p:first-child {
+  text-indent: 2em;
 }
 
 .modal-info-corpo p:last-child {
@@ -3232,6 +3237,8 @@ body.saberes-lock {
 
   .modal-info-corpo p {
     font-size: 3.9vw;
+    line-height: 1.7;
+    text-indent: 2em;
     margin-bottom: 3.7vw;
   }
 

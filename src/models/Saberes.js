@@ -12,7 +12,7 @@ const parteiraDados = {
     naturalidade: 'Baixa Grande',
     comunidade: 'Santa Rita',
     imagem: '/img/parteira/parteira.png',
-    funcoes: ['Parteira', 'Quebradeira de Coco', 'Trabalhadora da Roça', 'Pescadora', 'Líder Comunitária'],
+    funcoes: ['Parteira', 'Quebradeira de Coco', 'Trabalhadora da Roça', 'Pescadora', 'Mãe de Santo', 'Ex-Tesoureira'],
     anosAtuacao: 20,
     tituloHistoria: 'A história de vida de Francisca da Chagas Araújo: memória, saberes e tradição de uma parteira de Santa Rita.',
     biografiaSecciones: [
