@@ -255,20 +255,16 @@ const saberesData = {
           id: 1,
           slug: 'arroz',
           nome: 'Arroz',
-          imagem: '/img/agricultura/arroz (1).jpeg',
-          imagens: [
-            '/img/agricultura/arroz (1).jpeg',
-            '/img/agricultura/arroz (2).jpeg'
-          ],
+          imagem: '/img/agricultura/arroz.png',
           texto: 'O cultivo do arroz de roça é uma prática ancestral transmitida de geração em geração nas comunidades quilombolas. Plantado geralmente em áreas de várzea ou terrenos úmidos nas proximidades dos rios, o arroz é semeado no início do período chuvoso, seguindo o ciclo das águas e a sabedoria dos mais velhos sobre os tempos certos de plantio e colheita. O preparo da terra é feito com enxada e arado puxado por boi, sem uso de agrotóxicos, mantendo a fertilidade natural do solo por meio de rotação de culturas e adubação orgânica. Quando os grãos estão maduros, a colheita é feita manualmente, em mutirão reunindo famílias e vizinhos, depois os pés são batidos para soltar o grão, torrado e pilado no pilão de madeira. O arroz produzido na roça tem sabor marcante e textura especial, sendo a base da alimentação diária e presente em todas as mesas quilombolas, do almoço simples às festas comunitárias.'
         },
         {
           id: 2,
           slug: 'milho',
           nome: 'Milho',
-          imagem: '/img/agricultura/Milho (1).jpeg',
+          imagem: '/img/agricultura/milho.png',
           imagens: [
-            '/img/agricultura/Milho (1).jpeg',
+            '/img/agricultura/milho.png',
             '/img/agricultura/Milho (2).jpeg'
           ],
           texto: 'O milho é um dos cultivos mais importantes das roças quilombolas, presente em todo o ciclo do ano e com múltiplos usos na alimentação e na cultura da comunidade. Plantado normalmente em covas, intercalado com feijão e abóbora no sistema tradicional de policultivo, o milho cresce forte com o auxílio das chuvas e do conhecimento dos moradores sobre o solo e as estações. Os espaçamentos entre as plantas e a época de plantio seguem o calendário agrícola tradicional, baseado na observação da lua e dos sinais da natureza. Depois de colhido, o milho verde é consumido cozido, assado na brasa ou na forma de pamonha, canjica e bolo. O milho seco é armazenado em paióis de madeira, pilado manualmente e transformado em fubá para angu, bolos, cuscuz e beiju. Além de alimento, o milho tem significado cultural, estando presente nas festas de São João, nas rodas de conversa e nas trocas entre vizinhos.'
