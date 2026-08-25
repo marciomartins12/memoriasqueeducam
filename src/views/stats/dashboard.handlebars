@@ -1,0 +1,220 @@
+<section class="stats-tela">
+  <header class="stats-cabecalho">
+    <h1 class="stats-titulo">Painel de Estatísticas</h1>
+    <span class="stats-subtitulo">Jogos Educativos · Memórias que Educam</span>
+    <span class="stats-data-atualizacao">Atualizado em {{geradoEm}}</span>
+  </header>
+
+  <main class="stats-conteudo">
+    <section class="stats-bloco">
+      <div class="stats-grid">
+        <div class="stats-card stats-card--acessos">
+          <span class="stats-card-icone" aria-hidden="true">👥</span>
+          <div class="stats-card-info">
+            <span class="stats-card-label">Acessos únicos</span>
+            <span class="stats-card-valor">{{resumo.totalDispositivosFmt}}</span>
+          </div>
+        </div>
+        <div class="stats-card stats-card--jogaram">
+          <span class="stats-card-icone" aria-hidden="true">🎮</span>
+          <div class="stats-card-info">
+            <span class="stats-card-label">Jogaram pelo menos 1 vez</span>
+            <span class="stats-card-valor">{{resumo.totalJogaramFmt}}</span>
+          </div>
+        </div>
+        <div class="stats-card stats-card--tentativas">
+          <span class="stats-card-icone" aria-hidden="true">⚔️</span>
+          <div class="stats-card-info">
+            <span class="stats-card-label">Tentativas totais</span>
+            <span class="stats-card-valor">{{resumo.totalTentativasGeralFmt}}</span>
+          </div>
+        </div>
+        <div class="stats-card stats-card--acertos">
+          <span class="stats-card-icone" aria-hidden="true">✅</span>
+          <div class="stats-card-info">
+            <span class="stats-card-label">Acertos totais</span>
+            <span class="stats-card-valor">{{resumo.totalAcertosGeralFmt}}</span>
+          </div>
+        </div>
+        <div class="stats-card stats-card--erros">
+          <span class="stats-card-icone" aria-hidden="true">❌</span>
+          <div class="stats-card-info">
+            <span class="stats-card-label">Erros totais</span>
+            <span class="stats-card-valor">{{resumo.totalErrosGeralFmt}}</span>
+          </div>
+        </div>
+        <div class="stats-card stats-card--taxa">
+          <span class="stats-card-icone" aria-hidden="true">🎯</span>
+          <div class="stats-card-info">
+            <span class="stats-card-label">Taxa de acerto</span>
+            <span class="stats-card-valor">{{resumo.taxaAcertoGeral}}%</span>
+          </div>
+        </div>
+        <div class="stats-card stats-card--palavras stats-card--full">
+          <span class="stats-card-icone" aria-hidden="true">🔤</span>
+          <div class="stats-card-info">
+            <span class="stats-card-label">Palavras encontradas (Caça-Palavras)</span>
+            <span class="stats-card-valor">{{resumo.totalPalavrasEncontradasFmt}}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-bloco">
+      <div class="stats-destaque stats-destaque--maisjogado">
+        <div class="stats-destaque-label">🏆 Jogo mais jogado</div>
+        <div class="stats-destaque-nome" style="color: {{jogoMaisJogado.cor}}">{{jogoMaisJogado.nome}}</div>
+        <div class="stats-destaque-valor">{{jogoMaisJogado.tentativasFmt}} tentativas</div>
+      </div>
+    </section>
+
+    <section class="stats-bloco">
+      <h2 class="stats-bloco-titulo">📊 Ranking de tentativas por jogo</h2>
+      <ul class="stats-lista">
+        {{#each rankingTentativas}}
+        <li class="stats-linha">
+          <div class="stats-linha-topo">
+            <span class="stats-linha-nome" style="color:{{this.cor}}">{{this.nome}}</span>
+            <span class="stats-linha-valor">{{this.tentativas}} tent.</span>
+          </div>
+          <div class="stats-barra">
+            <div class="stats-barra-fill" style="width:{{this.pct}}%; background:{{this.cor}};"></div>
+          </div>
+        </li>
+        {{/each}}
+      </ul>
+    </section>
+
+    <section class="stats-bloco">
+      <h2 class="stats-bloco-titulo">🎯 Acurácia por jogo</h2>
+      <div class="stats-acuracia-grid">
+        {{#each acuraciaPorJogo}}
+        <div class="stats-acuracia-card" style="border-top: 4px solid {{this.cor}};">
+          <div class="stats-acuracia-nome" style="color:{{this.cor}}">{{this.nome}}</div>
+          <div class="stats-acuracia-taxa stats-acuracia-taxa--acerto">{{this.taxaAcerto}}%</div>
+          <div class="stats-acuracia-sub">de acerto</div>
+          <div class="stats-acuracia-dados">
+            <div>
+              <span class="stats-acuracia-num stats-acuracia-num--ok">{{this.acertosFmt}}</span>
+              <span class="stats-acuracia-leg">acertos</span>
+            </div>
+            <div>
+              <span class="stats-acuracia-num stats-acuracia-num--er">{{this.errosFmt}}</span>
+              <span class="stats-acuracia-leg">erros</span>
+            </div>
+            <div>
+              <span class="stats-acuracia-num">{{this.respondidasFmt}}</span>
+              <span class="stats-acuracia-leg">respondidas</span>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </section>
+
+    <section class="stats-bloco">
+      <div class="stats-mini-grid">
+        <div class="stats-mini-card stats-mini-card--erro">
+          <div class="stats-mini-label">❌ Jogo com mais erros</div>
+          <div class="stats-mini-valor">{{nomeJogoMaisErros}}</div>
+        </div>
+        <div class="stats-mini-card stats-mini-card--acerto">
+          <div class="stats-mini-label">✅ Jogo com maior acerto</div>
+          <div class="stats-mini-valor">{{nomeJogoMaisAcertos}}</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-bloco">
+      <h2 class="stats-bloco-titulo">🏆 Top 10 - Mais acertos</h2>
+      <div class="stats-tabela-wrap">
+        <table class="stats-tabela">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Dispositivo</th>
+              <th class="stats-tabela-num">Acertos</th>
+              <th class="stats-tabela-num">%</th>
+              <th class="stats-tabela-num">Nível</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each rankingTopAcertos}}
+            <tr>
+              <td class="stats-tabela-pos">{{this.posicao}}</td>
+              <td class="stats-tabela-id"><span class="stats-tabela-idspan">{{this.dispositivo_curto}}</span></td>
+              <td class="stats-tabela-num stats-tabela-num--ok">{{this.totalAcertosFmt}}</td>
+              <td class="stats-tabela-num">{{this.taxaAcerto}}%</td>
+              <td class="stats-tabela-num">{{this.maiorNivelMax}}</td>
+            </tr>
+            {{else}}
+            <tr><td colspan="5" class="stats-tabela-vazio">Ainda sem dados.</td></tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="stats-bloco">
+      <h2 class="stats-bloco-titulo">📉 Bottom 10 - Menos acertos</h2>
+      <div class="stats-tabela-wrap">
+        <table class="stats-tabela stats-tabela--bottom">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Dispositivo</th>
+              <th class="stats-tabela-num">Acertos</th>
+              <th class="stats-tabela-num">%</th>
+              <th class="stats-tabela-num">Nível</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each rankingBottomAcertos}}
+            <tr>
+              <td class="stats-tabela-pos">{{this.posicao}}</td>
+              <td class="stats-tabela-id"><span class="stats-tabela-idspan">{{this.dispositivo_curto}}</span></td>
+              <td class="stats-tabela-num stats-tabela-num--er">{{this.totalAcertosFmt}}</td>
+              <td class="stats-tabela-num">{{this.taxaAcerto}}%</td>
+              <td class="stats-tabela-num">{{this.maiorNivelMax}}</td>
+            </tr>
+            {{else}}
+            <tr><td colspan="5" class="stats-tabela-vazio">Ainda sem dados.</td></tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="stats-bloco">
+      <h2 class="stats-bloco-titulo">🚀 Top 10 - Maior progresso (nível)</h2>
+      <div class="stats-tabela-wrap">
+        <table class="stats-tabela">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Dispositivo</th>
+              <th class="stats-tabela-num">Nível máx.</th>
+              <th class="stats-tabela-num">Tent.</th>
+              <th class="stats-tabela-num">Última ativ.</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each topMaiorProgresso}}
+            <tr>
+              <td class="stats-tabela-pos">{{this.posicao}}</td>
+              <td class="stats-tabela-id"><span class="stats-tabela-idspan">{{this.dispositivo_curto}}</span></td>
+              <td class="stats-tabela-num stats-tabela-num--destaque">{{this.maiorNivelMax}}</td>
+              <td class="stats-tabela-num">{{this.totalTentativasFmt}}</td>
+              <td class="stats-tabela-num stats-tabela-data">{{this.ultimaAtividade}}</td>
+            </tr>
+            {{else}}
+            <tr><td colspan="5" class="stats-tabela-vazio">Ainda sem dados.</td></tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="stats-rodape-espaco"></div>
+  </main>
+</section>

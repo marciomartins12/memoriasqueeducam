@@ -1,0 +1,67 @@
+<section class="tela-jogos tela-quiz"
+  data-total-niveis="{{totalNiveis}}"
+  data-nivel-inicial="{{nivelInicial.numero}}"
+  data-nivel-perguntas="{{#each nivelInicial.questoes}}{{this.id}}|{{/each}}"
+>
+  <header class="moradores-cabecalho cp-cabecalho">
+    <a href="/jogos" class="btn-voltar" id="quizVoltar" aria-label="Voltar a lista de jogos">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+    </a>
+    <h1 class="moradores-titulo">{{jogo.nome}}</h1>
+    <div class="cp-cabecalho-info">
+      <span class="cp-nivel-label vf-nivel-label" id="quizNivelInfo">Nível {{nivelInicial.numero}} / {{totalNiveis}}</span>
+      <span class="cp-timer-label vf-timer-label" id="quizTimer">⏱ 00:20</span>
+    </div>
+  </header>
+
+  <div class="cp-status vf-status" role="status" aria-live="polite">
+    <div class="cp-progresso vf-progresso">
+      <div class="cp-progresso-bar vf-progresso-bar" id="quizProgressoBar"></div>
+    </div>
+    <div class="cp-marcador vf-marcador" id="quizMarcador">
+      <span class="cp-marcador-texto" id="quizProgressoTexto">Nível {{nivelInicial.numero}} / {{totalNiveis}}</span>
+    </div>
+  </div>
+
+  <main class="vf-questoes-wrap quiz-questoes-wrap">
+    <ul class="vf-questoes quiz-questoes" id="quizQuestoes">
+      {{#each nivelInicial.questoes}}
+      <li class="vf-questao vf-questao--unica quiz-questao" data-questao-id="{{this.id}}" data-gabarito="{{this.gabarito}}" role="group" aria-labelledby="quiz-pergunta-{{this.id}}">
+        <div class="vf-pergunta-cabecalho">
+          <span class="vf-pergunta-numero">Pergunta {{../nivelInicial.numero}}</span>
+        </div>
+        <p class="vf-pergunta vf-pergunta--grande quiz-pergunta" id="quiz-pergunta-{{this.id}}">{{this.pergunta}}</p>
+        <div class="quiz-opcoes">
+          <button type="button" class="quiz-opcao quiz-opcao--A" data-resposta="A" aria-label="Alternativa A">
+            <span class="quiz-opcao-letra" aria-hidden="true">A</span>
+            <span class="quiz-opcao-texto">{{this.alternativas.A}}</span>
+          </button>
+          <button type="button" class="quiz-opcao quiz-opcao--B" data-resposta="B" aria-label="Alternativa B">
+            <span class="quiz-opcao-letra" aria-hidden="true">B</span>
+            <span class="quiz-opcao-texto">{{this.alternativas.B}}</span>
+          </button>
+          <button type="button" class="quiz-opcao quiz-opcao--C" data-resposta="C" aria-label="Alternativa C">
+            <span class="quiz-opcao-letra" aria-hidden="true">C</span>
+            <span class="quiz-opcao-texto">{{this.alternativas.C}}</span>
+          </button>
+          <button type="button" class="quiz-opcao quiz-opcao--D" data-resposta="D" aria-label="Alternativa D">
+            <span class="quiz-opcao-letra" aria-hidden="true">D</span>
+            <span class="quiz-opcao-texto">{{this.alternativas.D}}</span>
+          </button>
+        </div>
+        <div class="vf-questao-feedback quiz-questao-feedback" role="status" aria-live="polite"></div>
+      </li>
+      {{/each}}
+    </ul>
+  </main>
+
+  <div class="cp-acoes vf-acoes">
+    <button type="button" class="cp-botao cp-botao--secundario" id="quizBotaoReiniciar">Reiniciar nível</button>
+    <button type="button" class="cp-botao cp-botao--primario" id="quizBotaoProximo" disabled>Próxima pergunta</button>
+  </div>
+</section>
+
+<script defer src="/js/quiz.js"></script>

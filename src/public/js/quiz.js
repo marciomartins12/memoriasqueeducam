@@ -3,16 +3,16 @@
 
   const STORAGE_DISP_ID = 'mqEdu_dispositivoId';
 
-  const tela = document.querySelector('.tela-verdadeiro-falso');
-  const btnVoltar = document.getElementById('vfVoltar');
-  const elNivelInfo = document.getElementById('vfNivelInfo');
-  const elTimer = document.getElementById('vfTimer');
-  const elProgressoBar = document.getElementById('vfProgressoBar');
-  const elProgressoTexto = document.getElementById('vfProgressoTexto');
-  const elMarcador = document.getElementById('vfMarcador');
-  let elQuestoesWrap = document.getElementById('vfQuestoes');
-  const btnReiniciar = document.getElementById('vfBotaoReiniciar');
-  const btnProximo = document.getElementById('vfBotaoProximo');
+  const tela = document.querySelector('.tela-quiz');
+  const btnVoltar = document.getElementById('quizVoltar');
+  const elNivelInfo = document.getElementById('quizNivelInfo');
+  const elTimer = document.getElementById('quizTimer');
+  const elProgressoBar = document.getElementById('quizProgressoBar');
+  const elProgressoTexto = document.getElementById('quizProgressoTexto');
+  const elMarcador = document.getElementById('quizMarcador');
+  let elQuestoesWrap = document.getElementById('quizQuestoes');
+  const btnReiniciar = document.getElementById('quizBotaoReiniciar');
+  const btnProximo = document.getElementById('quizBotaoProximo');
 
   if (!tela) return;
 
@@ -64,8 +64,8 @@
       credentials: 'same-origin',
       body: JSON.stringify(payload)
     }).then(r => r.json()).then(resp => {
-      if (resp && resp.sucesso && resp.progressos && resp.progressos.verdadeiroFalso && resp.progressos.verdadeiroFalso.nivel_atual) {
-        const n = parseInt(resp.progressos.verdadeiroFalso.nivel_atual, 10);
+      if (resp && resp.sucesso && resp.progressos && resp.progressos.quiz && resp.progressos.quiz.nivel_atual) {
+        const n = parseInt(resp.progressos.quiz.nivel_atual, 10);
         if (!isNaN(n) && n >= 1 && n <= TOTAL_NIVEIS) {
           nivelAtual = n;
         }
@@ -89,7 +89,7 @@
     }
     atualizarInfoNivel();
 
-    fetch('/api/jogos/verdadeiro-ou-falso/nivel/' + n, {
+    fetch('/api/jogos/quiz/nivel/' + n, {
       method: 'GET',
       credentials: 'same-origin'
     }).then(r => {
@@ -109,24 +109,20 @@
   function montarNivelComFallback() {
     const nivel = { numero: nivelAtual, tempo_segundos: 20, questoes: [] };
     if (NIVEL_PERGUNTAS_FALLBACK) {
-      const partes = NIVEL_PERGUNTAS_FALLBACK.split('|').filter(function (p) { return p.trim(); });
-      partes.forEach(function (parte, idx) {
-        const pedacos = parte.split(':');
-        if (pedacos.length < 3) return;
-        const id = parseInt(pedacos[0], 10) || idx + 1;
-        const gabStr = pedacos[pedacos.length - 1];
-        const pergunta = pedacos.slice(1, -1).join(':').trim();
-        if (!pergunta) return;
+      const ids = NIVEL_PERGUNTAS_FALLBACK.split('|').filter(function (p) { return p.trim(); });
+      ids.forEach(function (idStr, idx) {
+        const id = parseInt(idStr, 10) || idx + 1;
         nivel.questoes.push({
           id: id,
-          pergunta: pergunta,
-          gabarito: gabStr === '1'
+          pergunta: 'Recarregue a página para carregar as alternativas da pergunta ' + nivelAtual + '.',
+          alternativas: { A: 'A', B: 'B', C: 'C', D: 'D' },
+          gabarito: 'A'
         });
       });
     }
     if (!nivel.questoes.length) {
       nivel.questoes = [
-        { id: 1, pergunta: 'Sem dados do nível. Recarregue a página.', gabarito: true }
+        { id: 1, pergunta: 'Sem dados do nível. Recarregue a página.', alternativas: { A: 'A', B: 'B', C: 'C', D: 'D' }, gabarito: 'A' }
       ];
     }
     montarNivelComQuestoes(nivel);
@@ -136,16 +132,16 @@
     questoesAtuais = nivel.questoes.slice();
     const tempoSeg = parseInt(nivel.tempo_segundos, 10) || 20;
     const lista = document.createElement('ul');
-    lista.className = 'vf-questoes';
-    lista.id = 'vfQuestoes';
+    lista.className = 'vf-questoes quiz-questoes';
+    lista.id = 'quizQuestoes';
 
     questoesAtuais.forEach(function (quest) {
       const li = document.createElement('li');
-      li.className = 'vf-questao vf-questao--unica';
+      li.className = 'vf-questao vf-questao--unica quiz-questao';
       li.setAttribute('data-questao-id', String(quest.id));
-      li.setAttribute('data-gabarito', quest.gabarito ? '1' : '0');
+      li.setAttribute('data-gabarito', String(quest.gabarito || 'A'));
       li.setAttribute('role', 'group');
-      li.setAttribute('aria-labelledby', 'vf-pergunta-' + quest.id);
+      li.setAttribute('aria-labelledby', 'quiz-pergunta-' + quest.id);
 
       const header = document.createElement('div');
       header.className = 'vf-pergunta-cabecalho';
@@ -155,35 +151,38 @@
       header.appendChild(numeroEl);
 
       const p = document.createElement('p');
-      p.className = 'vf-pergunta vf-pergunta--grande';
-      p.id = 'vf-pergunta-' + quest.id;
+      p.className = 'vf-pergunta vf-pergunta--grande quiz-pergunta';
+      p.id = 'quiz-pergunta-' + quest.id;
       p.textContent = quest.pergunta;
 
       const opcoes = document.createElement('div');
-      opcoes.className = 'vf-opcoes vf-opcoes--grandes';
+      opcoes.className = 'quiz-opcoes';
+      const letras = ['A', 'B', 'C', 'D'];
+      letras.forEach(function (letra) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'quiz-opcao quiz-opcao--' + letra;
+        btn.setAttribute('data-resposta', letra);
+        btn.setAttribute('aria-label', 'Alternativa ' + letra);
 
-      const btnV = document.createElement('button');
-      btnV.type = 'button';
-      btnV.className = 'vf-opcao vf-opcao--verdadeiro';
-      btnV.setAttribute('data-resposta', '1');
-      btnV.setAttribute('aria-label', 'Verdadeiro');
-      btnV.innerHTML = '<svg viewBox="0 0 24 24" class="vf-opcao-icone" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Verdadeiro</span>';
+        const spanLetra = document.createElement('span');
+        spanLetra.className = 'quiz-opcao-letra';
+        spanLetra.setAttribute('aria-hidden', 'true');
+        spanLetra.textContent = letra;
 
-      const btnF = document.createElement('button');
-      btnF.type = 'button';
-      btnF.className = 'vf-opcao vf-opcao--falso';
-      btnF.setAttribute('data-resposta', '0');
-      btnF.setAttribute('aria-label', 'Falso');
-      btnF.innerHTML = '<svg viewBox="0 0 24 24" class="vf-opcao-icone" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Falso</span>';
+        const spanTexto = document.createElement('span');
+        spanTexto.className = 'quiz-opcao-texto';
+        spanTexto.textContent = (quest.alternativas && quest.alternativas[letra]) || letra;
 
-      btnV.addEventListener('click', function () { responderQuestao(quest.id, true, li); });
-      btnF.addEventListener('click', function () { responderQuestao(quest.id, false, li); });
+        btn.appendChild(spanLetra);
+        btn.appendChild(spanTexto);
 
-      opcoes.appendChild(btnV);
-      opcoes.appendChild(btnF);
+        btn.addEventListener('click', function () { responderQuestao(quest.id, letra, li); });
+        opcoes.appendChild(btn);
+      });
 
       const fb = document.createElement('div');
-      fb.className = 'vf-questao-feedback';
+      fb.className = 'vf-questao-feedback quiz-questao-feedback';
       fb.setAttribute('role', 'status');
       fb.setAttribute('aria-live', 'polite');
 
@@ -206,26 +205,28 @@
 
   function responderQuestao(questaoId, resposta, li) {
     if (nivelFinalizado) return;
-    const gabStr = li.getAttribute('data-gabarito');
-    const gabarito = gabStr === '1';
+    const gabarito = (li.getAttribute('data-gabarito') || 'A').toString();
     respostasAtuais.set(questaoId, {
       questao_id: questaoId,
       resposta: resposta,
       gabarito: gabarito
     });
 
-    const opcoes = li.querySelectorAll('.vf-opcao');
+    const opcoes = li.querySelectorAll('.quiz-opcao');
     opcoes.forEach(function (btn) {
-      btn.classList.remove('vf-opcao--selecionado');
+      btn.classList.remove('quiz-opcao--selecionado', 'quiz-opcao--gabarito', 'quiz-opcao--erro');
       btn.disabled = true;
+      const letra = btn.getAttribute('data-resposta');
+      if (letra === gabarito) btn.classList.add('quiz-opcao--gabarito');
+      if (letra === resposta && letra !== gabarito) btn.classList.add('quiz-opcao--erro');
     });
-    const selecionado = resposta ? li.querySelector('.vf-opcao--verdadeiro') : li.querySelector('.vf-opcao--falso');
-    if (selecionado) selecionado.classList.add('vf-opcao--selecionado');
+    const selecionado = li.querySelector('.quiz-opcao[data-resposta="' + resposta + '"]');
+    if (selecionado) selecionado.classList.add('quiz-opcao--selecionado');
 
-    const acertou = resposta === gabarito;
-    const feedback = li.querySelector('.vf-questao-feedback');
+    const acertou = String(resposta) === String(gabarito);
+    const feedback = li.querySelector('.quiz-questao-feedback');
     if (feedback) {
-      feedback.textContent = acertou ? 'Acertou!' : 'Ops, resposta incorreta.';
+      feedback.textContent = acertou ? 'Acertou!' : ('Ops, a resposta correta é a alternativa ' + gabarito + '.');
       li.classList.add(acertou ? 'vf-questao--acerto' : 'vf-questao--erro');
       feedback.classList.add(acertou ? 'vf-feedback--acerto' : 'vf-feedback--erro');
     }
@@ -273,7 +274,7 @@
   function atualizarTimerUI() {
     if (!elTimer) return;
     elTimer.textContent = '⏱ ' + formatarTempo(segundosRestantes);
-    if (segundosRestantes <= 30) {
+    if (segundosRestantes <= 5) {
       elTimer.classList.add('cp-timer-label--urgente');
     } else {
       elTimer.classList.remove('cp-timer-label--urgente');
@@ -294,7 +295,7 @@
         arr.push({
           id: quest.id,
           resposta: null,
-          gabarito: quest.gabarito
+          gabarito: (quest.gabarito || 'A').toString()
         });
       }
     });
@@ -314,7 +315,7 @@
     };
     const isKeepAlive = forcar === true;
     try {
-      const prom = fetch('/api/jogos/verdadeiro-ou-falso/progresso', {
+      const prom = fetch('/api/jogos/quiz/progresso', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'same-origin',

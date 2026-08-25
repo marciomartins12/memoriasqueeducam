@@ -6,6 +6,7 @@ const sequelize = require('./src/config/database');
 const Dispositivo = require('./src/models/Dispositivo');
 const ProgressoCacaPalavras = require('./src/models/ProgressoCacaPalavras');
 const ProgressoVerdadeiroFalso = require('./src/models/ProgressoVerdadeiroFalso');
+const ProgressoQuiz = require('./src/models/ProgressoQuiz');
 const routes = require('./src/routes');
 
 const app = express();
@@ -17,9 +18,13 @@ app.use(express.static(path.join(__dirname, 'src', 'public')));
 
 setupHandlebars(app);
 
-sequelize.sync({ alter: true })
+sequelize.authenticate()
+  .then(() => {
+    console.log('Conexão com o banco de dados estabelecida com sucesso.');
+    return sequelize.sync();
+  })
   .then(() => console.log('Tabelas sincronizadas com sucesso.'))
-  .catch(err => console.error('Erro ao sincronizar tabelas:', err));
+  .catch(err => console.error('Aviso banco/sync:', err.message || err));
 
 app.use(routes);
 
