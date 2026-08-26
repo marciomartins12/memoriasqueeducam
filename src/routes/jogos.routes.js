@@ -9,6 +9,7 @@ router.get('/jogos/caca-palavras', JogosController.cacaPalavras);
 router.get('/jogos/verdadeiro-ou-falso', JogosController.verdadeiroFalso);
 router.get('/jogos/quiz', JogosController.quiz);
 router.get('/painel-estatisticas-memorias-educam-2026', StatsController.dashboard);
+router.post('/painel-estatisticas-memorias-educam-2026/limpar', StatsController.limparDados);
 router.get('/api/jogos/caca-palavras/nivel/:nivel', JogosController.getNivelCacaPalavrasApi);
 router.get('/api/jogos/verdadeiro-ou-falso/nivel/:nivel', JogosController.getNivelVerdadeiroFalsoApi);
 router.get('/api/jogos/quiz/nivel/:nivel', JogosController.getNivelQuizApi);

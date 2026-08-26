@@ -13,9 +13,9 @@
   <div class="moradores-mapa" aria-label="Mapa das comunidades Santa Rita e São Felipe">
     <img class="moradores-mapa-bg" src="/img/mapa.png" alt="Mapa das comunidades quilombolas Santa Rita e São Felipe" aria-hidden="true">
 
-    <!-- PINS dos moradores: ÁREA DE CIMA = SÃO FELIPE (5 pins), ÁREA DE BAIXO = SANTA RITA (2 pins) -->
-    <!-- SÃO FELIPE (ordem top): Laurenice (id1) → Maria Benedita (id5) → Valderez (id6) → Catarina (id7) → Francisca (id3) -->
-    <button class="morador-pin" type="button" data-morador-id="1" style="top:12%; left:27%;" aria-label="Abrir história de Laurenice de Jesus Sá, São Felipe">
+    <!-- PINS dos moradores: ÁREA DE CIMA = SÃO FELIPE (4 pins), ÁREA DE BAIXO = SANTA RITA (3 pins + 1 link da Parteira) -->
+    <!-- SÃO FELIPE (ordem top): Laurenice (id1) → Maria Benedita (id5) → Valderez (id6) → Catarina (id7) -->
+    <button class="morador-pin" type="button" data-morador-id="1" style="top:20%; left:12%;" aria-label="Abrir história de Laurenice de Jesus Sá, São Felipe">
       <span class="morador-pin-etiqueta">
         <span class="morador-pin-nome">Laurenice</span>
         <span class="morador-pin-local">São Felipe</span>
@@ -25,7 +25,7 @@
       </span>
     </button>
 
-    <button class="morador-pin" type="button" data-morador-id="5" style="top:14%; left:55%;" aria-label="Abrir história de Maria Benedita Araújo, São Felipe">
+    <button class="morador-pin" type="button" data-morador-id="5" style="top:12%; left:50%;" aria-label="Abrir história de Maria Benedita Araújo, São Felipe">
       <span class="morador-pin-etiqueta">
         <span class="morador-pin-nome">Maria Benedita</span>
         <span class="morador-pin-local">São Felipe</span>
@@ -35,7 +35,7 @@
       </span>
     </button>
 
-    <button class="morador-pin" type="button" data-morador-id="6" style="top:20%; left:10%;" aria-label="Abrir história de Valderez da Cruz Rodrigues, São Felipe">
+    <button class="morador-pin" type="button" data-morador-id="6" style="top:38%; left:25%;" aria-label="Abrir história de Valderez da Cruz Rodrigues, São Felipe">
       <span class="morador-pin-etiqueta">
         <span class="morador-pin-nome">Valderez</span>
         <span class="morador-pin-local">São Felipe</span>
@@ -55,18 +55,28 @@
       </span>
     </button>
 
-    <button class="morador-pin" type="button" data-morador-id="3" style="top:30%; left:46%;" aria-label="Abrir história de Dona Francisca, São Felipe">
+    <!-- SANTA RITA (baixo): Francisca (id3) → Marinalva (id2) → Ronaldo (id4) → Parteira (link clicavel) -->
+    <button class="morador-pin" type="button" data-morador-id="3" style="top:45%; left:80%;" aria-label="Abrir história de Dona Francisca, Santa Rita">
       <span class="morador-pin-etiqueta">
         <span class="morador-pin-nome">Francisca</span>
-        <span class="morador-pin-local">São Felipe</span>
+        <span class="morador-pin-local">Santa Rita</span>
       </span>
       <span class="morador-pin-foto">
         <img src="/img/memoriasDosMoradores/morador3.jpeg" alt="Foto de Dona Francisca" loading="eager">
       </span>
     </button>
 
-    <!-- SANTA RITA (baixo): Marinalva (id2) → Ronaldo (id4) -->
-    <button class="morador-pin" type="button" data-morador-id="2" style="top:66%; left:60%;" aria-label="Abrir história de Marinalva de Jesus Nunes, Santa Rita">
+    <a href="/saberes/parteira" class="morador-pin morador-pin--link" style="top:60%; left:35%;" aria-label="Ir para a página da Parteira, Santa Rita" title="Página da Parteira">
+      <span class="morador-pin-etiqueta morador-pin-etiqueta--link">
+        <span class="morador-pin-nome">Parteira</span>
+        <span class="morador-pin-local">Santa Rita · Clique e saiba mais</span>
+      </span>
+      <span class="morador-pin-foto morador-pin-foto--link">
+        <img src="/img/parteira/parteira.png" alt="Foto da Parteira" loading="eager">
+      </span>
+    </a>
+
+    <button class="morador-pin" type="button" data-morador-id="2" style="top:65%; left:75%;" aria-label="Abrir história de Marinalva de Jesus Nunes, Santa Rita">
       <span class="morador-pin-etiqueta">
         <span class="morador-pin-nome">Marialva</span>
         <span class="morador-pin-local">Santa Rita</span>
@@ -76,7 +86,7 @@
       </span>
     </button>
 
-    <button class="morador-pin" type="button" data-morador-id="4" style="top:76%; left:25%;" aria-label="Abrir história de Ronaldo César Pereira, Santa Rita">
+    <button class="morador-pin" type="button" data-morador-id="4" style="top:80%; left:40%;" aria-label="Abrir história de Ronaldo César Pereira, Santa Rita">
       <span class="morador-pin-etiqueta">
         <span class="morador-pin-nome">Ronaldo</span>
         <span class="morador-pin-local">Santa Rita</span>
@@ -173,7 +183,7 @@
     "nome": "Dona Francisca",
     "apelido": "Francisca",
     "idade": "63 anos",
-    "localidade": "São Felipe",
+    "localidade": "Santa Rita",
     "foto": "/img/memoriasDosMoradores/morador3.jpeg",
     "relato": "Me chamo Francisca. Filha de Dona Faustina, neta de Escolástica. A linhagem da família passa por mim e pelos meus bisnetos, que já estão por aqui correndo solto no terreiro. A casa onde moro é a mesma de quando eu era menina, só reformamos a telha, pusemos piso novo. A madeira velha ainda é a mesma.\n\nCozinho todos os dias para a família: baião de dois, carne de sol com jerimum, pamonha de festa. Aprendi a fazer tudo com a minha mãe, que aprendeu com a avó de olho fechado. Quando tem festa no povoado, todo mundo vem me procurar para fazer o doce de leite e a manteiga de garrafa.\n\nEu costumo sentar na porta ao entardecer e contar as histórias pros pequenos: sobre o velho Jacinto, sobre a aparição do santo de madeira, sobre a fazenda do Felipe Pereira. A memória é o nosso maior tesouro, porque se a gente esquecer, ninguém mais vai lembrar por nós.\n\nSão Felipe é tradição, é bênção, é orgulho. Cada porta de madeira, cada pé de manga no quintal, cada reza de noite tem história de quem passou por aqui antes de nós. Preservar essa memória é o jeito que a gente encontra de dizer que esses avós, esses pais, esses vizinhos não morreram de verdade — continuam vivos nas coisas que a gente faz, no gosto da comida, no som da voz contando história de novo e de novo pros pequenos dormirem de sonho bom."
   },

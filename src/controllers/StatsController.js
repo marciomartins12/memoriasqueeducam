@@ -249,6 +249,34 @@ class StatsController {
       res.status(500).send('Erro interno ao carregar estatísticas.');
     }
   }
+
+  static async limparDados(req, res) {
+    try {
+      const confirmacao = String(req.body.confirmar || '').trim().toUpperCase();
+      if (confirmacao !== 'SIM') {
+        if (req.accepts('html')) {
+          return res.redirect('/painel-estatisticas-memorias-educam-2026');
+        }
+        return res.status(400).json({ sucesso: false, mensagem: 'Confirmação inválida.' });
+      }
+
+      await ProgressoCacaPalavras.destroy({ where: {}, truncate: false });
+      await ProgressoVerdadeiroFalso.destroy({ where: {}, truncate: false });
+      await ProgressoQuiz.destroy({ where: {}, truncate: false });
+      await Dispositivo.destroy({ where: {}, truncate: false });
+
+      if (req.accepts('html')) {
+        return res.redirect('/painel-estatisticas-memorias-educam-2026?limpo=1');
+      }
+      return res.json({ sucesso: true, mensagem: 'Todos os dados foram apagados.' });
+    } catch (err) {
+      console.error('Erro ao limpar dados stats:', err);
+      if (req.accepts('html')) {
+        return res.redirect('/painel-estatisticas-memorias-educam-2026?erro=1');
+      }
+      return res.status(500).json({ sucesso: false, mensagem: 'Erro interno ao limpar dados.' });
+    }
+  }
 }
 
 module.exports = StatsController;

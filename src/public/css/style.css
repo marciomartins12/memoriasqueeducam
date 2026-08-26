@@ -2465,10 +2465,12 @@ body.saberes-lock {
     radial-gradient(ellipse at 10% 0%, rgba(125, 85, 44, 0.08), transparent 45%),
     radial-gradient(ellipse at 90% 100%, rgba(107, 136, 56, 0.08), transparent 50%),
     linear-gradient(180deg, #F3E2C1 0%, var(--cor-fundo) 50%, #EED9B0 100%);
-  padding: 14px 18px 16px 18px;
+  padding: 14px 18px 22px 18px;
   gap: 16px;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .tela-moradores::before {
@@ -2545,13 +2547,12 @@ body.saberes-lock {
   padding: 0 50px;
 }
 
-/* ---------- Mapa das Memórias ---------- */
+/* ---------- Mapa das Memórias (proporção EXATA da imagem mapa.png: 865 × 1819) ---------- */
 
 .moradores-mapa {
   width: 100%;
-  flex: 1 1 auto;
-  min-height: 0;
-  height: 0;
+  flex: 0 0 auto;
+  aspect-ratio: 865 / 1819;
   position: relative;
   border-radius: 26px;
   overflow: hidden;
@@ -2568,8 +2569,9 @@ body.saberes-lock {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  background-color: #EBD2A6;
 }
 
 /* ---------- Pins dos moradores (ESTRUTURA NOVA: Label CIMA, foto EMBAIXO como marcador de solo) ---------- */
@@ -2720,6 +2722,54 @@ body.saberes-lock {
   overflow: hidden;
   text-overflow: ellipsis;
   letter-spacing: 0.1px;
+}
+
+/* ---------- Pin ESPECIAL da PARTEIRA (link clicavel, cor diferente para destacar) ---------- */
+
+a.morador-pin--link {
+  text-decoration: none;
+  color: inherit;
+}
+
+a.morador-pin--link:hover .morador-pin-foto--link {
+  transform: scale(1.04);
+}
+
+.morador-pin-etiqueta--link {
+  background: linear-gradient(180deg, #FFF4E6 0%, #FFE6CC 100%);
+  border: 1.2px solid rgba(182, 101, 36, 0.65);
+  box-shadow:
+    0 5px 18px rgba(182, 101, 36, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92),
+    0 0 0 1px rgba(255, 184, 107, 0.35);
+}
+
+.morador-pin-etiqueta--link::after {
+  border-top-color: #FFE6CC;
+}
+
+.morador-pin-etiqueta--link::before {
+  border-top-color: rgba(182, 101, 36, 0.65);
+}
+
+.morador-pin-etiqueta--link .morador-pin-nome {
+  color: #7A3A0D;
+  letter-spacing: 0.3px;
+}
+
+.morador-pin-etiqueta--link .morador-pin-local {
+  color: #A65A1E;
+  font-weight: 600;
+}
+
+.morador-pin-foto--link {
+  border: 3.2px solid #FFE6CC;
+  box-shadow:
+    0 5px 14px rgba(60, 40, 18, 0.32),
+    0 0 0 1.4px #B66524,
+    0 0 0 4px rgba(182, 101, 36, 0.15);
+  background: #FFFBEE;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* ---------- Modal morador (pop-up) ---------- */
@@ -2900,8 +2950,11 @@ body.saberes-lock {
 
 @media only screen and (min-width: 320px) and (max-width: 600px) {
   .tela-moradores {
-    padding: 3.7vw 4.8vw 4.3vw 4.8vw;
+    padding: 3.7vw 4.8vw 6.5vw 4.8vw;
     gap: 4.3vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .moradores-cabecalho {
@@ -2927,6 +2980,9 @@ body.saberes-lock {
   }
 
   .moradores-mapa {
+    width: 100%;
+    flex: 0 0 auto;
+    aspect-ratio: 865 / 1819;
     border-radius: 7vw;
     border-width: 0.27vw;
     box-shadow:
@@ -2935,9 +2991,9 @@ body.saberes-lock {
   }
 
   .morador-pin-foto {
-    width: 15.5vw;
-    height: 15.5vw;
-    margin-top: 5.9vw;
+    width: 13.5vw;
+    height: 13.5vw;
+    margin-top: 5.2vw;
     border-width: 0.85vw;
     box-shadow:
       0 1.3vw 3.7vw rgba(60, 40, 18, 0.30),
@@ -2945,38 +3001,59 @@ body.saberes-lock {
   }
 
   .morador-pin-etiqueta {
-    max-width: 32vw;
-    min-width: 24vw;
+    max-width: 28vw;
+    min-width: 21vw;
     border-width: 0.27vw;
     border-radius: 3.7vw;
-    padding: 1.6vw 3.5vw 1.7vw 3.5vw;
+    padding: 1.3vw 2.9vw 1.5vw 2.9vw;
     box-shadow:
       0 1.3vw 4.3vw rgba(60, 40, 18, 0.22),
       inset 0 0.27vw 0 rgba(255, 255, 255, 0.85);
-    gap: 0.3vw;
+    gap: 0.2vw;
   }
 
   /* Triângulo invertido (mobile) */
   .morador-pin-etiqueta::after {
-    bottom: -2.4vw;
-    border-left: 2.4vw solid transparent;
-    border-right: 2.4vw solid transparent;
-    border-top: 2.9vw solid #FFFBEE;
-    filter: drop-shadow(0 0.6vw 0.5vw rgba(60, 40, 18, 0.16));
+    bottom: -2.2vw;
+    border-left: 2.1vw solid transparent;
+    border-right: 2.1vw solid transparent;
+    border-top: 2.6vw solid #FFFBEE;
+    filter: drop-shadow(0 0.55vw 0.45vw rgba(60, 40, 18, 0.16));
   }
   .morador-pin-etiqueta::before {
-    bottom: -2.8vw;
-    border-left: 2.75vw solid transparent;
-    border-right: 2.75vw solid transparent;
-    border-top: 3.5vw solid rgba(138, 101, 51, 0.32);
+    bottom: -2.6vw;
+    border-left: 2.45vw solid transparent;
+    border-right: 2.45vw solid transparent;
+    border-top: 3.2vw solid rgba(138, 101, 51, 0.32);
   }
 
   .morador-pin-nome {
-    font-size: 3.7vw;
+    font-size: 3.3vw;
   }
 
   .morador-pin-local {
     font-size: 2.9vw;
+  }
+
+  /* Pin da Parteira (mobile VW) */
+  .morador-pin-etiqueta--link {
+    box-shadow:
+      0 1.3vw 4.8vw rgba(182, 101, 36, 0.30),
+      inset 0 0.27vw 0 rgba(255, 255, 255, 0.92),
+      0 0 0 0.27vw rgba(255, 184, 107, 0.45);
+  }
+  .morador-pin-etiqueta--link::after {
+    border-top: 2.9vw solid #FFE6CC;
+  }
+  .morador-pin-etiqueta--link::before {
+    border-top: 3.5vw solid rgba(182, 101, 36, 0.65);
+  }
+  .morador-pin-foto--link {
+    border-width: 0.85vw;
+    box-shadow:
+      0 1.3vw 3.7vw rgba(60, 40, 18, 0.32),
+      0 0 0 0.37vw #B66524,
+      0 0 0 1.1vw rgba(182, 101, 36, 0.15);
   }
 
   .morador-modal-painel {
@@ -7638,6 +7715,297 @@ body.saberes-lock {
     height: 1.6vw;
   }
 }
+
+/* =========================================================
+   PAINEL ESTATÍSTICAS — BOTÃO LIMPAR DADOS + MODAL
+   ========================================================= */
+
+.stats-limpar-wrap {
+  margin-top: 6px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(133, 92, 44, 0.22);
+  display: flex;
+  justify-content: center;
+}
+
+.stats-btn-limpar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border-radius: 12px;
+  background: #C64A3E;
+  color: #FFFAEA;
+  border: none;
+  border-bottom: 3px solid #8E2C24;
+  font-family: 'Baloo 2', 'Segoe UI', cursive, sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.15s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 3px 0 rgba(142, 44, 36, 0.35);
+}
+
+.stats-btn-limpar:hover {
+  background: #B83E33;
+}
+
+.stats-btn-limpar:active {
+  transform: translateY(2px);
+  border-bottom-width: 1px;
+  box-shadow: 0 1px 0 rgba(142, 44, 36, 0.35);
+}
+
+.stats-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.stats-modal--aberto {
+  display: flex;
+}
+
+.stats-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(40, 22, 10, 0.62);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.stats-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  background: #FAF0D7;
+  border: 2px solid #B66524;
+  border-radius: 18px;
+  padding: 20px 18px 18px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25), 0 6px 0 rgba(133, 92, 44, 0.22);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stats-modal-titulo {
+  margin: 0;
+  font-family: 'Baloo 2', 'Segoe UI', cursive, sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  color: #C64A3E;
+  line-height: 1.2;
+}
+
+.stats-modal-texto {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #3B2410;
+}
+
+.stats-modal-texto strong {
+  color: #C64A3E;
+}
+
+.stats-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 2px;
+}
+
+.stats-modal-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  color: #6C4A2A;
+  line-height: 1.4;
+}
+
+.stats-modal-label strong {
+  color: #B66524;
+  font-size: 14px;
+}
+
+.stats-modal-input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 2px solid #D8B67A;
+  background: #FFFAEA;
+  font-family: 'Baloo 2', 'Segoe UI', cursive, sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 4px;
+  color: #3B2410;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  text-transform: uppercase;
+}
+
+.stats-modal-input:focus {
+  border-color: #C64A3E;
+  box-shadow: 0 0 0 3px rgba(198, 74, 62, 0.2);
+}
+
+.stats-modal-input::placeholder {
+  letter-spacing: 0.5px;
+  color: rgba(108, 74, 42, 0.4);
+  text-transform: none;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+}
+
+.stats-modal-botoes {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+
+.stats-modal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 14px;
+  border-radius: 10px;
+  font-family: 'Baloo 2', 'Segoe UI', cursive, sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.1s ease, background 0.15s ease, box-shadow 0.15s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.stats-modal-btn--secundario {
+  background: #F2E4C9;
+  color: #6C4A2A;
+  border-bottom: 2px solid #C9833B;
+}
+
+.stats-modal-btn--secundario:hover {
+  background: #E8D5AC;
+}
+
+.stats-modal-btn--secundario:active {
+  transform: translateY(1.5px);
+  border-bottom-width: 0.5px;
+}
+
+.stats-modal-btn--perigo {
+  background: #C64A3E;
+  color: #FFFAEA;
+  border-bottom: 3px solid #8E2C24;
+}
+
+.stats-modal-btn--perigo:hover {
+  background: #B83E33;
+}
+
+.stats-modal-btn--perigo:active {
+  transform: translateY(1.5px);
+  border-bottom-width: 1px;
+}
+
+@media (min-width: 320px) and (max-width: 600px) {
+  .stats-limpar-wrap {
+    padding-top: 3.7vw;
+    border-width: 0.27vw;
+  }
+
+  .stats-btn-limpar {
+    gap: 2vw;
+    padding: 2.9vw 4.8vw;
+    border-radius: 3.2vw;
+    border-bottom-width: 0.8vw;
+    font-size: 3.7vw;
+    box-shadow: 0 0.8vw 0 rgba(142, 44, 36, 0.35);
+  }
+
+  .stats-btn-limpar:active {
+    border-bottom-width: 0.27vw;
+  }
+
+  .stats-modal {
+    padding: 4.3vw;
+  }
+
+  .stats-modal-card {
+    max-width: none;
+    border-radius: 4.8vw;
+    border-width: 0.5vw;
+    padding: 5.3vw 4.8vw 4.8vw;
+    gap: 3.2vw;
+    box-shadow: 0 3.2vw 10.7vw rgba(0,0,0,0.25), 0 1.6vw 0 rgba(133, 92, 44, 0.22);
+  }
+
+  .stats-modal-titulo {
+    font-size: 4.8vw;
+  }
+
+  .stats-modal-texto {
+    font-size: 3.5vw;
+  }
+
+  .stats-modal-form {
+    gap: 3.2vw;
+  }
+
+  .stats-modal-label {
+    font-size: 3.2vw;
+  }
+
+  .stats-modal-label strong {
+    font-size: 3.7vw;
+  }
+
+  .stats-modal-input {
+    padding: 2.7vw 3.2vw;
+    border-radius: 2.7vw;
+    border-width: 0.5vw;
+    font-size: 4.3vw;
+    letter-spacing: 1vw;
+  }
+
+  .stats-modal-input::placeholder {
+    font-size: 3.5vw;
+  }
+
+  .stats-modal-botoes {
+    gap: 2.7vw;
+  }
+
+  .stats-modal-btn {
+    padding: 2.4vw 3.7vw;
+    border-radius: 2.7vw;
+    font-size: 3.5vw;
+  }
+
+  .stats-modal-btn--secundario {
+    border-bottom-width: 0.5vw;
+  }
+
+  .stats-modal-btn--perigo {
+    border-bottom-width: 0.8vw;
+  }
+}
+
 
 
 

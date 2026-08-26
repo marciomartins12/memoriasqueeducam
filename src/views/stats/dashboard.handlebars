@@ -215,6 +215,57 @@
       </div>
     </section>
 
+    <div class="stats-limpar-wrap">
+      <button type="button" id="statsAbrirLimpar" class="stats-btn-limpar" aria-label="Limpar todos os dados do painel">
+        🗑️ Limpar todos os dados
+      </button>
+    </div>
+
     <div class="stats-rodape-espaco"></div>
   </main>
 </section>
+
+<div id="statsLimparModal" class="stats-modal" aria-hidden="true">
+  <div class="stats-modal-overlay" data-stats-modal-fechar></div>
+  <div class="stats-modal-card" role="dialog" aria-modal="true" aria-labelledby="statsLimparTitulo">
+    <h3 id="statsLimparTitulo" class="stats-modal-titulo">⚠️ Apagar todos os dados?</h3>
+    <p class="stats-modal-texto">Isso apagará <strong>permanentemente</strong> todos os dispositivos e todo o progresso dos 3 jogos. Não há como recuperar depois.</p>
+    <form method="POST" action="/painel-estatisticas-memorias-educam-2026/limpar" class="stats-modal-form">
+      <label class="stats-modal-label" for="statsConfirmarInput">Para confirmar, digite <strong>SIM</strong> abaixo:</label>
+      <input id="statsConfirmarInput" name="confirmar" type="text" class="stats-modal-input" autocomplete="off" placeholder="Digite SIM" required maxlength="20" pattern="[Ss][Ii][Mm]" title="Digite SIM">
+      <div class="stats-modal-botoes">
+        <button type="button" class="stats-modal-btn stats-modal-btn--secundario" data-stats-modal-fechar>Cancelar</button>
+        <button type="submit" class="stats-modal-btn stats-modal-btn--perigo">Confirmar e apagar tudo</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+(function(){
+  var modal = document.getElementById('statsLimparModal');
+  var btn = document.getElementById('statsAbrirLimpar');
+  if (!modal || !btn) return;
+  var input = document.getElementById('statsConfirmarInput');
+  function abrirModal(){
+    modal.classList.add('stats-modal--aberto');
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    if (input) { input.value = ''; setTimeout(function(){ input.focus(); }, 60); }
+  }
+  function fecharModal(){
+    modal.classList.remove('stats-modal--aberto');
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+  btn.addEventListener('click', abrirModal);
+  modal.querySelectorAll('[data-stats-modal-fechar]').forEach(function(el){
+    el.addEventListener('click', fecharModal);
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && modal.classList.contains('stats-modal--aberto')) {
+      fecharModal();
+    }
+  });
+})();
+</script>
