@@ -4735,10 +4735,13 @@ a.morador-pin--link:hover .morador-pin-foto--link {
   max-width: 980px;
   margin: 0 auto;
   min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .tela-verdadeiro-falso .cp-cabecalho {
   margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .tela-verdadeiro-falso .vf-status {
@@ -4747,6 +4750,8 @@ a.morador-pin--link:hover .morador-pin-foto--link {
   background: #FFFAEA;
   border: 2px solid #D8B67A;
   border-radius: 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .tela-verdadeiro-falso .vf-progresso {
@@ -4756,6 +4761,7 @@ a.morador-pin--link:hover .morador-pin-foto--link {
   overflow: hidden;
   border: 1px solid #D8B67A;
   margin-bottom: 10px;
+  min-height: 14px;
 }
 
 .tela-verdadeiro-falso .vf-progresso-bar {
@@ -4775,6 +4781,16 @@ a.morador-pin--link:hover .morador-pin-foto--link {
   font-weight: 600;
   font-size: 16px;
   color: #6C4A8A;
+  width: 100%;
+  min-height: 32px;
+  box-sizing: border-box;
+}
+
+.tela-verdadeiro-falso .vf-marcador > * {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+  text-wrap: stable;
 }
 
 .tela-verdadeiro-falso .cp-marcador--sucesso {
@@ -4787,6 +4803,8 @@ a.morador-pin--link:hover .morador-pin-foto--link {
 
 .vf-questoes-wrap {
   margin: 0 0 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .vf-questoes {
@@ -4795,6 +4813,8 @@ a.morador-pin--link:hover .morador-pin-foto--link {
   margin: 0;
   display: grid;
   gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .vf-questao {
@@ -4804,6 +4824,9 @@ a.morador-pin--link:hover .morador-pin-foto--link {
   padding: 20px 20px 18px;
   box-shadow: 0 6px 0 #E6D2A6;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  width: 100%;
+  min-height: 220px;
+  box-sizing: border-box;
 }
 
 .vf-questao--acerto {
@@ -4823,6 +4846,9 @@ a.morador-pin--link:hover .morador-pin-foto--link {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+  width: 100%;
+  min-height: 36px;
+  box-sizing: border-box;
 }
 
 .vf-pergunta-numero {
@@ -4835,6 +4861,9 @@ a.morador-pin--link:hover .morador-pin-foto--link {
   border-radius: 999px;
   padding: 5px 12px;
   letter-spacing: 0.3px;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  box-sizing: border-box;
 }
 
 .vf-pergunta {
@@ -4844,12 +4873,22 @@ a.morador-pin--link:hover .morador-pin-foto--link {
   line-height: 1.45;
   color: #3A2A12;
   margin: 0 0 16px;
+  min-height: 90px;
+  width: 100%;
+  box-sizing: border-box;
+  text-wrap: stable;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .vf-opcoes {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
+  width: 100%;
+  min-height: 60px;
+  box-sizing: border-box;
 }
 
 .vf-opcao {
@@ -4868,10 +4907,16 @@ a.morador-pin--link:hover .morador-pin-foto--link {
   color: white;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
+  min-height: 60px;
+  width: 100%;
+  box-sizing: border-box;
+  text-wrap: stable;
+  overflow-wrap: anywhere;
 }
 
 .vf-opcao span {
   pointer-events: none;
+  white-space: nowrap;
 }
 
 .vf-opcao-icone {
@@ -4930,10 +4975,14 @@ a.morador-pin--link:hover .morador-pin-foto--link {
 
 .vf-questao-feedback {
   margin-top: 14px;
-  min-height: 18px;
+  min-height: 28px;
   font-family: 'Baloo 2', 'Segoe UI', cursive, sans-serif;
   font-weight: 800;
   font-size: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  text-wrap: stable;
+  overflow-wrap: anywhere;
 }
 
 .vf-feedback--acerto {
@@ -4953,13 +5002,19 @@ a.morador-pin--link:hover .morador-pin-foto--link {
   border: 1.5px solid #FF8773;
   animation: vfTimerPulse 0.72s ease-in-out infinite alternate;
   box-shadow: 0 0 0 1px rgba(255, 135, 115, 0.18), 0 0 18px rgba(255, 110, 85, 0.22);
-  transform: scale(1.02);
-  transform-origin: center;
+  will-change: transform, box-shadow;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  flex: 0 0 auto;
+  min-width: 72px;
+  text-align: center;
+  white-space: nowrap;
+  box-sizing: border-box;
 }
 
 @keyframes vfTimerPulse {
-  from { transform: scale(1); box-shadow: 0 0 0 1px rgba(255,135,115,0.18), 0 0 10px rgba(255,110,85,0.10); }
-  to   { transform: scale(1.05); box-shadow: 0 0 0 2px rgba(255,135,115,0.28), 0 0 22px rgba(255,110,85,0.30); }
+  from { transform: scale(1) translateZ(0); box-shadow: 0 0 0 1px rgba(255,135,115,0.18), 0 0 10px rgba(255,110,85,0.10); }
+  to   { transform: scale(1.04) translateZ(0); box-shadow: 0 0 0 2px rgba(255,135,115,0.28), 0 0 22px rgba(255,110,85,0.30); }
 }
 
 /* ---------- Questão tempo-esgotado (não respondeu) ---------- */
@@ -4970,6 +5025,8 @@ a.morador-pin--link:hover .morador-pin-foto--link {
   border-radius: 20px;
   padding: 10px 14px;
   margin: -8px -10px 2px -10px;
+  box-sizing: border-box;
+  min-height: 60px;
 }
 
 /* ---------- Botões opcao desabilitados mais visiveis ---------- */
@@ -4979,6 +5036,8 @@ a.morador-pin--link:hover .morador-pin-foto--link {
   cursor: not-allowed;
   filter: saturate(0.7) brightness(0.98);
   pointer-events: none;
+  transform: none !important;
+  transition: none !important;
 }
 
 .tela-verdadeiro-falso .vf-acoes {
@@ -4987,6 +5046,8 @@ a.morador-pin--link:hover .morador-pin-foto--link {
   gap: 14px;
   justify-content: center;
   flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .quiz-opcoes {
@@ -5114,10 +5175,13 @@ a.morador-pin--link:hover .morador-pin-foto--link {
 @media (min-width: 320px) and (max-width: 600px) {
   .tela-verdadeiro-falso {
     padding: 4vw 3.5vw 12vw;
+    box-sizing: border-box;
   }
 
   .tela-verdadeiro-falso .cp-cabecalho {
     margin-bottom: 3.5vw;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .tela-verdadeiro-falso .vf-status {
@@ -5125,6 +5189,8 @@ a.morador-pin--link:hover .morador-pin-foto--link {
     padding: 2.8vw 3.2vw;
     border-radius: 3.2vw;
     border-width: 0.4vw;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .tela-verdadeiro-falso .vf-progresso {
@@ -5132,14 +5198,27 @@ a.morador-pin--link:hover .morador-pin-foto--link {
     border-radius: 999px;
     border-width: 0.25vw;
     margin-bottom: 2vw;
+    min-height: 3vw;
   }
 
   .tela-verdadeiro-falso .vf-marcador {
     font-size: 3.2vw;
+    width: 100%;
+    min-height: 6.4vw;
+    box-sizing: border-box;
+  }
+
+  .tela-verdadeiro-falso .vf-marcador > * {
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
+    text-wrap: stable;
   }
 
   .vf-questoes {
     gap: 4vw;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .vf-questao {
@@ -5147,6 +5226,9 @@ a.morador-pin--link:hover .morador-pin-foto--link {
     padding: 4.5vw 4vw 4vw;
     border-width: 0.45vw;
     box-shadow: 0 1.2vw 0 #E6D2A6;
+    width: 100%;
+    min-height: 48vw;
+    box-sizing: border-box;
   }
 
   .vf-questao--acerto {
@@ -5159,6 +5241,9 @@ a.morador-pin--link:hover .morador-pin-foto--link {
 
   .vf-pergunta-cabecalho {
     margin-bottom: 2.2vw;
+    width: 100%;
+    min-height: 7.2vw;
+    box-sizing: border-box;
   }
 
   .vf-pergunta-numero {
@@ -5166,16 +5251,29 @@ a.morador-pin--link:hover .morador-pin-foto--link {
     border-radius: 999px;
     padding: 1vw 2.6vw;
     border-width: 0.3vw;
+    white-space: nowrap;
+    flex: 0 0 auto;
+    box-sizing: border-box;
   }
 
   .vf-pergunta {
     font-size: 3.8vw;
     line-height: 1.5;
     margin: 0 0 3.6vw;
+    min-height: 20vw;
+    width: 100%;
+    box-sizing: border-box;
+    text-wrap: stable;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    hyphens: auto;
   }
 
   .vf-opcoes {
     gap: 2.6vw;
+    width: 100%;
+    min-height: 13vw;
+    box-sizing: border-box;
   }
 
   .vf-opcao {
@@ -5184,6 +5282,15 @@ a.morador-pin--link:hover .morador-pin-foto--link {
     padding: 3vw 2vw;
     font-size: 3.6vw;
     border-width: 0.4vw;
+    min-height: 13vw;
+    width: 100%;
+    box-sizing: border-box;
+    text-wrap: stable;
+    overflow-wrap: anywhere;
+  }
+
+  .vf-opcao span {
+    white-space: nowrap;
   }
 
   .vf-opcao-icone {
@@ -5215,6 +5322,11 @@ a.morador-pin--link:hover .morador-pin-foto--link {
     outline-offset: 0.2vw;
   }
 
+  .vf-opcao:disabled {
+    transform: none !important;
+    transition: none !important;
+  }
+
   .vf-questao--acerto .vf-opcao--selecionado {
     box-shadow: 0 1.2vw 0 #4F6B26;
   }
@@ -5225,13 +5337,24 @@ a.morador-pin--link:hover .morador-pin-foto--link {
 
   .vf-questao-feedback {
     margin-top: 3vw;
-    min-height: 4vw;
+    min-height: 6vw;
     font-size: 3.4vw;
+    width: 100%;
+    box-sizing: border-box;
+    text-wrap: stable;
+    overflow-wrap: anywhere;
+  }
+
+  .vf-questao--tempo-esgotado {
+    min-height: 13vw;
+    box-sizing: border-box;
   }
 
   .tela-verdadeiro-falso .vf-acoes {
     margin-top: 4vw;
     gap: 3vw;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .tela-quiz {

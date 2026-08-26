@@ -239,6 +239,48 @@ const saberesData = {
           nome: 'Jussara',
           imagem: '/img/comidasTipicas/jussara.jpeg',
           texto: 'O fruto da Juçara (ou Jussara) é uma palmeira nativa da Mata Atlântica e da região amazônica, também muito presente nas comunidades ribeirinhas e quilombolas do Maranhão. Muitas vezes chamada de "açaí do Norte" pelo sabor semelhante, seu fruto roxo e brilhante é colhido manualmente das palmeiras, depois despolpado e batido no liquidificador ou pilado com água, formando um creme grosso e energético. A Jussara é consumida principalmente no café da manhã ou no lanche da tarde, misturada com farinha ou tapioca, adoçada com açúcar ou mel de cana, ou servida pura como suco cremoso. Além de seu sabor característico, o fruto é conhecido por ser rico em ferro, antocianinas e vitaminas, um alimento tradicional que liga as comunidades à floresta e aos ciclos da natureza. Nas festas comunitárias, a juçara é sempre lembrada como um presente da terra que une as pessoas na mesa e mantém viva a tradição alimentar quilombola.'
+        },
+        {
+          id: 9,
+          slug: 'mingau-de-arroz',
+          nome: 'Mingau de arroz',
+          imagem: '/img/comidasTipicas/Mingau de arroz.jpeg',
+          texto: 'O Mingau de arroz é um prato tradicional, doce e reconfortante, muito presente nas mesas das comunidades quilombolas, especialmente nos cafés da manhã, nos lanches das crianças e nas noites frias. O preparo começa colocando arroz branco para cozinhar lentamente em bastante água, até que os grãos fiquem bem macios e desmanchem. Depois, junta-se leite (ou leite de coco, para dar mais cremosidade), açúcar e uma pitada de sal, mexendo sempre em fogo baixo até formar um creme homogêneo e encorpado. Em muitas receitas, acrescenta-se também canela em pau, casca de laranja ou coco ralado, que dão um aroma especial e marcante. Servido quente ou morno, o mingau de arroz é um alimento de conforto, associado às memórias de infância, ao aconchego das casas e à transmissão dos saberes culinários de mães e avós para as novas gerações. Sua receita simples, feita com ingredientes da região, representa a criatividade e a generosidade da cozinha tradicional quilombola.'
+        },
+        {
+          id: 10,
+          slug: 'farinha-dagua',
+          nome: 'Farinha d’água',
+          imagem: '/img/comidasTipicas/Farinha d’água.jpeg',
+          texto: 'A Farinha d’água é um alimento típico da culinária nortista e quilombola, preparado com farinha de mandioca hidratada em água, formando uma pasta cremosa e levemente ácida, de sabor suave e textura agradável. Seu preparo tradicional começa com a escolha da mandioca nova, que é descascada, ralada, prensada para retirar o líquido amargo e, depois, torrada levemente em forno de barro ou panela de ferro até ficar dourada e soltinha. Depois de pronta, a farinha é misturada com água filtrada em quantidades proporcionais, formando uma massa homogênea que pode ser consumida de diversas maneiras. A farinha d’água costuma ser servida no café da manhã, acompanhada de queijo coalho, manteiga, peixe assado, carne de sol ou apenas com um pouco de sal e limão. É um alimento rápido, prático e energético, ideal para os dias de lida na roça, no rio ou nas atividades comunitárias, representando a versatilidade da mandioca, cultura alimentar ancestral dos quilombos.'
+        },
+        {
+          id: 11,
+          slug: 'moqueca',
+          nome: 'Moqueca',
+          imagem: '/img/comidasTipicas/Moqueca.jpeg',
+          texto: 'A Moqueca é um prato tradicional e aromático da culinária brasileira, com versões características nas comunidades quilombolas do Maranhão, onde recebe um toque especial de ingredientes regionais. O preparo começa cortando o peixe fresco (normalmente peixes de água doce como tucunaré, tambaqui ou corvina) em postas, temperadas com suco de limão, alho socado, sal, pimenta-do-reino e coentro. Depois, em uma panela de barro funda (de preferência), faz-se uma camada de rodelas de cebola, tomate, pimentão e cheiro-verde, intercalando com as postas de peixe temperado. Rega-se com azeite de dendê e leite de coco fresco, que dão o sabor característico e a cremosidade do molho, e acrescenta-se pimenta de cheiro a gosto. A moqueca é cozida em fogo baixo, tampada, sem mexer muito, até o peixe ficar macio e o molho encorporar, liberando um aroma delicioso. É servida com arroz branco, farofa de dendê e pirão feito com o caldo da própria moqueca, sendo um prato de festa e de compartilhamento nas reuniões de família e nas celebrações comunitárias quilombolas.'
+        },
+        {
+          id: 12,
+          slug: 'canjica',
+          nome: 'Canjica',
+          imagem: '/img/comidasTipicas/Canjica.jpeg',
+          texto: 'A Canjica é um doce tradicional muito apreciado nas comunidades quilombolas, especialmente nas festas juninas, nas celebrações de santos e nas reuniões familiares. Feita à base de grãos de milho branco (canjica de milho) cozidos lentamente até ficarem macios, o preparo começa deixando os grãos de molho em água por algumas horas para facilitar o cozimento. Depois, a canjica é cozida em bastante água, de preferência em panela de barro ou panela de pressão, até os grãos ficarem bem cremosos. Junta-se, então, leite (ou leite de coco fresco), açúcar, uma pitada de sal e, em muitas receitas, amendoim torrado, coco ralado, canela em pau e cravo-da-índia, que dão um aroma inconfundível. O doce é cozido em fogo baixo, mexendo sempre até ficar com consistência cremosa e encorpada. Servida quente ou morna, polvilhada com canela em pó e coco ralado, a canjica é um símbolo de festa, de aconchego e de tradição, com uma receita passada de geração em geração nas famílias quilombolas.'
+        },
+        {
+          id: 13,
+          slug: 'mingau-de-milho',
+          nome: 'Mingau de milho',
+          imagem: '/img/comidasTipicas/Mingau de milho.jpeg',
+          texto: 'O Mingau de milho é um prato doce, cremoso e muito nutritivo, preparado tradicionalmente nas comunidades quilombolas a partir do milho verde ou da farinha de milho. Quando feito com milho verde, os grãos são retirados da espiga e batidos no liquidificador com leite, formando uma massa homogênea que é passada em peneira fina. Essa mistura é levada ao fogo baixo, juntamente com açúcar, uma pitada de sal e, opcionalmente, leite de coco, canela em pau e coco ralado, mexendo sempre até engrossar e ficar bem cremosa. Quando feito com farinha de milho, a farinha é dissolvida em água fria e depois levada ao fogo com leite e açúcar, seguindo o mesmo método de cozimento lento. O mingau de milho costuma ser servido no café da manhã ou no lanche da tarde, quente ou morno, polvilhado com canela. É um alimento energético e de conforto, associado às lembranças de casa, à colheita do milho e às tradições alimentares quilombolas transmitidas ao longo das gerações.'
+        },
+        {
+          id: 14,
+          slug: 'tapioca',
+          nome: 'Tapioca',
+          imagem: '/img/comidasTipicas/Tapiaca.jpeg',
+          texto: 'A Tapioca é um alimento versátil e tradicional feito a partir da goma da mandioca, muito presente no café da manhã e nos lanches das comunidades quilombolas. O preparo começa com a extração da goma fresca da mandioca, que é prensada, peneirada e deixada secar até ficar na textura de flocos finos e úmidos. Para fazer a tapioca, coloca-se uma frigideira de ferro antiaderente em fogo médio e espalha-se uma camada fina e uniforme da goma, que rapidamente se aglutina formando uma massa macia e flexível, sem precisar de óleo ou gordura. Depois de pronta, a tapioca pode ser recheada de inúmeras maneiras: com queijo coalho, manteiga, coco ralado e açúcar, doce de leite, banana frita, leite condensado, frutas da região, frango desfiado, charque ou farofa. Cada família costuma ter seu recheio favorito, passado de geração em geração. Além de ser um alimento rápido e prático, a tapioca representa a importância da mandioca como base da alimentação quilombola, cultivada nas roças e transformada em diversos pratos que fazem parte da identidade cultural da comunidade.'
         }
       ]
     },
