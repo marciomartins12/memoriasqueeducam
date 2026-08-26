@@ -12,7 +12,7 @@ const parteiraDados = {
     naturalidade: 'Baixa Grande',
     comunidade: 'Santa Rita',
     imagem: '/img/parteira/parteira.png',
-    funcoes: ['Parteira', 'Quebradeira de Coco', 'Trabalhadora da Roça', 'Pescadora', 'Mãe de Santo', 'Ex-Tesoureira'],
+    funcoes: ['Parteira', 'Quebradeira de Coco', 'Agricultora', 'Pescadora', 'Mãe de Santo', 'Ex-Tesoureira'],
     anosAtuacao: 20,
     tituloHistoria: 'A história de vida de Francisca da Chagas Araújo: memória, saberes e tradição de uma parteira de Santa Rita.',
     biografiaSecciones: [
@@ -363,13 +363,13 @@ const saberesData = {
         },
         {
           id: 2,
-          slug: 'festa-do-divino',
-          nome: 'Festa do Divino',
+          slug: 'bumba-meu-boi',
+          nome: 'Bumba-meu-boi',
           tipo: 'video',
           imagem: '/img/manifestacaoCultural/Festa do Divino.mp4',
           video: '/img/manifestacaoCultural/Festa do Divino.mp4',
           imagens: ['/img/manifestacaoCultural/Festa do Divino.mp4'],
-          texto: 'A Festa do Divino é uma tradição religiosa e cultural muito arraigada nas comunidades quilombolas, celebrada em honra ao Divino Espírito Santo. A festa começa com a escolha do mordomo e da mordoma, responsáveis por organizar e custear os festejos, e inclui novenas, cantos de ladainha, missas, procissões e a tradicional distribuição de doces, bolos e quitutes típicos. Há também os folguedos, com danças, tambores e a participação de grupos cantantes que percorrem as casas do povoado levando a bandeira do Divino. A festa representa fé, confraternização e transmissão de valores de geração em geração, unindo a comunidade em torno de suas crenças e de sua identidade quilombola. A coroa do Divino e a bandeira são símbolos centrais que percorrem as ruas, acompanhadas de muita alegria e devoção.'
+          texto: 'O Bumba-meu-boi é uma das manifestações culturais mais tradicionais e queridas das comunidades quilombolas do Maranhão, reconhecido nacionalmente como Patrimônio Cultural Imaterial do Brasil. Trata-se de um folguedo popular que combina teatro, dança, música e poesia, contando a história de um boi que morre e ressuscita por meio da força da fé e da sabedoria dos velhos do povoado. A festa é marcada por personagens icônicos — como Pai Francisco, Mãe Catirina, o Mateus, a Burrinha, o Gigante, os índios e as matracas — que percorrem as ruas ao som de zabumbas, pandeiros, tamborins e cantigas de roda cheias de alegria e improviso. As apresentações costumam acontecer durante as festas juninas, os festejos de santos padroeiros e as celebrações comunitárias, reunindo famílias e vizinhos em um grande ciclo de festa, devoção e valorização das tradições quilombolas. O Bumba-meu-boi representa a união do povo, a resistência cultural e a transmissão de saberes ancestrais de geração em geração.'
         },
         {
           id: 3,
