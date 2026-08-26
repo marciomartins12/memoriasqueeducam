@@ -7111,7 +7111,7 @@ a.morador-pin--link:hover .morador-pin-foto--link {
   min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 14px 16px 20px;
+  padding: 14px 16px 28px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -7564,7 +7564,7 @@ a.morador-pin--link:hover .morador-pin-foto--link {
   }
 
   .stats-conteudo {
-    padding: 3.7vw 4.3vw 5.3vw;
+    padding: 3.7vw 4.3vw 8vw;
     gap: 4.3vw;
   }
 
@@ -7771,10 +7771,16 @@ a.morador-pin--link:hover .morador-pin-foto--link {
 
 .stats-limpar-wrap {
   margin-top: 6px;
-  padding-top: 14px;
+  margin-bottom: 6px;
+  padding-top: 16px;
+  padding-bottom: 6px;
   border-top: 1px dashed rgba(133, 92, 44, 0.22);
   display: flex;
+  width: 100%;
+  min-height: 54px;
   justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
 }
 
 .stats-btn-limpar {
@@ -7782,7 +7788,7 @@ a.morador-pin--link:hover .morador-pin-foto--link {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 11px 18px;
+  padding: 11px 20px 12px;
   border-radius: 12px;
   background: #C64A3E;
   color: #FFFAEA;
@@ -7797,6 +7803,8 @@ a.morador-pin--link:hover .morador-pin-foto--link {
   user-select: none;
   -webkit-tap-highlight-color: transparent;
   box-shadow: 0 3px 0 rgba(142, 44, 36, 0.35);
+  margin-bottom: 4px;
+  min-width: 220px;
 }
 
 .stats-btn-limpar:hover {
@@ -7974,17 +7982,23 @@ a.morador-pin--link:hover .morador-pin-foto--link {
 
 @media (min-width: 320px) and (max-width: 600px) {
   .stats-limpar-wrap {
-    padding-top: 3.7vw;
+    padding-top: 4.3vw;
+    padding-bottom: 2vw;
+    margin-top: 1.6vw;
+    margin-bottom: 1.6vw;
     border-width: 0.27vw;
+    min-height: 14vw;
   }
 
   .stats-btn-limpar {
     gap: 2vw;
-    padding: 2.9vw 4.8vw;
+    padding: 3vw 5.3vw 3.2vw;
     border-radius: 3.2vw;
     border-bottom-width: 0.8vw;
     font-size: 3.7vw;
     box-shadow: 0 0.8vw 0 rgba(142, 44, 36, 0.35);
+    margin-bottom: 1vw;
+    min-width: 58vw;
   }
 
   .stats-btn-limpar:active {
