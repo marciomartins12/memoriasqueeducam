@@ -380,10 +380,13 @@ class JogosController {
       const resultadoValido = ['concluido', 'tempo_esgotado', 'abandonado', 'nivel_perdido'].includes(String(resultado));
       const respostasArr = Array.isArray(respostas) ? respostas.slice(0, 300) : [];
       const qtdRespondidas = respostasArr.filter(function (r) {
-        return r && (r.resposta === true || r.resposta === false || r.resposta === null || typeof r.resposta === 'boolean');
+        return r && typeof r.resposta === 'boolean';
       }).length;
       const qtdAcertos = respostasArr.filter(function (r) {
-        return r && r.resposta === true && r.gabarito === true || r && r.resposta === false && r.gabarito === false;
+        return r && (
+          (r.resposta === true && r.gabarito === true) ||
+          (r.resposta === false && r.gabarito === false)
+        );
       }).length;
 
       progresso.tentativas = (progresso.tentativas || 0) + 1;

@@ -273,10 +273,12 @@
   function atualizarTimerUI() {
     if (!elTimer) return;
     elTimer.textContent = '⏱ ' + formatarTempo(segundosRestantes);
-    if (segundosRestantes <= 30) {
+    if (segundosRestantes > 0 && segundosRestantes <= 6) {
       elTimer.classList.add('cp-timer-label--urgente');
+      elTimer.classList.add('vf-timer-label--urgente');
     } else {
       elTimer.classList.remove('cp-timer-label--urgente');
+      elTimer.classList.remove('vf-timer-label--urgente');
     }
   }
 
@@ -301,7 +303,10 @@
     return arr;
   }
 
-  function salvarProgresso(resultado, forcar) {
+  function salvarProgresso(resultado, opcoes) {
+    const opts = opcoes && typeof opcoes === 'object' ? opcoes : {};
+    const forcar = opts.forcar === true;
+    const usarKeepalive = opts.keepalive === true;
     if (progressoJaSalvo && !forcar) return Promise.resolve();
     progressoJaSalvo = true;
     const arr = coletarRespostasParaSalvar();
@@ -312,16 +317,15 @@
       respostas: arr,
       resultado: resultado
     };
-    const isKeepAlive = forcar === true;
     try {
       const prom = fetch('/api/jogos/verdadeiro-ou-falso/progresso', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'same-origin',
-        keepalive: isKeepAlive,
+        keepalive: usarKeepalive,
         body: JSON.stringify(body)
       });
-      if (isKeepAlive) return Promise.resolve();
+      if (usarKeepalive) return prom.catch(function () { return; });
       return prom.catch(function () {});
     } catch (e) {
       return Promise.resolve();
@@ -335,7 +339,7 @@
     const todasMarcadas = questoesAtuais.every(function (q) { return respostasAtuais.has(q.id); });
     const resultado = todasMarcadas ? 'concluido' : 'abandonado';
 
-    salvarProgresso(resultado, false).then(function () {
+    salvarProgresso(resultado, {}).then(function () {
       if (btnProximo) {
         if (nivelAtual >= TOTAL_NIVEIS) {
           btnProximo.textContent = 'Você chegou ao fim!';
@@ -354,24 +358,54 @@
   function tempoEsgotado() {
     if (nivelFinalizado) return;
     nivelFinalizado = true;
-    if (btnProximo) btnProximo.disabled = true;
+    if (timerHandle) { clearInterval(timerHandle); timerHandle = null; }
+    if (btnProximo) btnProximo.disabled = false;
+    if (nivelAtual >= TOTAL_NIVEIS) {
+      if (btnProximo) { btnProximo.textContent = 'Você chegou ao fim!'; btnProximo.disabled = true; }
+    } else if (btnProximo) {
+      btnProximo.textContent = 'Próxima pergunta';
+    }
     if (elMarcador) elMarcador.classList.add('cp-marcador--falha');
     if (elProgressoTexto) {
-      elProgressoTexto.textContent = (elProgressoTexto.textContent || '') + ' · Tempo esgotado';
+      elProgressoTexto.textContent = 'Nível ' + nivelAtual + ' / ' + TOTAL_NIVEIS + ' · Tempo esgotado';
     }
-    salvarProgresso('tempo_esgotado', true);
+    if (elQuestoesWrap) {
+      const botoes = elQuestoesWrap.querySelectorAll('.vf-opcao');
+      botoes.forEach(function (b) { b.disabled = true; });
+      questoesAtuais.forEach(function (q) {
+        if (!respostasAtuais.has(q.id)) {
+          const li = elQuestoesWrap.querySelector('.vf-questao[data-questao-id="' + q.id + '"]');
+          if (li) {
+            li.classList.add('vf-questao--tempo-esgotado');
+            const fb = li.querySelector('.vf-questao-feedback');
+            if (fb) {
+              fb.textContent = 'Tempo esgotado! Não respondida.';
+              fb.classList.add('vf-feedback--erro');
+            }
+          }
+        }
+      });
+    }
+    salvarProgresso('tempo_esgotado', {});
   }
 
-  function abandonarNivel(forcar) {
-    if (nivelFinalizado) return;
+  function abandonarNivel(opcoes) {
+    const opts = opcoes && typeof opcoes === 'object' ? opcoes : {};
+    if (nivelFinalizado) {
+      if (opts.keepalive === true) {
+        // Mesmo finalizado, dispara save keepalive (melhor salvar do que perder)
+        salvarProgresso('abandonado', { forcar: true, keepalive: true });
+      }
+      return;
+    }
     nivelFinalizado = true;
     if (timerHandle) { clearInterval(timerHandle); timerHandle = null; }
-    salvarProgresso('abandonado', !!forcar);
+    salvarProgresso('abandonado', { keepalive: opts.keepalive === true });
   }
 
   if (btnReiniciar) {
     btnReiniciar.addEventListener('click', function () {
-      abandonarNivel(true);
+      abandonarNivel({ forcar: true });
       setTimeout(function () {
         carregarNivel(nivelAtual, true);
       }, 150);
@@ -388,19 +422,19 @@
 
   if (btnVoltar) {
     btnVoltar.addEventListener('click', function () {
-      if (!nivelFinalizado) abandonarNivel(true);
+      if (!nivelFinalizado) abandonarNivel({});
     });
   }
 
   window.addEventListener('beforeunload', function () {
-    if (!nivelFinalizado) abandonarNivel(true);
+    if (!nivelFinalizado) abandonarNivel({ keepalive: true });
   });
   window.addEventListener('pagehide', function () {
-    if (!nivelFinalizado) abandonarNivel(true);
+    if (!nivelFinalizado) abandonarNivel({ keepalive: true });
   });
   document.addEventListener('visibilitychange', function () {
     if (document.visibilityState === 'hidden' && !nivelFinalizado) {
-      abandonarNivel(true);
+      abandonarNivel({ keepalive: true });
     }
   });
 
