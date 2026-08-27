@@ -4816,10 +4816,15 @@ a.morador-pin--link:hover .morador-pin-foto--link {
 
 .tela-verdadeiro-falso {
   padding: 28px 24px 48px;
-  max-width: 980px;
+  max-width: 480px;
+  width: 100%;
   margin: 0 auto;
-  min-height: 100vh;
+  min-height: 100dvh;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  contain: layout;
 }
 
 .tela-verdadeiro-falso .cp-cabecalho {
@@ -5276,8 +5281,16 @@ a.morador-pin--link:hover .morador-pin-foto--link {
 
 @media (min-width: 320px) and (max-width: 600px) {
   .tela-verdadeiro-falso {
-    padding: 4vw 3.5vw 12vw;
+    padding: 4.2vw 4vw 5.2vw 4vw;
+    gap: 3.4vw;
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
     box-sizing: border-box;
+    overflow-x: hidden;
+    contain: layout;
+    display: flex;
+    flex-direction: column;
   }
 
   .tela-verdadeiro-falso .cp-cabecalho {
