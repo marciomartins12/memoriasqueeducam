@@ -4229,6 +4229,16 @@ a.morador-pin--link:hover .morador-pin-foto--link {
   text-align: center;
   flex: 1 1 auto;
   min-width: 0;
+  contain: layout;
+  box-sizing: border-box;
+}
+
+.cp-cabecalho-info > * {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  text-wrap: nowrap;
+  overflow-wrap: anywhere;
+  contain: layout paint;
 }
 
 .tela-caca-palavras .moradores-cabecalho {
@@ -4252,6 +4262,17 @@ a.morador-pin--link:hover .morador-pin-foto--link {
   padding: 4px 10px;
   border-radius: 999px;
   line-height: 1;
+  min-width: 120px;
+  min-height: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  contain: layout paint size;
+  overflow: hidden;
+  white-space: nowrap;
+  text-wrap: nowrap;
 }
 
 .cp-nivel-label strong {
@@ -4265,10 +4286,29 @@ a.morador-pin--link:hover .morador-pin-foto--link {
   font-size: 15px;
   color: #B03A2E;
   background: #FBE3DA;
-  padding: 4px 10px;
+  padding: 0 10px;
   border-radius: 999px;
   line-height: 1;
   letter-spacing: 0.3px;
+  min-width: 92px;
+  width: 92px;
+  min-height: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  white-space: nowrap;
+  text-wrap: nowrap;
+  text-align: center;
+  contain: layout paint size;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-variant-numeric: tabular-nums;
+  letter-spacing: 0.2px;
+  will-change: box-shadow, background-color, color;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .cp-status {
@@ -4596,14 +4636,58 @@ a.morador-pin--link:hover .morador-pin-foto--link {
     gap: 2.9vw;
   }
 
+  .cp-cabecalho-info {
+    contain: layout;
+    box-sizing: border-box;
+  }
+
+  .cp-cabecalho-info > * {
+    flex: 0 0 auto;
+    contain: layout paint;
+    box-sizing: border-box;
+  }
+
   .cp-nivel-label {
     font-size: 3.6vw;
-    padding: 1vw 2.4vw;
+    padding: 0 2.4vw;
+    min-width: 27vw;
+    width: 27vw;
+    min-height: 6.5vw;
+    height: 6.5vw;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    box-sizing: border-box;
+    overflow: hidden;
+    white-space: nowrap;
+    text-wrap: nowrap;
+    contain: layout paint size;
+    text-align: center;
   }
 
   .cp-timer-label {
     font-size: 3.6vw;
-    padding: 1vw 2.4vw;
+    padding: 0 2.4vw;
+    min-width: 20vw;
+    width: 20vw;
+    min-height: 6.5vw;
+    height: 6.5vw;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    box-sizing: border-box;
+    overflow: hidden;
+    white-space: nowrap;
+    text-wrap: nowrap;
+    contain: layout paint size;
+    font-variant-numeric: tabular-nums;
+    -webkit-font-variant-numeric: tabular-nums;
+    text-align: center;
+    will-change: box-shadow, background-color, color;
+    backface-visibility: hidden;
+    transform: translateZ(0);
   }
 
   .cp-status {
@@ -5002,19 +5086,37 @@ a.morador-pin--link:hover .morador-pin-foto--link {
   border: 1.5px solid #FF8773;
   animation: vfTimerPulse 0.72s ease-in-out infinite alternate;
   box-shadow: 0 0 0 1px rgba(255, 135, 115, 0.18), 0 0 18px rgba(255, 110, 85, 0.22);
-  will-change: transform, box-shadow;
+  will-change: box-shadow, background-color, color;
   backface-visibility: hidden;
-  transform: translateZ(0);
+  transform: none !important;
   flex: 0 0 auto;
-  min-width: 72px;
+  min-width: 92px;
+  width: 92px;
   text-align: center;
   white-space: nowrap;
+  text-wrap: nowrap;
   box-sizing: border-box;
+  contain: layout paint size;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-variant-numeric: tabular-nums;
+  overflow: hidden;
 }
 
 @keyframes vfTimerPulse {
-  from { transform: scale(1) translateZ(0); box-shadow: 0 0 0 1px rgba(255,135,115,0.18), 0 0 10px rgba(255,110,85,0.10); }
-  to   { transform: scale(1.04) translateZ(0); box-shadow: 0 0 0 2px rgba(255,135,115,0.28), 0 0 22px rgba(255,110,85,0.30); }
+  from {
+    box-shadow: 0 0 0 1px rgba(255,135,115,0.18),
+                0 0 10px rgba(255,110,85,0.10),
+                inset 0 0 0 0 rgba(255,230,224,0);
+    background: #FFE1DB;
+    color: #A92819;
+  }
+  to {
+    box-shadow: 0 0 0 2px rgba(255,135,115,0.28),
+                0 0 22px rgba(255,110,85,0.30),
+                inset 0 0 8px rgba(255, 180, 165, 0.35);
+    background: #FFCFC8;
+    color: #90180C;
+  }
 }
 
 /* ---------- Questão tempo-esgotado (não respondeu) ---------- */
