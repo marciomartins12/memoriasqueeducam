@@ -3873,6 +3873,141 @@ a.morador-pin--link:hover .morador-pin-foto--link {
   opacity: 0;
 }
 
+/* ---------- Videos Galeria ---------- */
+.galeria-item--video .galeria-item-moldura::before {
+  display: none;
+}
+
+.galeria-video-preview {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  transform: none;
+  z-index: 1;
+  background-color: #D7BE93;
+}
+
+.galeria-video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 54px;
+  height: 54px;
+  min-width: 54px;
+  min-height: 54px;
+  border-radius: 50%;
+  background-color: rgba(59, 36, 16, 0.78);
+  color: #FAF0D7;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  z-index: 3;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(250, 240, 215, 0.55);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  contain: layout paint size;
+}
+
+.galeria-video-play svg {
+  width: 24px;
+  height: 24px;
+  margin-left: 3px;
+  color: inherit;
+  display: block;
+}
+
+.galeria-video-label {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background-color: rgba(59, 36, 16, 0.78);
+  color: #FAF0D7;
+  font-family: 'Baloo 2', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: 0.005em;
+  text-align: center;
+  z-index: 2;
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+  contain: layout paint;
+}
+
+.galeria-lightbox-video {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+  user-select: none;
+  display: block;
+  transition: transform 0.28s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.22s ease;
+  will-change: transform, opacity;
+  transform: translateX(0);
+  opacity: 1;
+  background-color: #000;
+  contain: layout paint;
+}
+
+.galeria-lightbox-video.saindo-esq,
+.galeria-lightbox-video.saindo-dir {
+  opacity: 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.galeria-lightbox-video.saindo-esq {
+  transform: translateX(-55%);
+}
+
+.galeria-lightbox-video.saindo-dir {
+  transform: translateX(55%);
+}
+
+.galeria-lightbox-video.entrando-esq {
+  transform: translateX(-55%);
+  opacity: 0;
+}
+
+.galeria-lightbox-video.entrando-dir {
+  transform: translateX(55%);
+  opacity: 0;
+}
+
+.galeria-grid--videos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  align-content: start;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .galeria-lightbox-legenda {
   flex: 0 0 auto;
   width: 100%;
@@ -4084,6 +4219,87 @@ a.morador-pin--link:hover .morador-pin-foto--link {
     border-radius: 4vw;
   }
 
+  .galeria-item--video .galeria-item-moldura::before {
+    display: none;
+  }
+
+  .galeria-video-preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 1;
+    background-color: #D7BE93;
+  }
+
+  .galeria-video-play {
+    width: 13.5vw;
+    height: 13.5vw;
+    min-width: 13.5vw;
+    min-height: 13.5vw;
+    border-radius: 50%;
+    border: 0.35vw solid rgba(250, 240, 215, 0.55);
+    box-shadow: 0 1.5vw 4.5vw rgba(0, 0, 0, 0.32);
+  }
+
+  .galeria-video-play svg {
+    width: 6vw;
+    height: 6vw;
+    margin-left: 0.75vw;
+  }
+
+  .galeria-video-label {
+    left: 2.5vw;
+    right: 2.5vw;
+    bottom: 2.5vw;
+    padding: 1.5vw 2.5vw;
+    border-radius: 2.5vw;
+    font-size: 3vw;
+  }
+
+  .galeria-lightbox-video {
+    max-height: calc(100dvh - 50vw);
+    border-radius: 4vw;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    background-color: #000;
+    display: block;
+    transition: transform 0.28s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.22s ease;
+    will-change: transform, opacity;
+    transform: translateX(0);
+    opacity: 1;
+    contain: layout paint;
+  }
+
+  .galeria-lightbox-video.saindo-esq {
+    transform: translateX(-55%);
+    opacity: 0;
+  }
+
+  .galeria-lightbox-video.saindo-dir {
+    transform: translateX(55%);
+    opacity: 0;
+  }
+
+  .galeria-lightbox-video.entrando-esq {
+    transform: translateX(-55%);
+    opacity: 0;
+  }
+
+  .galeria-lightbox-video.entrando-dir {
+    transform: translateX(55%);
+    opacity: 0;
+  }
+
+  .galeria-grid--videos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3vw;
+  }
+
   .galeria-lightbox-legenda {
     font-size: 3.2vw;
     gap: 3.5vw;
@@ -4242,7 +4458,102 @@ a.morador-pin--link:hover .morador-pin-foto--link {
 }
 
 .tela-caca-palavras .moradores-cabecalho {
-  padding: 0;
+  padding: 4px 2px 2px 2px;
+  padding-top: 4px !important;
+  padding-bottom: 0px !important;
+  width: 100% !important;
+  max-width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  gap: 0;
+  border: none;
+  background: transparent;
+  border-bottom: none !important;
+  contain: layout;
+  min-height: 56px;
+  margin-bottom: 0 !important;
+}
+
+.tela-caca-palavras .btn-voltar {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background-color: rgba(250, 240, 215) !important;
+  border: 1px solid rgba(133, 92, 44, 0.18) !important;
+  color: #4A2E10 !important;
+  padding: 0 !important;
+  margin: 0;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(75, 50, 25, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.7) !important;
+  transition: none !important;
+  transition-property: none;
+  transform-origin: center;
+  contain: layout paint size;
+  will-change: auto;
+  -webkit-tap-highlight-color: transparent;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.tela-caca-palavras .btn-voltar svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2.8;
+  color: #3B2410;
+  margin: 0;
+  display: block;
+}
+
+.tela-caca-palavras .btn-voltar:active {
+  transform: translateY(-50%) scale(0.96);
+  transition: none !important;
+  background-color: rgba(250, 240, 215) !important;
+}
+
+.tela-caca-palavras .moradores-titulo {
+  font-family: 'Baloo 2', system-ui, sans-serif;
+  font-weight: 800;
+  color: #3B2410;
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: -0.005em;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 92px);
+  margin: 0 !important;
+  padding: 0 46px !important;
+  text-align: center;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+}
+
+.tela-caca-palavras .cp-cabecalho-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  text-align: center;
+  flex: 1 1 auto;
+  min-width: 0;
+  contain: layout;
+  box-sizing: border-box;
+  padding-top: 2px;
+  width: 100%;
 }
 
 .cp-nivel-info {
@@ -4630,6 +4941,90 @@ a.morador-pin--link:hover .morador-pin-foto--link {
   .tela-caca-palavras {
     padding: 4.2vw 4vw 5.2vw 4vw;
     gap: 3.4vw;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    contain: layout;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .tela-caca-palavras .moradores-cabecalho {
+    padding: 1.2vw 0 0.6vw 0 !important;
+    padding-top: 1.2vw !important;
+    padding-bottom: 0.6vw !important;
+    width: 100% !important;
+    box-sizing: border-box;
+    min-height: 12.5vw;
+    border-bottom: none !important;
+    contain: layout;
+    position: relative;
+  }
+
+  .tela-caca-palavras .btn-voltar {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8vw;
+    height: 8vw;
+    min-width: 8vw;
+    min-height: 8vw;
+    max-width: 8vw;
+    max-height: 8vw;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2.8vw;
+    background-color: rgba(250, 240, 215) !important;
+    border: 0.25vw solid rgba(133, 92, 44, 0.18) !important;
+    color: #4A2E10 !important;
+    padding: 0 !important;
+    margin: 0;
+    box-shadow: 0 0.5vw 1.5vw rgba(75, 50, 25, 0.08) !important;
+    transition: none !important;
+    contain: layout paint size;
+    -webkit-tap-highlight-color: transparent;
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    z-index: 5;
+  }
+
+  .tela-caca-palavras .btn-voltar svg {
+    width: 4vw;
+    height: 4vw;
+    stroke-width: 2.8;
+    color: #3B2410;
+    margin: 0;
+    display: block;
+  }
+
+  .tela-caca-palavras .btn-voltar:active {
+    transform: translateY(-50%) scale(0.94);
+    transition: none !important;
+    background-color: rgba(250, 240, 215) !important;
+  }
+
+  .tela-caca-palavras .moradores-titulo {
+    font-family: 'Baloo 2', system-ui, sans-serif;
+    font-weight: 800;
+    color: #3B2410;
+    font-size: 4.6vw;
+    line-height: 1;
+    letter-spacing: -0.005em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 18vw);
+    margin: 0 !important;
+    padding: 0 10vw !important;
+    text-align: center;
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   }
 
   .cp-nivel-info {

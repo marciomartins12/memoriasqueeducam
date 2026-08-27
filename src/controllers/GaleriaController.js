@@ -35,10 +35,26 @@ class GaleriaController {
         }
       });
 
+      const videos = [];
+      const arquivosVideos = fs.existsSync(galeriaDir)
+        ? fs.readdirSync(galeriaDir).filter(arq => /\.(mov|mp4|webm|m4v|avi|mkv)$/i.test(arq))
+        : [];
+      arquivosVideos.forEach(arq => {
+        videos.push({
+          id: `video-${arq}`,
+          comunidade: 'todos',
+          comunidadeNome: 'Memórias que Educam',
+          src: `/img/galeria/${encodeURIComponent(arq)}`,
+          nome: arq.replace(/\.[^.]+$/, '').replace(/[_-]+/g, ' ').trim() || arq,
+          tipo: 'video'
+        });
+      });
+
       return res.render('galeria/index', {
         layout: 'main',
         title: 'Galeria - Memórias que Educam',
-        fotos: fotos
+        fotos: fotos,
+        videos: videos
       });
     } catch (err) {
       console.error('Erro ao carregar galeria:', err);

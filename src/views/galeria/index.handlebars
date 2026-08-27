@@ -14,7 +14,7 @@
     <button type="button" class="galeria-aba galeria-aba-ativa" data-galeria-tipo="fotos">
       Fotos
     </button>
-    <button type="button" class="galeria-aba galeria-aba-inativa" data-galeria-tipo="videos" disabled>
+    <button type="button" class="galeria-aba galeria-aba-inativa" data-galeria-tipo="videos">
       Vídeos
     </button>
     <button type="button" class="galeria-aba galeria-aba-inativa galeria-aba-filtro" data-galeria-abrir-filtro
@@ -39,12 +39,31 @@
     </button>
   </div>
 
-  <main class="galeria-grid" id="galeriaGrid">
+  <main class="galeria-grid galeria-grid--fotos" id="galeriaGrid">
     {{#each fotos}}
     <button type="button" class="galeria-item" data-galeria-item data-comunidade="{{this.comunidade}}"
-      data-src="{{this.src}}" aria-label="Abrir foto {{this.nome}}">
+      data-src="{{this.src}}" data-galeria-nome="{{this.nome}}" data-tipo="foto"
+      aria-label="Abrir foto {{this.nome}}">
       <span class="galeria-item-moldura">
         <img src="{{this.src}}" alt="Foto {{this.comunidadeNome}}" loading="lazy">
+      </span>
+    </button>
+    {{/each}}
+  </main>
+
+  <main class="galeria-grid galeria-grid--videos" id="galeriaGridVideos" hidden>
+    {{#each videos}}
+    <button type="button" class="galeria-item galeria-item--video" data-galeria-item data-comunidade="{{this.comunidade}}"
+      data-src="{{this.src}}" data-galeria-nome="{{this.nome}}" data-tipo="video"
+      aria-label="Abrir vídeo {{this.nome}}">
+      <span class="galeria-item-moldura">
+        <video src="{{this.src}}" muted playsinline preload="metadata" class="galeria-video-preview" aria-hidden="true"></video>
+        <span class="galeria-video-play">
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true">
+            <polygon points="7 4 21 12 7 20 7 4"></polygon>
+          </svg>
+        </span>
+        <span class="galeria-video-label">{{this.nome}}</span>
       </span>
     </button>
     {{/each}}
@@ -54,7 +73,7 @@
 <div id="galeriaLightbox" class="galeria-lightbox" role="dialog" aria-modal="true" aria-hidden="true">
   <div class="galeria-lightbox-overlay" data-galeria-lightbox-fechar></div>
   <div class="galeria-lightbox-painel" role="document">
-    <button type="button" class="galeria-lightbox-fechar" aria-label="Fechar foto" data-galeria-lightbox-fechar>
+    <button type="button" class="galeria-lightbox-fechar" aria-label="Fechar mídia" data-galeria-lightbox-fechar>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
         stroke-linejoin="round" aria-hidden="true">
         <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -62,14 +81,14 @@
       </svg>
     </button>
 
-    <button type="button" class="galeria-nav galeria-nav-prev" aria-label="Foto anterior" data-galeria-nav="-1">
+    <button type="button" class="galeria-nav galeria-nav-prev" aria-label="Mídia anterior" data-galeria-nav="-1">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"
         stroke-linejoin="round" aria-hidden="true">
         <polyline points="15 18 9 12 15 6"></polyline>
       </svg>
     </button>
 
-    <button type="button" class="galeria-nav galeria-nav-next" aria-label="Próxima foto" data-galeria-nav="1">
+    <button type="button" class="galeria-nav galeria-nav-next" aria-label="Próxima mídia" data-galeria-nav="1">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"
         stroke-linejoin="round" aria-hidden="true">
         <polyline points="9 18 15 12 9 6"></polyline>
@@ -80,6 +99,7 @@
       <figure class="galeria-lightbox-figura">
         <div class="galeria-stage" data-galeria-stage>
           <img id="galeriaLightboxImg" src="" alt="" class="galeria-lightbox-imagem">
+          <video id="galeriaLightboxVideo" class="galeria-lightbox-video" controls playsinline preload="auto" hidden></video>
         </div>
         <figcaption class="galeria-lightbox-legenda">
           <span id="galeriaLightboxComunidade"></span>
