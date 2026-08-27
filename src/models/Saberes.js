@@ -277,10 +277,10 @@ const saberesData = {
         },
         {
           id: 14,
-          slug: 'tapioca',
-          nome: 'Tapioca',
+          slug: 'tapiaca',
+          nome: 'Tapiaca',
           imagem: '/img/comidasTipicas/Tapiaca.jpeg',
-          texto: 'A Tapioca é um alimento versátil e tradicional feito a partir da goma da mandioca, muito presente no café da manhã e nos lanches das comunidades quilombolas. O preparo começa com a extração da goma fresca da mandioca, que é prensada, peneirada e deixada secar até ficar na textura de flocos finos e úmidos. Para fazer a tapioca, coloca-se uma frigideira de ferro antiaderente em fogo médio e espalha-se uma camada fina e uniforme da goma, que rapidamente se aglutina formando uma massa macia e flexível, sem precisar de óleo ou gordura. Depois de pronta, a tapioca pode ser recheada de inúmeras maneiras: com queijo coalho, manteiga, coco ralado e açúcar, doce de leite, banana frita, leite condensado, frutas da região, frango desfiado, charque ou farofa. Cada família costuma ter seu recheio favorito, passado de geração em geração. Além de ser um alimento rápido e prático, a tapioca representa a importância da mandioca como base da alimentação quilombola, cultivada nas roças e transformada em diversos pratos que fazem parte da identidade cultural da comunidade.'
+          texto: 'A Tapiaca é um alimento versátil e tradicional feito a partir da goma da mandioca, muito presente no café da manhã e nos lanches das comunidades quilombolas. O preparo começa com a extração da goma fresca da mandioca, que é prensada, peneirada e deixada secar até ficar na textura de flocos finos e úmidos. Para fazer a tapiaca, coloca-se uma frigideira de ferro antiaderente em fogo médio e espalha-se uma camada fina e uniforme da goma, que rapidamente se aglutina formando uma massa macia e flexível, sem precisar de óleo ou gordura. Depois de pronta, a tapiaca pode ser recheada de inúmeras maneiras: com queijo coalho, manteiga, coco ralado e açúcar, doce de leite, banana frita, leite condensado, frutas da região, frango desfiado, charque ou farofa. Cada família costuma ter seu recheio favorito, passado de geração em geração. Além de ser um alimento rápido e prático, a tapiaca representa a importância da mandioca como base da alimentação quilombola, cultivada nas roças e transformada em diversos pratos que fazem parte da identidade cultural da comunidade.'
         }
       ]
     },

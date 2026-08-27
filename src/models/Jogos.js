@@ -160,7 +160,7 @@ const PERGUNTAS_QUIZ_BRUTAS = [
       A: "Muqueca e arroz de milho",
       B: "Feijoada e vatapá",
       C: "Caruru e maniçoba",
-      D: "Tapioca e arroz de caxambu"
+      D: "Tapiaca e arroz de caxambu"
     },
     gabarito: "A"
   },
