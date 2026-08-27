@@ -3606,6 +3606,12 @@ a.morador-pin--link:hover .morador-pin-foto--link {
   display: grid !important;
 }
 
+.galeria-grid[hidden],
+main.galeria-grid[hidden],
+[hidden].galeria-grid {
+  display: none !important;
+}
+
 .galeria-grid::-webkit-scrollbar {
   width: 6px;
 }
@@ -4154,6 +4160,12 @@ a.morador-pin--link:hover .morador-pin-foto--link {
     gap: 5vw 4vw;
     padding: 1.5vw 1vw 4vw 1vw;
     display: grid !important;
+  }
+
+  .galeria-grid[hidden],
+  main.galeria-grid[hidden],
+  [hidden].galeria-grid {
+    display: none !important;
   }
 
   .galeria-item {

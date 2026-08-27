@@ -32,10 +32,28 @@
         b.classList.add('galeria-aba-inativa');
       }
     });
-    if (gridFotos) gridFotos.hidden = abaAtual !== 'fotos';
-    if (gridVideos) gridVideos.hidden = abaAtual !== 'videos';
-    if (btnAbrirFiltro) btnAbrirFiltro.hidden = abaAtual !== 'fotos';
-    if (filtros) filtros.hidden = abaAtual !== 'fotos';
+    if (gridFotos) {
+      const mostrar = abaAtual === 'fotos';
+      gridFotos.hidden = !mostrar;
+      gridFotos.style.setProperty('display', mostrar ? '' : 'none', 'important');
+      gridFotos.setAttribute('aria-hidden', mostrar ? 'false' : 'true');
+    }
+    if (gridVideos) {
+      const mostrar = abaAtual === 'videos';
+      gridVideos.hidden = !mostrar;
+      gridVideos.style.setProperty('display', mostrar ? '' : 'none', 'important');
+      gridVideos.setAttribute('aria-hidden', mostrar ? 'false' : 'true');
+    }
+    if (btnAbrirFiltro) {
+      const mostrar = abaAtual === 'fotos';
+      btnAbrirFiltro.hidden = !mostrar;
+      btnAbrirFiltro.style.setProperty('display', mostrar ? '' : 'none', 'important');
+    }
+    if (filtros) {
+      const mostrar = abaAtual === 'fotos';
+      filtros.hidden = !mostrar;
+      filtros.style.setProperty('display', mostrar ? '' : 'none', 'important');
+    }
     aplicarFiltro(filtroAtual);
   }
   botoesAba.forEach(function (b) {
