@@ -3,8 +3,8 @@
 
   var DISPOSITIVO_STORAGE_KEY = 'mqEdu_dispositivoId';
   var PROGRESSO_SALVO_KEY = 'mqEdu_progressoCacaUltimo';
-  var TEMPO_POR_NIVEL_MS = 5 * 60 * 1000;
-  var GRID_TAMANHO = 14;
+  var TEMPO_POR_NIVEL_MS = 8 * 60 * 1000;
+  var GRID_TAMANHO = 17;
   var DIRECOES = [
     { dr:  0, dc:  1, nome: 'H'  },
     { dr:  0, dc: -1, nome: 'Hr' },
@@ -15,7 +15,7 @@
     { dr:  1, dc: -1, nome: 'Di' },
     { dr: -1, dc:  1, nome: 'Dir' }
   ];
-  var ALFABETO = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÁÀÂÃÉÊÍÓÔÕÚÇ';
+  var ALFABETO = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
   var tela = document.querySelector('.tela-caca-palavras');
   if (!tela) return;
@@ -235,7 +235,7 @@
     var p = removerAcentos(palavra);
     if (!p) return false;
     var T = GRID_TAMANHO;
-    for (var t = 0; t < (tentativas || 150); t++) {
+    for (var t = 0; t < (tentativas || 300); t++) {
       var dir = DIRECOES[Math.floor(Math.random() * DIRECOES.length)];
       var rIni = Math.floor(Math.random() * T);
       var cIni = Math.floor(Math.random() * T);
@@ -270,7 +270,7 @@
       return removerAcentos(b).length - removerAcentos(a).length;
     });
     palavrasPorTamanho.forEach(function (p) {
-      tentarInserirPalavra(p, 220);
+      tentarInserirPalavra(p, 500);
     });
     for (var r2 = 0; r2 < T; r2++) {
       for (var c2 = 0; c2 < T; c2++) {

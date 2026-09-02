@@ -1,27 +1,27 @@
 const PALAVRAS_ORIGINAIS = [
-  'SANTA RITA', 'SÃO FELIPE', 'QUILOMBOLA', 'MEMÓRIA', 'CULTURA',
-  'TRADIÇÃO', 'ROÇA', 'LAVOURA', 'MANDIOCA', 'MACAXEIRA',
+  'SANTA RITA', 'SAO FELIPE', 'QUILOMBOLA', 'MEMORIA', 'CULTURA',
+  'TRADICAO', 'ROCA', 'LAVOURA', 'MANDIOCA', 'MACAXEIRA',
   'FARINHA', 'COCO', 'PESCA', 'MALHADEIRA', 'ESPINHEL',
   'TAMBOR', 'BUMBA-BOI', 'TAPUIA', 'IGREJA', 'FESTA',
-  'NOVENA', 'REZA', 'FÉ', 'PLANTAS', 'CHÁ',
-  'MASTRUZ', 'BOLDO', 'GENGIBRE', 'HORTELÃ', 'QUINA',
-  'AROEIRA', 'SIRIGUELA', 'FAMÍLIA', 'ANCESTRAIS', 'COMUNIDADE',
+  'NOVENA', 'REZA', 'FE', 'PLANTAS', 'CHA',
+  'MASTRUZ', 'BOLDO', 'GENGIBRE', 'HORTELA', 'QUINA',
+  'AROEIRA', 'SIRIGUELA', 'FAMILIA', 'ANCESTRAIS', 'COMUNIDADE',
   'JUVENTUDE', 'SABERES', 'TRABALHO', 'LAURENICE', 'FRANCISCA',
   'MARINALVA', 'PRESIDENTE SARNEY', 'RIO', 'CANOA', 'ANZOL',
-  'PEIXE', 'SURUBIM', 'PIRANHA', 'MANDUBÉ', 'CARVÃO',
-  'FOGÃO', 'FORNO', 'ROÇA', 'ARROZ', 'MILHO',
-  'PLANTAÇÃO', 'COLHEITA', 'MATO', 'COQUEIRO', 'MANGUEIRA',
+  'PEIXE', 'SURUBIM', 'PIRANHA', 'MANDUBE', 'CARVAO',
+  'FOGAO', 'FORNO', 'ROCA', 'ARROZ', 'MILHO',
+  'PLANTACAO', 'COLHEITA', 'MATO', 'COQUEIRO', 'MANGUEIRA',
   'JAQUEIRA', 'LAMPARINA', 'ENERGIA', 'ESTRADA', 'CAMINHO',
-  'CARROÇA', 'LADAINHA', 'PROMESSA', 'TERREIRO', 'RELIGIOSIDADE',
-  'PRECONCEITO', 'RESPEITO', 'ANCESTRALIDADE', 'RESISTÊNCIA', 'ORALIDADE',
+  'CARROCA', 'LADAINHA', 'PROMESSA', 'TERREIRO', 'RELIGIOSIDADE',
+  'PRECONCEITO', 'RESPEITO', 'ANCESTRALIDADE', 'RESISTENCIA', 'ORALIDADE',
   'COLHEITA', 'PLANTIO', 'TAMBOR', 'DIVINO', 'LADAINHA'
 ];
 
 const PALAVRAS_EXTRAS = [
-  'CAXINGUELÊ', 'CAVALO MARINHO', 'FEIJOADA', 'CAZUZA', 'DENDÊ',
-  'PIRÃO', 'FAROFA', 'QUIABO', 'CARURU', 'ACARAJÉ',
-  'ABALÁ', 'ACARAJÉ', 'VATAPÁ', 'MOQUECA', 'XINXIM',
-  'PINDÓI', 'UMBU', 'CAJÁ', 'GRAVIOLA', 'UMBURANA'
+  'CAXINGUELE', 'CAVALO MARINHO', 'FEIJOADA', 'CAZUZA', 'DENDE',
+  'PIRAO', 'FAROFA', 'QUIABO', 'CARURU', 'ACARAJE',
+  'ABALA', 'ACARAJE', 'VATAPA', 'MOQUECA', 'XINXIM',
+  'PINDOI', 'UMBU', 'CAJA', 'GRAVIOLA', 'UMBURANA'
 ];
 
 const TODAS_PALAVRAS = PALAVRAS_ORIGINAIS.concat(PALAVRAS_EXTRAS).slice(0, 100);
@@ -30,7 +30,7 @@ const NIVEIS_CACA_PALAVRAS = [];
 for (let i = 0; i < 10; i++) {
   const nivel = {
     numero: i + 1,
-    tempo_segundos: 300,
+    tempo_segundos: 480,
     palavras: TODAS_PALAVRAS.slice(i * 10, i * 10 + 10).map((p, idx) => ({
       id: (i * 10) + idx + 1,
       palavra: p,
@@ -593,7 +593,7 @@ const LISTA_JOGOS = [
     numero: 1,
     nome: 'Caça-Palavras',
     icone: 'caca-palavras',
-    descricao: 'Encontre as palavras escondidas no grid. 10 níveis, 10 palavras cada, 5 minutos por nível.',
+    descricao: 'Encontre as palavras escondidas no grid. 10 níveis, 10 palavras cada, 8 minutos por nível.',
     total_niveis: NIVEIS_CACA_PALAVRAS.length,
     ativo: true
   },

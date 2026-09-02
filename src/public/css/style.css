@@ -4725,13 +4725,13 @@ main.galeria-grid[hidden],
   margin: 0;
   font-family: 'Baloo 2', system-ui, sans-serif;
   font-weight: 800;
-  font-size: clamp(12px, 3.2vw, 17px);
+  font-size: clamp(9px, 2.4vw, 14px);
   line-height: 1;
   color: #3B2410;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
+  border-radius: 3px;
   transition: background-color .12s ease, transform .12s ease, color .12s ease;
   user-select: none;
   -webkit-user-select: none;
@@ -5134,20 +5134,20 @@ main.galeria-grid[hidden],
     margin: 0 auto;
     aspect-ratio: 1 / 1;
     border-radius: 5.3vw;
-    padding: 1.5vw;
+    padding: 1.2vw;
     border-width: 2px;
     box-shadow: 0 1vw 0 #D8B67A, 0 3vw 7vw rgba(59, 36, 16, 0.07);
     overflow: hidden;
   }
 
   .cp-svg-overlay {
-    inset: 1.5vw;
+    inset: 1.2vw;
   }
 
   .cp-celula {
-    font-size: clamp(9px, 2.9vw, 16px);
+    font-size: clamp(8px, 2.2vw, 13px);
     line-height: 1;
-    border-radius: 1.1vw;
+    border-radius: 0.9vw;
     min-width: 0;
     min-height: 0;
   }
