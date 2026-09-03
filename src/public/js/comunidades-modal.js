@@ -27,7 +27,7 @@
         'A história de São Felipe, portanto, é construída a partir das memórias sobre a chegada dos primeiros moradores vindos de São Bento-MA, identificados nos relatos como pessoas escravizadas que haviam fugido, seguida pela chegada de outras famílias que contribuíram para a formação do povoado. As lembranças sobre Felipe Pereira, a produção de potes de barro, o transporte de coco em carros de boi, o trabalho, a religiosidade e a formação das famílias compõem um conjunto de memórias fundamentais para compreender a trajetória da comunidade e valorizar seus saberes tradicionais e sua identidade quilombola.'
       ],
       localizacao: [
-        "A comunidade São Felipe está localizada no Mnicípio de Presidente Sarney, estado do Maranhão (MA), região Nordeste do Brasil). Seu território integra a paisagem típica do leste maranhense, com áreas de vegetação, roças, cursos d'água e estradas vicinais que a conectam ao restante do município e aos povoados vizinhos, incluindo a comunidade de Santa Rita.",
+        "A comunidade São Felipe está localizada no Município de Presidente Sarney, estado do Maranhão (MA), região Nordeste do Brasil). Seu território integra a paisagem típica do leste maranhense, com áreas de vegetação, roças, cursos d'água e estradas vicinais que a conectam ao restante do Município e aos povoados vizinhos, incluindo a comunidade de Santa Rita.",
        "A proximidade entre São Felipe e Santa Rita revela uma longa história de compartilhamento de território, de trocas culturais e de convivência entre as famílias que compõem as duas comunidades. Ambas se reconhecem como pertencentes à mesma região, partilhando laços de parentesco, de tradições e de memórias sobre a ocupação da terra e a formação dos povoados.",
         'A posição geográfica da comunidade, bem como sua relação histórica com o território, são elementos essenciais para compreender a identidade de seus moradores, a transmissão dos saberes tradicionais e a importância do reconhecimento oficial como comunidade remanescente de quilombo.'
       ],
@@ -48,7 +48,7 @@
       localizacao: [
         "A comunidade Santa Rita está localizada no Município de Presidente Sarney, estado do Maranhão (MA), integrando a região do leste maranhense. Seu território compreende áreas de vegetação nativa, roças tradicionais, cursos d'água e estradas vicinais que a conectam à sede do Município e à vizinha comunidade de São Felipe.",
         'A localização de Santa Rita reflete uma longa trajetória de ocupação e uso da terra por parte das famílias que se dedicavam à agricultura, à pesca, à quebra do coco e à criação de animais, atividades permanecem presentes na memória e no dia a dia dos moradores.',
-        'A proximidade com São Felipe e com os demais povoados da região contribui para a circulação de pessoas, de saberes e de tradições entre as comunidades, fortalecendo os laços de vizinhança e o sentimento de pertencimento territórios quilombolas do município.'
+        'A proximidade com São Felipe e com os demais povoados da região contribui para a circulação de pessoas, de saberes e de tradições entre as comunidades, fortalecendo os laços de vizinhança e o sentimento de pertencimento territórios quilombolas do Município.'
       ],
       fotos: [
         'Acervo visual da comunidade Santa Rita: as fotografias da comunidade registram os espaços de convivência e os equipamentos comunitários construídos ao longo dos anos, entre eles a sede comunitária, a escola inaugurada em 2020, a igreja, o poço artesiano, o forno de farinha.',
